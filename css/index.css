@@ -5,39 +5,11 @@
   height: 4rem;
   border-radius: 0.75rem;
 }
-/*.mainHero{*/
-/*  background-image: url("../img/indexHero.jpg");*/
-/*  background-position: right;*/
-/*  background-repeat: no-repeat;*/
-/*  background-size: cover;*/
-/*  background-color: white;*/
-/*  !* min-height: 50vh; *!*/
-/*}*/
-.heroImg{
-   /*height: 10vh;*/
-  /*width: 100%;*/
-
-}
-.overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-/*.mainHero, .overlay {*/
-/*  min-height: 50vh;*/
-/*}*/
-
-
 .pricing-header, .table-responsive  {
   max-width: 700px;
 }
 .feature-icon {
   background-color: skyblue !important;
-}
-.overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 /* .btn-primary {
     --bs-btn-color: #000;
@@ -63,7 +35,4 @@
 }
 .pointer {
   cursor: pointer;
-}
-.hidden{
-
 }
