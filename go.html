@@ -63,9 +63,9 @@
     <p>Ready to crush your fitness goals without breaking the bank? We've got you covered! Join our FREE Workout Class and kickstart your journey to a healthier, stronger you! All fitness levels are welcome! Whether you're a beginner or a fitness pro, our classes are designed to challenge and accommodate everyone.</p>
 
     <!-- Cards -->
-    <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">
-<!--    <div class="go-cards">-->
-        <!-- Test Card -->
+<!--    <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">-->
+    <div class="go-cards">
+        <!-- Card -->
         <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>
@@ -81,20 +81,20 @@
                 <p>💰 <strong>Cost:</strong> Absolutely FREE! No hidden fees, no subscriptions – just pure fitness fun.</p>
             </div>
         </div>
-        <!-- Test Card -->
+        <!-- Card -->
         <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 fw-normal">Register for your free class</h4>
             </div>
             <div class="card-body">
-                <form name="contact" class="contact needs-validation" method="POST" netlify-honeypot="bot-field"
-                      data-netlify="true" novalidate>
-                    <div class="modal-body">
+                <form name="registration" class="registration needs-validation" method="POST" netlify-honeypot="bot-field" data-netlify="true" novalidate>
+
                         <p class="visually-hidden">
                             <label>
                                 Don’t fill this out if you’re human: <input name="bot-field"/>
                             </label>
                         </p>
+
                         <div class="form-floating mb-3">
                             <input type="text" name="firstName" class="form-control" required spellcheck="true"
                                    id="firstName" placeholder="First Name" autocomplete="given-name">
@@ -122,23 +122,13 @@
                             </div>
                         </div>
 
-                        <!--                            <div class="form-floating">-->
-                        <!--                                <textarea name="message" class="form-control contactTextarea"-->
-                        <!--                                          placeholder="Leave a comment here" id="message" required></textarea>-->
-                        <!--                                <label for="message">How can we help you?</label>-->
-                        <!--                                <div class="invalid-feedback">-->
-                        <!--                                    Please enter a message.-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-
-                        <div class="form-floating mb-4">
-                            <input type="date" name="date" class="form-control" required spellcheck="true"
-                                   id="regdate" placeholder="name@example.com" autocomplete="email">
-                            <label for="date">Date you plan to join a class</label>
-                            <div class="invalid-feedback">
-                                Please enter a date.
-                            </div>
+                    <div class="form-floating mb-4">
+                        <input type="date" name="date" class="form-control" required id="regdate" placeholder="name@example.com" autocomplete="email">
+                        <label for="date">Date you plan to join a class</label>
+                        <div class="invalid-feedback">
+                            Please enter a date.
                         </div>
+                    </div>
 
                         <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">
@@ -146,108 +136,12 @@
                                 Agree to terms and conditions
                             </label>
                         </div>
-                    </div>
-                    <div class="modal-footer">
 
-                        <button type="submit" class="btn w-100 btn-info">Register Me</button>
-                    </div>
+                    <button type="submit" class="btn w-100 btn-info">Register Me</button>
+
                 </form>
             </div>
         </div>
-
-        <!-- Card -->
-<!--        <div class="" >-->
-<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
-<!--                <div class="card-header">-->
-<!--                    <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <p>✨ <strong>Dynamic Workouts:</strong> Our experienced trainers will guide you through a mix of heart-pumping cardio, strength training, and flexibility exercises. Get ready to sweat and sculpt those muscles!</p>-->
-<!--                    <p>🤝 <strong>Community Support:</strong> Surround yourself with like-minded individuals who share your passion for fitness. Together, we'll create a supportive environment that keeps you motivated and accountable.</p>-->
-<!--                    <p>📅 <strong>When:</strong> [Specify Days and Times]</p>-->
-<!--                    <p>📍 <strong>Where:</strong> Willard Park-->
-<!--                    <a>820 Lazy Trail Dr</a>-->
-<!--                    <a>Rocklin, CA  95765</a>-->
-<!--                    </p>-->
-<!--                    <p>💰 <strong>Cost:</strong> Absolutely FREE! No hidden fees, no subscriptions – just pure fitness fun.</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- Card -->
-<!--        <div class="">-->
-<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
-<!--                <div class="card-header">-->
-<!--                    <h4 class="my-0 fw-normal">Register for your free class</h4>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <form name="contact" class="contact needs-validation" method="POST" netlify-honeypot="bot-field"-->
-<!--                          data-netlify="true" novalidate>-->
-<!--                        <div class="modal-body">-->
-<!--                            <p class="visually-hidden">-->
-<!--                                <label>-->
-<!--                                    Don’t fill this out if you’re human: <input name="bot-field"/>-->
-<!--                                </label>-->
-<!--                            </p>-->
-<!--                            <div class="form-floating mb-3">-->
-<!--                                <input type="text" name="firstName" class="form-control" required spellcheck="true"-->
-<!--                                       id="firstName" placeholder="First Name" autocomplete="given-name">-->
-<!--                                <label for="firstName">First Name</label>-->
-<!--                                <div class="invalid-feedback">-->
-<!--                                    Please enter your first name.-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                            <div class="form-floating mb-3">-->
-<!--                                <input type="text" name="lastName" class="form-control" required spellcheck="true"-->
-<!--                                       id="lastName" placeholder="Last Name" autocomplete="family-name">-->
-<!--                                <label for="lastName">Last Name</label>-->
-<!--                                <div class="invalid-feedback">-->
-<!--                                    Please enter your last name.-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                            <div class="form-floating mb-4">-->
-<!--                                <input type="email" name="email" class="form-control" required spellcheck="true"-->
-<!--                                       id="email" placeholder="name@example.com" autocomplete="email">-->
-<!--                                <label for="email">Email address</label>-->
-<!--                                <div class="invalid-feedback">-->
-<!--                                    Please enter your email.-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash;                            <div class="form-floating">&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                <textarea name="message" class="form-control contactTextarea"&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                          placeholder="Leave a comment here" id="message" required></textarea>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                <label for="message">How can we help you?</label>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                <div class="invalid-feedback">&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                    Please enter a message.&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
-
-<!--                            <div class="form-floating mb-4">-->
-<!--                                <input type="date" name="date" class="form-control" required spellcheck="true"-->
-<!--                                       id="date" placeholder="name@example.com" autocomplete="email">-->
-<!--                                <label for="date">Date you plan to join a class</label>-->
-<!--                                <div class="invalid-feedback">-->
-<!--                                    Please enter a date.-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                            <div class="form-check mb-4">-->
-<!--                                <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">-->
-<!--                                <label class="form-check-label" for="flexCheckDefault">-->
-<!--                                    Agree to terms and conditions-->
-<!--                                </label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="modal-footer">-->
-
-<!--                            <button type="submit" class="btn w-100 btn-info">Register Me</button>-->
-<!--                        </div>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 
 </main>
@@ -262,6 +156,27 @@
     </footer>
 </div>
 
+<!--JavaScript for disabling form submissions if there are invalid fields-->
+<script>
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
 
 <!-- Copyright Date -->
 <script>
