@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="author" content="Christian Festa">
+    <title>Go</title>
+    <meta name="description" content="Aloha Fitness is a online community created for moms, by a mom. We offer a science-based nutrition program and high-intensity interval (HIIT) online workouts.">
+    <meta name="keywords" content="science-based nutrition, nutrition program, diet, lose weight, get healthy, group fitness, virtual workout, HIIT, workout, high intensity interval training, moms workout, workout from home">
+    <!--    Bootstrap-->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- Enables data-bs-theme="auto" -->
+    <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--    My Style sheets-->
+    <link rel="stylesheet" href="css/go.css" type="text/css"/>
+<!--    <link rel="stylesheet" href="css/index.css" type="text/css"/>-->
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
+    <link rel="apple-touch-icon" href="heart.png"/>
+    <!-- Mixpanel -->
+    <script type="text/javascript">
+        (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+            for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+            MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+        // Enabling the debug mode flag is useful during implementation,
+        // but it's recommended you remove it for production
+        mixpanel.init('34b0b2e5a4bf295cff378e99aa7f115f', {debug: false});
+        mixpanel.track('Go');
+    </script>
+</head>
+<body>
+
+
+<!-- Nav Container -->
+<div class="container py-2">
+
+    <!--Navbar-->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container mx-auto">
+                <a class="navbar-brand active" aria-current="page" href="https://www.alohafitness.net"><i
+                        class="bi bi-heart me-1"></i> Aloha Fitness</a>
+            </div>
+        </nav>
+    </header>
+</div>
+
+<div class="alert alert-info" role="alert">
+    <div class="container">
+        🚀 Don't miss out on this fantastic opportunity to transform your fitness journey without spending a dime! Secure your spot now by registing for a free class now.
+    </div>
+</div>
+
+<main class="container viewHeight">
+
+    <h1>🌟 Get Fit for FREE! 🌟</h1>
+    <p>Ready to crush your fitness goals without breaking the bank? We've got you covered! Join our FREE Workout Class and kickstart your journey to a healthier, stronger you! All fitness levels are welcome! Whether you're a beginner or a fitness pro, our classes are designed to challenge and accommodate everyone.</p>
+
+    <!-- Cards -->
+    <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">
+<!--    <div class="go-cards">-->
+        <!-- Test Card -->
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>
+            </div>
+            <div class="card-body">
+                <p>✨ <strong>Dynamic Workouts:</strong> Our experienced trainers will guide you through a mix of heart-pumping cardio, strength training, and flexibility exercises. Get ready to sweat and sculpt those muscles!</p>
+                <p>🤝 <strong>Community Support:</strong> Surround yourself with like-minded individuals who share your passion for fitness. Together, we'll create a supportive environment that keeps you motivated and accountable.</p>
+                <p>📅 <strong>When:</strong> [Specify Days and Times]</p>
+                <p>📍 <strong>Where:</strong> Willard Park
+                    <a>820 Lazy Trail Dr</a>
+                    <a>Rocklin, CA  95765</a>
+                </p>
+                <p>💰 <strong>Cost:</strong> Absolutely FREE! No hidden fees, no subscriptions – just pure fitness fun.</p>
+            </div>
+        </div>
+        <!-- Test Card -->
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 fw-normal">Register for your free class</h4>
+            </div>
+            <div class="card-body">
+                <form name="contact" class="contact needs-validation" method="POST" netlify-honeypot="bot-field"
+                      data-netlify="true" novalidate>
+                    <div class="modal-body">
+                        <p class="visually-hidden">
+                            <label>
+                                Don’t fill this out if you’re human: <input name="bot-field"/>
+                            </label>
+                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="firstName" class="form-control" required spellcheck="true"
+                                   id="firstName" placeholder="First Name" autocomplete="given-name">
+                            <label for="firstName">First Name</label>
+                            <div class="invalid-feedback">
+                                Please enter your first name.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" name="lastName" class="form-control" required spellcheck="true"
+                                   id="lastName" placeholder="Last Name" autocomplete="family-name">
+                            <label for="lastName">Last Name</label>
+                            <div class="invalid-feedback">
+                                Please enter your last name.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="email" name="email" class="form-control" required spellcheck="true"
+                                   id="email" placeholder="name@example.com" autocomplete="email">
+                            <label for="email">Email address</label>
+                            <div class="invalid-feedback">
+                                Please enter your email.
+                            </div>
+                        </div>
+
+                        <!--                            <div class="form-floating">-->
+                        <!--                                <textarea name="message" class="form-control contactTextarea"-->
+                        <!--                                          placeholder="Leave a comment here" id="message" required></textarea>-->
+                        <!--                                <label for="message">How can we help you?</label>-->
+                        <!--                                <div class="invalid-feedback">-->
+                        <!--                                    Please enter a message.-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+
+                        <div class="form-floating mb-4">
+                            <input type="date" name="date" class="form-control" required spellcheck="true"
+                                   id="date" placeholder="name@example.com" autocomplete="email">
+                            <label for="date">Date you plan to join a class</label>
+                            <div class="invalid-feedback">
+                                Please enter a date.
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Agree to terms and conditions
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn w-100 btn-info">Register Me</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Card -->
+<!--        <div class="" >-->
+<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--                <div class="card-header">-->
+<!--                    <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <p>✨ <strong>Dynamic Workouts:</strong> Our experienced trainers will guide you through a mix of heart-pumping cardio, strength training, and flexibility exercises. Get ready to sweat and sculpt those muscles!</p>-->
+<!--                    <p>🤝 <strong>Community Support:</strong> Surround yourself with like-minded individuals who share your passion for fitness. Together, we'll create a supportive environment that keeps you motivated and accountable.</p>-->
+<!--                    <p>📅 <strong>When:</strong> [Specify Days and Times]</p>-->
+<!--                    <p>📍 <strong>Where:</strong> Willard Park-->
+<!--                    <a>820 Lazy Trail Dr</a>-->
+<!--                    <a>Rocklin, CA  95765</a>-->
+<!--                    </p>-->
+<!--                    <p>💰 <strong>Cost:</strong> Absolutely FREE! No hidden fees, no subscriptions – just pure fitness fun.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- Card -->
+<!--        <div class="">-->
+<!--            <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--                <div class="card-header">-->
+<!--                    <h4 class="my-0 fw-normal">Register for your free class</h4>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <form name="contact" class="contact needs-validation" method="POST" netlify-honeypot="bot-field"-->
+<!--                          data-netlify="true" novalidate>-->
+<!--                        <div class="modal-body">-->
+<!--                            <p class="visually-hidden">-->
+<!--                                <label>-->
+<!--                                    Don’t fill this out if you’re human: <input name="bot-field"/>-->
+<!--                                </label>-->
+<!--                            </p>-->
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <input type="text" name="firstName" class="form-control" required spellcheck="true"-->
+<!--                                       id="firstName" placeholder="First Name" autocomplete="given-name">-->
+<!--                                <label for="firstName">First Name</label>-->
+<!--                                <div class="invalid-feedback">-->
+<!--                                    Please enter your first name.-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <input type="text" name="lastName" class="form-control" required spellcheck="true"-->
+<!--                                       id="lastName" placeholder="Last Name" autocomplete="family-name">-->
+<!--                                <label for="lastName">Last Name</label>-->
+<!--                                <div class="invalid-feedback">-->
+<!--                                    Please enter your last name.-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="form-floating mb-4">-->
+<!--                                <input type="email" name="email" class="form-control" required spellcheck="true"-->
+<!--                                       id="email" placeholder="name@example.com" autocomplete="email">-->
+<!--                                <label for="email">Email address</label>-->
+<!--                                <div class="invalid-feedback">-->
+<!--                                    Please enter your email.-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash;                            <div class="form-floating">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <textarea name="message" class="form-control contactTextarea"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                          placeholder="Leave a comment here" id="message" required></textarea>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <label for="message">How can we help you?</label>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <div class="invalid-feedback">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    Please enter a message.&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+
+<!--                            <div class="form-floating mb-4">-->
+<!--                                <input type="date" name="date" class="form-control" required spellcheck="true"-->
+<!--                                       id="date" placeholder="name@example.com" autocomplete="email">-->
+<!--                                <label for="date">Date you plan to join a class</label>-->
+<!--                                <div class="invalid-feedback">-->
+<!--                                    Please enter a date.-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="form-check mb-4">-->
+<!--                                <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">-->
+<!--                                <label class="form-check-label" for="flexCheckDefault">-->
+<!--                                    Agree to terms and conditions-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+
+<!--                            <button type="submit" class="btn w-100 btn-info">Register Me</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+
+</main>
+
+
+<!-- Footer -->
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 text-muted small ">
+        <p class="col-md-4 mb-0 text-muted">© <span class="date" id="date"></span> Aloha Fitness</p>
+        <i class="bi bi-balloon-heart text-muted col-md-4 d-flex align-items-center justify-content-center mb-md-0 me-md-auto"></i>
+
+    </footer>
+</div>
+
+
+<!-- Copyright Date -->
+<script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById("date").innerHTML = year;
+</script>
+
+
+</body>
+</html>
