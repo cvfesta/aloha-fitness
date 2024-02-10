@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="author" content="Christian Festa">
-    <title>Go</title>
+    <title>Register for a free class</title>
     <meta name="description" content="Aloha Fitness is a online community created for moms, by a mom. We offer a science-based nutrition program and high-intensity interval (HIIT) online workouts.">
     <meta name="keywords" content="science-based nutrition, nutrition program, diet, lose weight, get healthy, group fitness, virtual workout, HIIT, workout, high intensity interval training, moms workout, workout from home">
     <!--    Bootstrap-->
@@ -17,7 +17,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <!--    My Style sheets-->
-    <link rel="stylesheet" href="css/go.css" type="text/css"/>
+    <link rel="stylesheet" href="css/free.css" type="text/css"/>
 <!--    <link rel="stylesheet" href="css/index.css" type="text/css"/>-->
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
@@ -53,14 +53,14 @@
 
 <div class="alert alert-info" role="alert">
     <div class="container">
-        🚀 Don't miss out on this fantastic opportunity to transform your fitness journey without spending a dime! Secure your spot now by registing for a free class now.
+        🧨 Don’t miss this fantastic opportunity to try a FREE class that can change your life.
     </div>
 </div>
 
 <main class="container viewHeight">
 
-    <h1>🌟 Get Fit for FREE! 🌟</h1>
-    <p>Ready to crush your fitness goals without breaking the bank? We've got you covered! Join our FREE Workout Class and kickstart your journey to a healthier, stronger you! All fitness levels are welcome! Whether you're a beginner or a fitness pro, our classes are designed to challenge and accommodate everyone.</p>
+    <h1>🌟 Try a Free class! 🌟</h1>
+    <p>Join us for a FREE outdoor yoga and strength training class designed for moms of all fitness levels. Breathe in the fresh air, connect with other moms and feel your best. More than just exercise, it's self-care for moms!</p>
 
     <!-- Cards -->
 <!--    <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">-->
@@ -71,14 +71,39 @@
                 <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>
             </div>
             <div class="card-body">
-                <p>✨ <strong>Dynamic Workouts:</strong> Our experienced trainers will guide you through a mix of heart-pumping cardio, strength training, and flexibility exercises. Get ready to sweat and sculpt those muscles!</p>
-                <p>🤝 <strong>Community Support:</strong> Surround yourself with like-minded individuals who share your passion for fitness. Together, we'll create a supportive environment that keeps you motivated and accountable.</p>
-                <p>📅 <strong>When:</strong> [Specify Days and Times]</p>
-                <p>📍 <strong>Where:</strong> Willard Park
-                    <a>820 Lazy Trail Dr</a>
-                    <a>Rocklin, CA  95765</a>
-                </p>
-                <p>💰 <strong>Cost:</strong> Absolutely FREE! No hidden fees, no subscriptions – just pure fitness fun.</p>
+<!--                <p>✨ <strong>Dynamic Workouts:</strong> Our experienced trainers will guide you through a mix of heart-pumping cardio, strength training, and flexibility exercises. Get ready to sweat and sculpt those muscles!</p>-->
+<!--                <p>🤝 <strong>Community Support:</strong> Surround yourself with like-minded individuals who share your passion for fitness. Together, we'll create a supportive environment that keeps you motivated and accountable.</p>-->
+                <table class="table table-borderless table-sm">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row" class="text-start">📅 When</th>
+                        <td>February 16th at 9:00 am</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-start">📍 Where</th>
+                        <td><span class="fw-semibold">Willard Park</span> <br>820 Lazy Trail Dr Rocklin, CA 95765</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-start">🎒 What to bring</th>
+                        <td>
+                            <ul class="list-unstyled mb-0">
+                                <li>Yoga mat</li>
+                                <li>Dumbbells (3 or 5 lb)</li>
+                                <li>Water bottle</li>
+                                <li>Comfortable clothes you can move in</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-start">💰 Cost</th>
+                        <td class="text-body-emphasis">FREE!</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Registration required 👍</strong></p>
             </div>
         </div>
         <!-- Card -->
@@ -122,13 +147,22 @@
                             </div>
                         </div>
 
-                    <div class="form-floating mb-4">
-                        <input type="date" name="date" class="form-control" required id="regdate" placeholder="name@example.com" autocomplete="email">
-                        <label for="date">Date you plan to join a class</label>
-                        <div class="invalid-feedback">
-                            Please enter a date.
+<!--                        <div class="form-floating mb-4">-->
+<!--                            <input type="date" name="date" class="form-control" required id="regdate" placeholder="name@example.com" autocomplete="email">-->
+<!--                            <label for="date">Date you plan to join a class</label>-->
+<!--                            <div class="invalid-feedback">-->
+<!--                                Please enter a date.-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="form-floating mb-4">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                <option selected>Select</option>
+                                <option value="1">In Person</option>
+                                <option value="2">Online (Zoom)</option>
+                            </select>
+                            <label for="floatingSelect">How would you prefer to join?</label>
                         </div>
-                    </div>
 
                         <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">
@@ -137,7 +171,7 @@
                             </label>
                         </div>
 
-                    <button type="submit" class="btn w-100 btn-info">Register Me</button>
+                    <button type="submit" class="btn w-100 btn-info">Register Now</button>
 
                 </form>
             </div>
@@ -145,7 +179,6 @@
     </div>
 
 </main>
-
 
 <!-- Footer -->
 <div class="container">
