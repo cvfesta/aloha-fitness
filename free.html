@@ -31,7 +31,7 @@
         // Enabling the debug mode flag is useful during implementation,
         // but it's recommended you remove it for production
         mixpanel.init('34b0b2e5a4bf295cff378e99aa7f115f', {debug: false});
-        mixpanel.track('Go');
+        mixpanel.track('Free');
     </script>
 </head>
 <body>
@@ -74,10 +74,10 @@
                     <thead>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row" class="text-start">📅 When</th>
-                        <td>February 16th at 9:00 am</td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">📅 When</th>-->
+<!--                        <td>February 16th at 9:00 am</td>-->
+<!--                    </tr>-->
                     <tr>
                         <th scope="row" class="text-start">📍 Where</th>
                         <td><span class="fw-semibold">Willard Park</span> <br>820 Lazy Trail Dr Rocklin, CA 95765</td>
@@ -144,13 +144,22 @@
                             </div>
                         </div>
 
+<!--                        <label for="dateSelect" class="form-label">Class date</label>-->
+<!--                        <select class="form-select mb-4" id="dateSelect" aria-label="Date select" required>-->
+<!--                            <option selected disabled value="">Select</option>-->
+<!--                            <option value="2/20/2024">Thursday, February 20 at 9 AM</option>-->
+<!--                            <option value="3/8/2024">Friday, March 8 at 9 AM</option>-->
+<!--                            <option value="3/12/2024">Tuesday, March 12 at 9 AM</option>-->
+<!--                        </select>-->
+
                         <div class="form-floating mb-4">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option selected>Select</option>
-                                <option value="1">In Person</option>
-                                <option value="2">Online (Zoom)</option>
+                            <select class="form-select" id="floatingSelect" required aria-label="Floating label select">
+                                <option selected disabled value="">Select</option>
+                                <option value="2/20/2024">Thursday, February 20 at 9 AM</option>
+                                <option value="3/8/2024">Friday, March 8 at 9 AM</option>
+                                <option value="3/12/2024">Tuesday, March 12 at 9 AM</option>
                             </select>
-                            <label for="floatingSelect">How would you prefer to join?</label>
+                            <label for="floatingSelect">Class date</label>
                         </div>
 
                         <div class="form-check mb-4">
