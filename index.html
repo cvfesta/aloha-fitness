@@ -21,7 +21,7 @@
 <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
     <link rel="apple-touch-icon" href="heart.png"/>
-<!-- Mixpanel -->
+    <!-- Mixpanel -->
     <script type="text/javascript">
     (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
     for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
@@ -37,6 +37,11 @@
 <body>
 <main>
 
+    <div class="alert alert-info" role="alert">
+        <div class="container">
+            🚨<strong>Save 40%</strong> on your membership! Sign up by <strong>April 15</strong> using the code <strong>ALOHA</strong>. Act now! ⏰💰
+        </div>
+    </div>
     <!-- Alert -->
     <!-- <div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
       <div class="container d-flex gap-2">
@@ -100,51 +105,84 @@
             and nutritional guidance, without the need for a physical trainer or gym membership. Meanwhile, our online
             workout program provides you with a variety of live exercises and routines. So, let's get started and
             explore the world of online fitness together!</p>
+
         <!-- Cards -->
-        <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">
+        <div class="go-cards">
             <!-- Card -->
-            <div class="">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 fw-normal">Online Coaching</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">12<small class="text-body-tertiary fs-4 fw-light">
-                            weeks coaching</small></h1>
-                        <ul class="list-unstyled cardList mt-3 mb-4">
-                            <li>Live online classes</li>
-                            <li>1:1 nutrition support</li>
-                            <li>Personalized meal plan</li>
-                            <li>Recipes</li>
-                            <li>Accountability and community support</li>
-                        </ul>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                               data-bs-target="#contactModal">Contact for information</a>
-                            <a type="button" class="btn btn-info" target="_self" href="https://square.link/u/Gg8ToJIS"
-                               rel="noopener">Get started</a>
-                        </div>
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">Online Coaching️</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">12<small class="text-body-tertiary fs-4 fw-light"> weeks coaching</small></h1>
+                    <p>Join our online coaching with personalized training and nutritional guidance.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                           data-bs-target="#contactModal">Contact for information</a>
+                        <a type="button" class="btn btn-info" target="_self" href="https://square.link/u/Gg8ToJIS" rel="noopener">Get started</a>
                     </div>
                 </div>
             </div>
+
             <!-- Card -->
-            <div class="">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 fw-normal">Online Workouts</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$149<small class="text-body-tertiary fs-4 fw-light">/month</small>
-                        </h1>
-                        <ul class="list-unstyled cardList mt-3 mb-4">
-                            <li>Live online classes</li>
-                        </ul>
-                        <a type="button" class="w-100 btn btn-info" target="_self" href="https://square.link/u/JgYFbsHd"
-                           rel="noopener">Get started</a>
-                    </div>
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">In Person Workouts</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$99<small class="text-body-tertiary fs-4 fw-light">/month</small>
+                    </h1>
+                    <p>Join our outdoor yoga and strength training classes designed for moms of all fitness levels.</p>
+                    <a type="button" class="w-100 btn btn-info" target="_self" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII" rel="noopener">Get started</a>
                 </div>
             </div>
         </div>
+
+        <!-- Cards -->
+<!--        <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">-->
+<!--            &lt;!&ndash; Card &ndash;&gt;-->
+<!--            <div class="">-->
+<!--                <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--                    <div class="card-header">-->
+<!--                        <h4 class="my-0 fw-normal">Online Coaching</h4>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h1 class="card-title pricing-card-title">12<small class="text-body-tertiary fs-4 fw-light">-->
+<!--                            weeks coaching</small></h1>-->
+<!--&lt;!&ndash;                        <ul class="list-unstyled cardList mt-3 mb-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li>Live outdoor classes</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li>1:1 nutrition support</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li>Personalized meal plan</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li>Recipes</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li>Accountability and community support</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--                        <div class="d-flex flex-wrap gap-2">-->
+<!--                            <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"-->
+<!--                               data-bs-target="#contactModal">Contact for information</a>-->
+<!--                            <a type="button" class="btn btn-info" target="_self" href="https://square.link/u/Gg8ToJIS"-->
+<!--                               rel="noopener">Get started</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Card &ndash;&gt;-->
+<!--            <div class="">-->
+<!--                <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--                    <div class="card-header">-->
+<!--                        <h4 class="my-0 fw-normal">Workouts</h4>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h1 class="card-title pricing-card-title">$99<small class="text-body-tertiary fs-4 fw-light">/month</small>-->
+<!--                        </h1>-->
+<!--                        <ul class="list-unstyled cardList mt-3 mb-4">-->
+<!--                            <li>In-person outdoor classes</li>-->
+<!--                        </ul>-->
+<!--                        <a type="button" class="w-100 btn btn-info" target="_self" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII"-->
+<!--                           rel="noopener">Get started</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <!-- Compare Table -->
         <table class="table caption-top text-center table-responsive mx-auto">
@@ -153,7 +191,7 @@
             <tr>
                 <th></th>
                 <th>Online Coaching</th>
-                <th>Online Workouts</th>
+                <th>Outdoor Workouts</th>
             </tr>
             </thead>
             <tbody>
@@ -175,17 +213,17 @@
             <tr>
                 <th scope="row" class="text-start">Recipes</th>
                 <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-x-circle text-body-tertiary"></i></td>
+                <td><i class="bi bi-check2"></i></td>
             </tr>
             <tr>
                 <th scope="row" class="text-start">Accountability</th>
                 <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-x-circle text-body-tertiary"></i></td>
+                <td><i class="bi bi-check2"></i></td>
             </tr>
             <tr>
                 <th scope="row" class="text-start">Community Support</th>
                 <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-x-circle text-body-tertiary"></i></td>
+                <td><i class="bi bi-check2"></i></td>
             </tr>
             </tbody>
         </table>
@@ -195,49 +233,113 @@
         <p class="">We offer a morning and after work class schedule. Our morning class is a great way to kickstart your
             morning and set a positive tone for the rest of your day. Our after-work class is great way to take some
             time for yourself and moving your body can be a great way to de-stress and unwind after a busy day.</p>
-        <!-- Schedule Table -->
-        <table class="table table-responsive mx-auto table-striped">
-            <caption class="small">Class times are pacific time (PT)</caption>
-            <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Morning</th>
-                <th scope="col">Afternoon</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">Monday</th>
-                <td>-</td>
-                <td>6:00 pm</td>
-            </tr>
-            <tr>
-                <th scope="row">Tuesday</th>
-                <td>5:30 am</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <th scope="row">Wednesday</th>
-                <td>-</td>
-                <td>6:00 pm</td>
-            </tr>
-            <tr>
-                <th scope="row">Thursday</th>
-                <td>5:30 am</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <th scope="row">Friday</th>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <th scope="row">Saturday</th>
-                <td>8:30 am</td>
-                <td>8:30 am</td>
-            </tr>
-            </tbody>
-        </table>
+
+
+
+
+
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Online</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">In Person</button>
+            </li>
+        </ul>
+        <div class="tab-content pt-3" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                <!-- Schedule Table -->
+                <table class="table mx-auto table-striped">
+                    <caption class="small">Class times are pacific time (PT)</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Morning</th>
+                        <th scope="col">Afternoon</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <td>-</td>
+                        <td>6:00 pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <td>-</td>
+                        <td>6:00 pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Friday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Saturday</th>
+                        <td>8:30 am</td>
+                        <td>8:30 am</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">        <!-- Schedule Table -->
+                <table class="table mx-auto table-striped">
+                    <caption class="small">Class times are pacific time (PT)</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Morning</th>
+                        <th scope="col">Afternoon</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <td>9:00 AM<br>
+                        Yoga</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Friday</th>
+                        <td>9:00 AM<br>
+                        Strength training</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Saturday</th>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    </tbody>
+                </table></div>
+        </div>
+
 
         <!-- Contact Modal -->
         <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
