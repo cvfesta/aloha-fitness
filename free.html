@@ -78,15 +78,17 @@
                         <th scope="row" class="text-start">📍 Where</th>
                         <td><span class="fw-semibold">Willard Park</span> <br>820 Lazy Trl Dr, Rocklin, CA 95765</td>
                     </tr>
-                    <tr>
-                        <th scope="row" class="text-start">📅 When</th>
-                        <td>Monday, Wednesday: Strength Training
-                            <br>
-                            Friday: Yoga
-                            <br>
-                            8:30 AM
-                        </td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">📅 When</th>-->
+<!--                        <td>Monday, Wednesday: Strength Training-->
+<!--                            <br>-->
+<!--                            8:30 AM-->
+<!--                            <br>-->
+<!--                            Saturday: Strength Training-->
+<!--                            <br>-->
+<!--                            7:30 AM-->
+<!--                        </td>-->
+<!--                    </tr>-->
                     <tr>
                         <th scope="row" class="text-start">🎒 What to bring</th>
                         <td>
@@ -140,12 +142,34 @@
                             </div>
                         </div>
 
+                        <div class="form-floating mb-3">
+                            <input type="tel" name="phoneNumber" class="form-control" required
+                                   id="phoneNumber" placeholder="Phone Number" autocomplete="tel">
+                            <label for="phoneNumber">Phone Number</label>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+
                         <div class="form-floating mb-4">
                             <input type="email" name="email" class="form-control" required spellcheck="true"
                                    id="email" placeholder="name@example.com" autocomplete="email">
                             <label for="email">Email address</label>
                             <div class="invalid-feedback">
                                 Please enter your email.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select name="trainingSession" id="trainingSession" class="form-control" required>
+                                <option value="" disabled selected>Select a Training Session</option>
+                                <option value="monday_wednesday_strength_830am">Monday, Wednesday: Strength Training - 8:30 AM</option>
+                                <option value="saturday_strength_730am">Saturday: Strength Training - 7:30 AM</option>
+                                <option value="virtual_monday_wednesday_saturday">Monday, Wednesday, Saturday: Virtual Class</option>
+                            </select>
+                            <label for="trainingSession">Training Session</label>
+                            <div class="invalid-feedback">
+                                Please select a training session.
                             </div>
                         </div>
 
