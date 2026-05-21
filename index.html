@@ -13,9 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap (modal + form validation + tabs only) -->
+    <!-- Bootstrap (modal + form validation only) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+    <!-- Shared design system -->
+    <link rel="stylesheet" href="css/site.css" type="text/css"/>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
@@ -23,341 +26,16 @@
 
     <style>
         /* ========================================
-           DESIGN SYSTEM (shared with free.html)
+           PAGE-SPECIFIC STYLES (homepage)
+           Shared design system lives in css/site.css
            ======================================== */
-        :root {
-            --paper:           #F2E9D5;
-            --paper-deep:      #ECE0C5;
-            --card:            #FFFCF5;
-            --card-shadow:     rgba(43, 32, 18, 0.10);
 
-            --ink:             #1E231D;
-            --ink-2:           #2D332C;
-            --ink-soft:        #6B6F66;
-            --ink-fade:        #A39E8B;
-
-            --terracotta:      #C95A36;
-            --terracotta-deep: #9D4321;
-            --terracotta-soft: #F4D6C5;
-            --sage:            #6C8B65;
-            --sage-deep:       #4F6B49;
-            --sage-soft:       #D5DFCE;
-            --gold:            #D9A155;
-            --sun:             #E89A3C;
-            --sky:             #C9D9D4;
-
-            --line:            #DECDA8;
-            --line-soft:       #E8DBBC;
-
-            --display: "Fraunces", "Times New Roman", Georgia, serif;
-            --body:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
-
-            --r-xs: 6px;
-            --r-sm: 12px;
-            --r-md: 20px;
-            --r-lg: 32px;
-            --r-xl: 48px;
-
-            --shadow-1: 0 1px 2px rgba(43, 32, 18, 0.04), 0 8px 28px rgba(43, 32, 18, 0.07);
-            --shadow-2: 0 2px 4px rgba(43, 32, 18, 0.05), 0 24px 64px rgba(43, 32, 18, 0.12);
-            --shadow-3: 0 4px 8px rgba(43, 32, 18, 0.06), 0 40px 96px rgba(43, 32, 18, 0.18);
-        }
-
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            background: var(--paper);
-            color: var(--ink);
-            font-family: var(--body);
-            font-weight: 400;
-            line-height: 1.55;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            background-image:
-                    radial-gradient(circle at 20% 10%, rgba(232, 154, 60, 0.10) 0%, transparent 45%),
-                    radial-gradient(circle at 85% 20%, rgba(108, 139, 101, 0.10) 0%, transparent 45%),
-                    radial-gradient(circle at 70% 90%, rgba(201, 90, 54, 0.08) 0%, transparent 50%);
-        }
-
-        body > * { position: relative; z-index: 1; }
-
-        a { color: inherit; }
-
-        ::selection {
-            background: var(--terracotta);
-            color: #fff;
-        }
-
-        /* ========================================
-           TOPBAR / PROMO
-           ======================================== */
-        .topbar {
-            background: var(--ink);
-            color: var(--paper);
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.6rem 1rem;
-            text-align: center;
-        }
-        .topbar strong {
-            color: var(--sun);
-            font-weight: 700;
-        }
-        .topbar .code {
-            display: inline-block;
-            border: 1px dashed var(--sun);
-            border-radius: 4px;
-            padding: 0.05rem 0.45rem;
-            margin: 0 0.25rem;
-            color: var(--sun);
-            font-weight: 700;
-            letter-spacing: 0.16em;
-        }
-        .topbar .dot {
-            display: inline-block;
-            width: 5px; height: 5px;
-            border-radius: 50%;
-            background: var(--sun);
-            margin: 0 0.7rem;
-            vertical-align: middle;
-        }
-
-        /* ========================================
-           HEADER / NAV
-           ======================================== */
-        .site-header {
-            padding: 1.5rem 0;
-            position: relative;
-        }
-        .site-header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            gap: 1rem;
-        }
-        .brand {
-            font-family: var(--display);
-            font-weight: 500;
-            font-variation-settings: "SOFT" 50, "opsz" 36;
-            font-size: 1.45rem;
-            letter-spacing: -0.015em;
-            color: var(--ink);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-        }
-        .brand-mark {
-            width: 36px; height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .brand-mark svg { width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
-        .brand:hover .brand-mark svg { transform: rotate(15deg); }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.8rem;
-        }
-        .nav-links a {
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--ink-soft);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 2px;
-            cursor: pointer;
-            transition: color .2s, border-color .2s;
-        }
-        .nav-links a:hover { color: var(--terracotta-deep); border-color: var(--terracotta-deep); }
-        .nav-links a.cta {
-            color: var(--terracotta-deep);
-            font-weight: 700;
-        }
-
-        .nav-toggle {
-            display: none;
-            background: transparent;
-            border: 1.5px solid var(--ink);
-            border-radius: 999px;
-            width: 42px; height: 42px;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            padding: 0;
-        }
-        .nav-toggle span,
-        .nav-toggle span::before,
-        .nav-toggle span::after {
-            content: "";
-            display: block;
-            width: 16px;
-            height: 1.8px;
-            background: var(--ink);
-            border-radius: 2px;
-            position: relative;
-        }
-        .nav-toggle span::before { position: absolute; top: -5px; left: 0; }
-        .nav-toggle span::after  { position: absolute; top:  5px; left: 0; }
-
-        /* ========================================
-           HERO
-           ======================================== */
-        .hero-wrap {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem 4rem;
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text { position: relative; padding-top: 1rem; }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--terracotta-deep);
-            margin-bottom: 2rem;
-        }
-        .eyebrow::before, .eyebrow::after {
-            content: "";
-            width: 22px;
-            height: 1px;
-            background: var(--terracotta-deep);
-        }
-        .eyebrow::after { width: 8px; }
-
-        .hero-title {
-            font-family: var(--display);
-            font-weight: 400;
-            font-variation-settings: "SOFT" 30, "opsz" 144;
-            font-size: clamp(3rem, 6.5vw, 5.75rem);
-            line-height: 0.95;
-            letter-spacing: -0.035em;
-            color: var(--ink);
-            margin: 0 0 1.75rem;
-        }
-        .hero-title .ital {
-            font-style: italic;
-            font-variation-settings: "SOFT" 100, "opsz" 144;
-            color: var(--terracotta-deep);
-            position: relative;
-            display: inline-block;
-        }
-        .hero-title .ital::after {
-            content: "";
-            position: absolute;
-            left: -2%;
-            right: -2%;
-            bottom: -0.05em;
-            height: 0.18em;
-            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 Q 30 2, 60 6 T 120 5 T 198 7' fill='none' stroke='%23C95A36' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
-            opacity: 0.85;
-        }
-
-        .hero-lead {
-            font-size: 1.18rem;
-            line-height: 1.55;
-            color: var(--ink-soft);
-            max-width: 42ch;
-            margin: 0 0 2.25rem;
-        }
-
+        /* Homepage hero extras */
         .hero-ctas {
             display: flex;
             flex-wrap: wrap;
             gap: 0.85rem;
             margin-bottom: 2.25rem;
-        }
-        .btn-primary-ink,
-        .btn-outline-ink {
-            font-family: var(--body);
-            font-weight: 600;
-            font-size: 0.98rem;
-            letter-spacing: 0.01em;
-            padding: 1rem 1.5rem;
-            border-radius: 999px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            transition: transform .15s, background .2s, color .2s, box-shadow .2s, border-color .2s;
-            border: 1.5px solid transparent;
-        }
-        .btn-primary-ink {
-            background: var(--ink);
-            color: var(--paper);
-            box-shadow: 0 8px 20px rgba(43, 32, 18, 0.20);
-        }
-        .btn-primary-ink:hover {
-            background: var(--terracotta-deep);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 32px rgba(157, 67, 33, 0.30);
-        }
-        .btn-outline-ink {
-            background: transparent;
-            color: var(--ink);
-            border-color: var(--ink);
-        }
-        .btn-outline-ink:hover {
-            background: var(--ink);
-            color: var(--paper);
-            transform: translateY(-2px);
-        }
-        .btn-primary-ink .arrow,
-        .btn-outline-ink .arrow { display: inline-block; transition: transform 0.2s; }
-        .btn-primary-ink:hover .arrow,
-        .btn-outline-ink:hover .arrow { transform: translateX(4px); }
-
-        .hero-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--line);
-        }
-        .hero-strip-item { display: flex; flex-direction: column; gap: 0.15rem; }
-        .hero-strip-item .label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--ink-fade);
-        }
-        .hero-strip-item .value {
-            font-family: var(--display);
-            font-weight: 500;
-            font-variation-settings: "SOFT" 40, "opsz" 24;
-            font-size: 1.15rem;
-            color: var(--ink);
-            letter-spacing: -0.01em;
         }
 
         /* Hero illustration card */
@@ -374,66 +52,6 @@
             display: block;
             width: 100%;
             height: auto;
-        }
-
-        /* Sun decor */
-        .sun-decor {
-            position: absolute;
-            top: -1.5rem;
-            right: -4%;
-            width: 130px;
-            height: 130px;
-            opacity: 0.9;
-            z-index: -1;
-            animation: rotateSun 60s linear infinite;
-        }
-        @keyframes rotateSun { to { transform: rotate(360deg); } }
-
-        /* ========================================
-           SECTION SHELL
-           ======================================== */
-        .section {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        .section-label {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--line);
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .section-label h2 {
-            font-family: var(--display);
-            font-weight: 400;
-            font-variation-settings: "SOFT" 40, "opsz" 80;
-            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-            letter-spacing: -0.025em;
-            margin: 0;
-            color: var(--ink);
-        }
-        .section-label h2 em {
-            font-style: italic;
-            font-variation-settings: "SOFT" 100, "opsz" 80;
-            color: var(--terracotta-deep);
-        }
-        .section-label .num {
-            font-family: var(--display);
-            font-style: italic;
-            font-variation-settings: "SOFT" 80, "opsz" 24;
-            font-size: 0.9rem;
-            color: var(--ink-fade);
-            letter-spacing: 0.04em;
-        }
-        .section-intro {
-            font-size: 1.08rem;
-            color: var(--ink-soft);
-            max-width: 60ch;
-            margin: 0 0 2.5rem;
         }
 
         /* ========================================
@@ -567,12 +185,41 @@
             line-height: 1.55;
             margin: 0.9rem 0 1.5rem;
         }
+        .price-frequency {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage-deep);
+            background: var(--sage-soft);
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            margin-top: 0.75rem;
+        }
+        .price-frequency .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--sage-deep);
+        }
         .price-cta-row {
             margin-top: auto;
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
         }
+        .see-schedule {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--ink-soft);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 0.2rem;
+            transition: color .15s;
+        }
+        .see-schedule:hover { color: var(--terracotta-deep); }
         .btn-card,
         .btn-card-outline {
             font-family: var(--body);
@@ -612,77 +259,7 @@
         }
 
         /* ========================================
-           COMPARE TABLE
-           ======================================== */
-        .compare-wrap {
-            background: var(--card);
-            border: 1px solid var(--line-soft);
-            border-radius: var(--r-md);
-            padding: 0.5rem;
-            box-shadow: var(--shadow-1);
-            overflow: hidden;
-        }
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.98rem;
-        }
-        .compare-table thead th {
-            font-family: var(--display);
-            font-weight: 500;
-            font-variation-settings: "SOFT" 40, "opsz" 28;
-            font-size: 1.1rem;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-            padding: 1.25rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--line);
-        }
-        .compare-table thead th:first-child {
-            text-align: left;
-            color: var(--ink-fade);
-            font-family: var(--body);
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-        }
-        .compare-table tbody th {
-            text-align: left;
-            font-weight: 500;
-            color: var(--ink-2);
-            padding: 1rem;
-            font-size: 0.97rem;
-        }
-        .compare-table tbody td {
-            text-align: center;
-            padding: 1rem;
-            font-size: 1.05rem;
-        }
-        .compare-table tbody tr + tr th,
-        .compare-table tbody tr + tr td {
-            border-top: 1px solid var(--line-soft);
-        }
-        .check {
-            display: inline-flex;
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            background: var(--sage-soft);
-            color: var(--sage-deep);
-            align-items: center;
-            justify-content: center;
-        }
-        .dash {
-            display: inline-block;
-            width: 14px;
-            height: 2px;
-            border-radius: 2px;
-            background: var(--ink-fade);
-            vertical-align: middle;
-        }
-
-        /* ========================================
-           SCHEDULE / TABS
+           SCHEDULE
            ======================================== */
         .schedule-card {
             background: var(--card);
@@ -691,34 +268,6 @@
             padding: 1.75rem;
             box-shadow: var(--shadow-1);
         }
-        .tab-bar {
-            display: inline-flex;
-            background: var(--paper-deep);
-            border-radius: 999px;
-            padding: 4px;
-            margin-bottom: 1.5rem;
-            gap: 4px;
-        }
-        .tab-btn {
-            background: transparent;
-            border: 0;
-            font-family: var(--body);
-            font-weight: 600;
-            font-size: 0.92rem;
-            color: var(--ink-soft);
-            padding: 0.55rem 1.1rem;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: background .2s, color .2s, box-shadow .2s;
-        }
-        .tab-btn.active {
-            background: var(--ink);
-            color: var(--paper);
-            box-shadow: 0 4px 12px rgba(43, 32, 18, 0.20);
-        }
-        .tab-pane { display: none; }
-        .tab-pane.active { display: block; animation: rise 0.4s ease both; }
-
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -740,8 +289,47 @@
             font-weight: 600;
             color: var(--ink);
             padding: 0.9rem 1rem;
-            width: 30%;
+            width: 34%;
         }
+        .schedule-tag {
+            display: inline-block;
+            font-family: var(--body);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.18rem 0.55rem;
+            border-radius: 999px;
+            margin-left: 0.55rem;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .schedule-tag.tag-membership {
+            background: var(--sage-soft);
+            color: var(--sage-deep);
+        }
+        .schedule-tag.tag-dropin {
+            background: var(--terracotta-soft);
+            color: var(--terracotta-deep);
+        }
+        .schedule-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0 0 1.25rem;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            font-style: italic;
+        }
+        .schedule-legend .swatch {
+            display: inline-block;
+            width: 10px; height: 10px;
+            border-radius: 3px;
+            margin-right: 0.45rem;
+            vertical-align: middle;
+        }
+        .schedule-legend .swatch.s-mem { background: var(--sage-soft); border: 1px solid var(--sage-deep); }
+        .schedule-legend .swatch.s-drop { background: var(--terracotta-soft); border: 1px solid var(--terracotta-deep); }
         .schedule-table tbody td {
             padding: 0.9rem 1rem;
             color: var(--ink-2);
@@ -780,322 +368,18 @@
         }
 
         /* ========================================
-           FREE-CLASS CALLOUT
-           ======================================== */
-        .free-callout {
-            position: relative;
-            margin-top: 4rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            background: var(--ink);
-            color: var(--paper);
-            border-radius: var(--r-lg);
-            overflow: hidden;
-        }
-        .free-callout::before {
-            content: "";
-            position: absolute;
-            top: -100px; right: -100px;
-            width: 280px; height: 280px;
-            background: radial-gradient(circle, rgba(232, 154, 60, 0.35) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .free-callout::after {
-            content: "";
-            position: absolute;
-            bottom: -120px; left: -100px;
-            width: 320px; height: 320px;
-            background: radial-gradient(circle, rgba(201, 90, 54, 0.30) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .free-callout > * { position: relative; z-index: 1; }
-        .free-callout .eyebrow-dark {
-            display: inline-block;
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--sun);
-            margin-bottom: 1rem;
-        }
-        .free-callout .callout-title {
-            font-family: var(--display);
-            font-weight: 400;
-            font-variation-settings: "SOFT" 50, "opsz" 144;
-            font-size: clamp(2rem, 4.5vw, 3.5rem);
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin: 0 0 0.75rem;
-        }
-        .free-callout .callout-title .ital {
-            font-style: italic;
-            font-variation-settings: "SOFT" 100, "opsz" 144;
-            color: var(--sun);
-        }
-        .free-callout .callout-sub {
-            font-size: 1rem;
-            color: rgba(242, 233, 213, 0.78);
-            max-width: 44ch;
-            margin: 0 auto 1.6rem;
-        }
-        .btn-callout {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--paper);
-            color: var(--ink);
-            border-radius: 999px;
-            padding: 0.95rem 1.6rem;
-            font-family: var(--body);
-            font-weight: 600;
-            font-size: 0.98rem;
-            text-decoration: none;
-            transition: transform .15s, background .2s, color .2s;
-        }
-        .btn-callout:hover {
-            background: var(--sun);
-            color: var(--ink);
-            transform: translateY(-2px);
-        }
-        .btn-callout .arrow { transition: transform 0.2s; }
-        .btn-callout:hover .arrow { transform: translateX(4px); }
-
-        /* ========================================
-           MODAL OVERRIDES (Bootstrap)
-           ======================================== */
-        .modal-content {
-            border: 1px solid var(--line);
-            border-radius: var(--r-md);
-            background: var(--card);
-            box-shadow: var(--shadow-3);
-        }
-        .modal-header {
-            border-bottom: 1px solid var(--line-soft);
-            padding: 1.25rem 1.5rem;
-        }
-        .modal-title {
-            font-family: var(--display);
-            font-weight: 500;
-            font-variation-settings: "SOFT" 50, "opsz" 28;
-            letter-spacing: -0.015em;
-            color: var(--ink);
-        }
-        .modal-body { padding: 1.25rem 1.5rem; font-family: var(--body); }
-        .modal-footer { border-top: 1px solid var(--line-soft); }
-
-        /* Contact form fields (modal) */
-        .field {
-            position: relative;
-            margin-bottom: 0.95rem;
-        }
-        .field input,
-        .field textarea {
-            width: 100%;
-            border: 1.5px solid var(--line);
-            background: #FFFEFA;
-            color: var(--ink);
-            font-family: var(--body);
-            font-size: 0.98rem;
-            border-radius: var(--r-sm);
-            padding: 1.5rem 1rem 0.5rem;
-            min-height: 60px;
-            transition: border-color .15s, box-shadow .15s, background .15s;
-            appearance: none;
-            -webkit-appearance: none;
-            resize: vertical;
-        }
-        .field textarea { min-height: 120px; padding-top: 1.6rem; }
-        .field input::placeholder,
-        .field textarea::placeholder { color: transparent; }
-        .field label {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            color: var(--ink-soft);
-            font-size: 0.97rem;
-            font-weight: 500;
-            pointer-events: none;
-            transition: all .15s ease;
-        }
-        .field input:focus,
-        .field textarea:focus {
-            outline: none;
-            border-color: var(--terracotta);
-            box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
-            background: #fff;
-        }
-        .field input:focus + label,
-        .field input:not(:placeholder-shown) + label,
-        .field textarea:focus + label,
-        .field textarea:not(:placeholder-shown) + label {
-            top: 0.42rem;
-            font-size: 0.7rem;
-            color: var(--terracotta-deep);
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .invalid-msg {
-            font-size: 0.8rem;
-            color: var(--terracotta-deep);
-            margin: 0.3rem 0 0 0.3rem;
-            display: none;
-        }
-        .was-validated .field input:invalid,
-        .was-validated .field textarea:invalid {
-            border-color: var(--terracotta);
-        }
-        .was-validated .field input:invalid ~ .invalid-msg,
-        .was-validated .field textarea:invalid ~ .invalid-msg {
-            display: block;
-        }
-
-        .btn-pill-ink {
-            background: var(--ink);
-            color: var(--paper);
-            border: 0;
-            border-radius: 999px;
-            padding: 0.7rem 1.3rem;
-            font-family: var(--body);
-            font-weight: 600;
-            font-size: 0.94rem;
-            cursor: pointer;
-            transition: background .2s, color .2s, transform .15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .btn-pill-ink:hover {
-            background: var(--terracotta-deep);
-            color: #fff;
-            transform: translateY(-1px);
-        }
-        .btn-pill-outline {
-            background: transparent;
-            border: 1.5px solid var(--ink);
-            color: var(--ink);
-            border-radius: 999px;
-            padding: 0.6rem 1.3rem;
-            font-family: var(--body);
-            font-weight: 600;
-            font-size: 0.92rem;
-            cursor: pointer;
-            transition: all .15s;
-        }
-        .btn-pill-outline:hover { background: var(--ink); color: var(--paper); }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .site-footer {
-            border-top: 1px solid var(--line);
-            padding: 2.5rem 0;
-            margin-top: 2rem;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-        }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .footer-links {
-            display: flex;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: var(--ink-soft);
-            text-decoration: none;
-            cursor: pointer;
-            transition: color .2s;
-        }
-        .footer-links a:hover { color: var(--terracotta-deep); }
-        .footer-mark {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-style: italic;
-            font-family: var(--display);
-            font-variation-settings: "SOFT" 80, "opsz" 24;
-        }
-        .footer-mark svg { width: 16px; height: 16px; }
-
-        /* ========================================
-           ANIMATIONS
-           ======================================== */
-        @keyframes rise {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes riseRotate {
-            from { opacity: 0; transform: translateY(20px) rotate(2deg); }
-            to   { opacity: 1; transform: translateY(0) rotate(0.4deg); }
-        }
-        .anim { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
-        .anim-1 { animation-delay: 0.05s; }
-        .anim-2 { animation-delay: 0.18s; }
-        .anim-3 { animation-delay: 0.30s; }
-        .anim-4 { animation-delay: 0.42s; }
-        .anim-5 { animation-delay: 0.55s; }
-        .anim-art { animation: riseRotate 0.9s 0.25s cubic-bezier(.2,.7,.2,1) both; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .anim, .anim-art { animation: none !important; }
-            .sun-decor { animation: none !important; }
-            .hero-art { transform: rotate(0); }
-        }
-
-        /* ========================================
-           RESPONSIVE
+           PAGE-SPECIFIC RESPONSIVE
            ======================================== */
         @media (max-width: 992px) {
-            .hero-wrap { grid-template-columns: 1fr; gap: 3rem; }
             .hero-art { max-width: 480px; margin: 0 auto; transform: rotate(0); }
-            .sun-decor { right: 0; top: -2rem; width: 100px; height: 100px; }
             .pricing-grid { grid-template-columns: 1fr 1fr; }
             .pricing-grid .price-card:first-child { grid-column: 1 / -1; }
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
-        @media (max-width: 720px) {
-            .nav-links { display: none; }
-            .nav-toggle { display: inline-flex; }
-            .nav-links.open {
-                display: flex;
-                position: absolute;
-                top: 100%;
-                left: 1rem;
-                right: 1rem;
-                background: var(--card);
-                border: 1px solid var(--line);
-                border-radius: var(--r-md);
-                padding: 1rem 1.25rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.85rem;
-                box-shadow: var(--shadow-2);
-                z-index: 10;
-            }
-        }
         @media (max-width: 640px) {
-            .site-header-inner { padding: 0 1.25rem; }
-            .hero-wrap { padding: 1rem 1.25rem 3rem; }
-            .section { padding: 3rem 1.25rem; }
-            .footer-inner { padding: 0 1.25rem; }
             .pricing-grid { grid-template-columns: 1fr; }
             .pricing-grid .price-card:first-child { grid-column: auto; }
-            .topbar { font-size: 0.7rem; padding: 0.55rem 1rem; }
-            .topbar .dot { margin: 0 0.4rem; }
-            .compare-table thead th,
-            .compare-table tbody th,
-            .compare-table tbody td { padding: 0.7rem 0.5rem; font-size: 0.9rem; }
             .schedule-table tbody td { font-size: 0.95rem; }
-            .hero-strip { gap: 1rem 2rem; }
         }
     </style>
 
@@ -1268,93 +552,51 @@
             </div>
         </article>
 
-        <!-- In-Person -->
+        <!-- Full monthly membership -->
         <article class="price-card featured">
-            <span class="price-deal-tag">Limited time · 20% off</span>
+            <span class="price-deal-tag">Limited time · 40% off</span>
             <span class="price-kicker">In-person workouts</span>
-            <h3>Outdoor monthly membership</h3>
+            <h3>Full monthly membership</h3>
             <div class="price-line">
-                $79<span class="unit">/ month</span>
+                $59<span class="unit">/ month</span>
                 <span class="strike">$99</span>
             </div>
+            <span class="price-frequency"><span class="dot"></span>3 sessions / week</span>
             <p class="price-body">
-                Outdoor yoga and strength training classes designed for moms of all fitness levels.
-                Bring a mat — we'll handle the rest.
+                Outdoor strength training designed for moms of all fitness levels.
+                Mon, Wed, &amp; Sat mornings — bring a mat, we'll handle the rest.
             </p>
             <div class="price-cta-row">
                 <a class="btn-card" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII" target="_self" rel="noopener">
                     Join the membership <span class="arrow">→</span>
                 </a>
+                <a class="see-schedule" href="#schedule">See schedule ↓</a>
             </div>
         </article>
 
-        <!-- Drop-In -->
+        <!-- Saturday-only membership -->
         <article class="price-card">
-            <span class="price-deal-tag">Limited time · 50% off</span>
-            <span class="price-kicker">Drop-in</span>
-            <h3>Single outdoor class</h3>
+            <span class="price-deal-tag">Limited time · 17% off</span>
+            <span class="price-kicker">Saturdays only</span>
+            <h3>Saturday-only membership</h3>
             <div class="price-line">
-                $10
-                <span class="strike">$20</span>
+                $49<span class="unit">/ month</span>
+                <span class="strike">$59</span>
             </div>
+            <span class="price-frequency"><span class="dot"></span>1 session / week</span>
             <p class="price-body">
-                Drop in to a single in-person class at Rocklin Parks. Perfect if you want to
-                try one more time before committing.
+                Outdoor strength training, Saturday mornings at Willard Park.
+                Just the Saturday class — no weekday commitment.
             </p>
             <div class="price-cta-row">
                 <a class="btn-card" href="https://buy.stripe.com/bIYcQQ892gUM8Fy4gh" target="_self" rel="noopener">
-                    Sign up <span class="arrow">→</span>
+                    Join Saturdays <span class="arrow">→</span>
                 </a>
+                <a class="see-schedule" href="#schedule">See schedule ↓</a>
             </div>
         </article>
     </div>
 
-    <!-- Compare -->
-    <div style="margin-top: 3rem;">
-        <div class="compare-wrap">
-            <table class="compare-table">
-                <thead>
-                <tr>
-                    <th>What's included</th>
-                    <th>Online Coaching</th>
-                    <th>Outdoor Workouts</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Live online classes</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">1:1 nutrition support</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="dash"></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Personalized meal plan</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="dash"></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Recipes</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Accountability</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Community support</th>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </section>
 
 <!-- Schedule -->
@@ -1364,49 +606,28 @@
         <span class="num">03 / 04</span>
     </div>
     <p class="section-intro">
-        A morning class to kickstart your day, or an evening online session to unwind.
-        Pick whichever fits — and skip the ones that don't.
+        A morning class to kickstart your day. Pick whichever fits — and skip the ones that don't.
     </p>
 
     <div class="schedule-card">
-        <div class="tab-bar" role="tablist">
-            <button class="tab-btn active" data-tab="online" role="tab" aria-selected="true">Online</button>
-            <button class="tab-btn" data-tab="inperson" role="tab" aria-selected="false">In Person</button>
-        </div>
-
-        <div class="tab-pane active" id="tab-online" role="tabpanel">
-            <table class="schedule-table">
-                <thead>
-                <tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr>
-                </thead>
-                <tbody>
-                <tr><th scope="row">Monday</th><td class="empty">—</td><td>6:00 PM</td></tr>
-                <tr><th scope="row">Tuesday</th><td class="empty">—</td><td class="empty">—</td></tr>
-                <tr><th scope="row">Wednesday</th><td class="empty">—</td><td>6:00 PM</td></tr>
-                <tr><th scope="row">Thursday</th><td class="empty">—</td><td class="empty">—</td></tr>
-                <tr><th scope="row">Friday</th><td class="empty">—</td><td class="empty">—</td></tr>
-                <tr><th scope="row">Saturday</th><td>8:30 AM</td><td class="empty">—</td></tr>
-                </tbody>
-            </table>
-            <p class="schedule-caption">All times listed in Pacific Time (PT).</p>
-        </div>
-
-        <div class="tab-pane" id="tab-inperson" role="tabpanel">
-            <table class="schedule-table">
-                <thead>
-                <tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr>
-                </thead>
-                <tbody>
-                <tr><th scope="row">Monday</th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
-                <tr><th scope="row">Tuesday</th><td class="empty">—</td><td class="empty">—</td></tr>
-                <tr><th scope="row">Wednesday</th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
-                <tr><th scope="row">Thursday</th><td class="empty">—</td><td class="empty">—</td></tr>
-                <tr><th scope="row">Friday</th><td>9:00 AM <span class="kind">Yoga</span></td><td class="empty">—</td></tr>
-                <tr><th scope="row">Saturday</th><td class="empty">Coming soon</td><td class="empty">—</td></tr>
-                </tbody>
-            </table>
-            <p class="schedule-caption">All times listed in Pacific Time (PT).</p>
-        </div>
+        <p class="schedule-legend">
+            <span><span class="swatch s-mem"></span>Full membership</span>
+            <span><span class="swatch s-drop"></span>Saturday-only membership</span>
+        </p>
+        <table class="schedule-table">
+            <thead>
+            <tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr>
+            </thead>
+            <tbody>
+            <tr><th scope="row">Monday <span class="schedule-tag tag-membership">Full</span></th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
+            <tr><th scope="row">Tuesday</th><td class="empty">—</td><td class="empty">—</td></tr>
+            <tr><th scope="row">Wednesday <span class="schedule-tag tag-membership">Full</span></th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
+            <tr><th scope="row">Thursday</th><td class="empty">—</td><td class="empty">—</td></tr>
+            <tr><th scope="row">Friday</th><td class="empty">—</td><td class="empty">—</td></tr>
+            <tr><th scope="row">Saturday <span class="schedule-tag tag-membership">Full</span> <span class="schedule-tag tag-dropin">Saturday-only</span></th><td>7:30 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
+            </tbody>
+        </table>
+        <p class="schedule-caption">All times listed in Pacific Time (PT). Saturday is included in the Full membership and is also available as a Saturday-only membership.</p>
     </div>
 </section>
 
@@ -1514,26 +735,6 @@
                 form.classList.add('was-validated');
             }, false);
         }
-
-        // Schedule tabs
-        const tabs = document.querySelectorAll('.tab-btn');
-        const panes = {
-            online: document.getElementById('tab-online'),
-            inperson: document.getElementById('tab-inperson')
-        };
-        tabs.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabs.forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-selected', 'false');
-                });
-                Object.values(panes).forEach(p => p && p.classList.remove('active'));
-                btn.classList.add('active');
-                btn.setAttribute('aria-selected', 'true');
-                const target = panes[btn.dataset.tab];
-                if (target) target.classList.add('active');
-            });
-        });
 
         // Mobile nav toggle
         const navToggle = document.getElementById('navToggle');
