@@ -1,296 +1,1205 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-bs-theme="auto">
+<html lang="en" dir="ltr" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="author" content="Christian Festa">
-    <title>Register for a free class</title>
-    <meta name="description" content="Aloha Fitness is a online community created for moms, by a mom. We offer a science-based nutrition program and high-intensity interval (HIIT) online workouts.">
-    <meta name="keywords" content="science-based nutrition, nutrition program, diet, lose weight, get healthy, group fitness, virtual workout, HIIT, workout, high intensity interval training, moms workout, workout from home">
-    <!--    Bootstrap-->
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <!-- Enables data-bs-theme="auto" -->
-    <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!--    My Style sheets-->
-    <link rel="stylesheet" href="css/free.css" type="text/css"/>
-<!--    <link rel="stylesheet" href="css/index.css" type="text/css"/>-->
-    <!-- Favicon -->
+    <title>Register for a free class · Aloha Fitness</title>
+    <meta name="description" content="A free outdoor strength class for moms in Rocklin, CA. Mondays, Wednesdays, and Saturdays at Willard Park.">
+    <meta name="keywords" content="moms strength training, Rocklin fitness, outdoor workout, free fitness class, group fitness">
+
+    <!-- Fonts: Fraunces (display, variable) + Manrope (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap (modal + form validation only) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+    <!-- Favicon (preserve existing assets) -->
     <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
     <link rel="apple-touch-icon" href="heart.png"/>
-    <!-- Mixpanel -->
+
+    <style>
+        /* ========================================
+           DESIGN SYSTEM
+           ======================================== */
+        :root {
+            /* Warm sunrise paper palette */
+            --paper:           #F2E9D5;
+            --paper-deep:      #ECE0C5;
+            --card:            #FFFCF5;
+            --card-shadow:     rgba(43, 32, 18, 0.10);
+
+            /* Ink */
+            --ink:             #1E231D;
+            --ink-2:           #2D332C;
+            --ink-soft:        #6B6F66;
+            --ink-fade:        #A39E8B;
+
+            /* Accents */
+            --terracotta:      #C95A36;
+            --terracotta-deep: #9D4321;
+            --terracotta-soft: #F4D6C5;
+            --sage:            #6C8B65;
+            --sage-soft:       #D5DFCE;
+            --gold:            #D9A155;
+            --sun:             #E89A3C;
+            --sky:             #C9D9D4;
+
+            /* Lines */
+            --line:            #DECDA8;
+            --line-soft:       #E8DBBC;
+
+            /* Type */
+            --display: "Fraunces", "Times New Roman", Georgia, serif;
+            --body:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+            /* Shape */
+            --r-xs: 6px;
+            --r-sm: 12px;
+            --r-md: 20px;
+            --r-lg: 32px;
+            --r-xl: 48px;
+
+            /* Shadow */
+            --shadow-1: 0 1px 2px rgba(43, 32, 18, 0.04), 0 8px 28px rgba(43, 32, 18, 0.07);
+            --shadow-2: 0 2px 4px rgba(43, 32, 18, 0.05), 0 24px 64px rgba(43, 32, 18, 0.12);
+            --shadow-3: 0 4px 8px rgba(43, 32, 18, 0.06), 0 40px 96px rgba(43, 32, 18, 0.18);
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            font-weight: 400;
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+
+        /* Subtle paper grain — adds warmth without noise */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                    radial-gradient(circle at 20% 10%, rgba(232, 154, 60, 0.10) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 20%, rgba(108, 139, 101, 0.10) 0%, transparent 45%),
+                    radial-gradient(circle at 70% 90%, rgba(201, 90, 54, 0.08) 0%, transparent 50%);
+        }
+
+        body > * { position: relative; z-index: 1; }
+
+        a { color: inherit; }
+
+        ::selection {
+            background: var(--terracotta);
+            color: #fff;
+        }
+
+        /* ========================================
+           HEADER / MARQUEE NAV
+           ======================================== */
+        .topbar {
+            background: var(--ink);
+            color: var(--paper);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.55rem 0;
+            text-align: center;
+        }
+        .topbar .dot {
+            display: inline-block;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--sun);
+            margin: 0 0.7rem;
+            vertical-align: middle;
+        }
+
+        .site-header {
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        .site-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .brand {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 36;
+            font-size: 1.45rem;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .brand-mark {
+            width: 36px; height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brand-mark svg { width: 100%; height: 100%; }
+        .brand:hover .brand-mark svg { transform: rotate(15deg); }
+        .brand-mark svg { transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
+
+        .nav-back {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink-soft);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            transition: color .2s, border-color .2s;
+        }
+        .nav-back:hover { color: var(--terracotta-deep); border-color: var(--terracotta-deep); }
+
+        /* ========================================
+           HERO + FORM (asymmetric split)
+           ======================================== */
+        .hero-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* --- Left: editorial hero --- */
+        .hero-text {
+            padding-top: 2rem;
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta-deep);
+            margin-bottom: 2rem;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: "";
+            width: 22px;
+            height: 1px;
+            background: var(--terracotta-deep);
+        }
+        .eyebrow::after { width: 8px; }
+
+        .hero-title {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 30, "opsz" 144;
+            font-size: clamp(3rem, 6.5vw, 5.75rem);
+            line-height: 0.95;
+            letter-spacing: -0.035em;
+            color: var(--ink);
+            margin: 0 0 1.75rem;
+        }
+        .hero-title .ital {
+            font-style: italic;
+            font-variation-settings: "SOFT" 100, "opsz" 144;
+            color: var(--terracotta-deep);
+            position: relative;
+            display: inline-block;
+        }
+        /* Hand-drawn underline on the italic word */
+        .hero-title .ital::after {
+            content: "";
+            position: absolute;
+            left: -2%;
+            right: -2%;
+            bottom: -0.05em;
+            height: 0.18em;
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 Q 30 2, 60 6 T 120 5 T 198 7' fill='none' stroke='%23C95A36' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+            opacity: 0.85;
+        }
+
+        .hero-lead {
+            font-size: 1.18rem;
+            line-height: 1.55;
+            color: var(--ink-soft);
+            max-width: 38ch;
+            margin: 0 0 2.5rem;
+        }
+
+        /* "What's included" inline strip */
+        .hero-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+        .hero-strip-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .hero-strip-item .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-fade);
+        }
+        .hero-strip-item .value {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 40, "opsz" 24;
+            font-size: 1.15rem;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        /* Sun motif — floats in the hero */
+        .sun-decor {
+            position: absolute;
+            top: -1rem;
+            right: -5%;
+            width: 140px;
+            height: 140px;
+            opacity: 0.9;
+            z-index: -1;
+            animation: rotateSun 60s linear infinite;
+        }
+        @keyframes rotateSun {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Right: form card --- */
+        .form-card {
+            background: var(--card);
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow-3);
+            padding: 2.5rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transform: rotate(0.4deg);
+        }
+        /* Sticker / badge floating off the form */
+        .form-sticker {
+            position: absolute;
+            top: -28px;
+            right: -16px;
+            background: var(--terracotta);
+            color: #fff;
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 80, "opsz" 36;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            padding: 0.6rem 1.1rem;
+            border-radius: 999px;
+            transform: rotate(6deg);
+            box-shadow: 0 8px 20px rgba(157, 67, 33, 0.35);
+            white-space: nowrap;
+        }
+        .form-sticker i { font-style: italic; }
+
+        .form-card h2 {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 50, "opsz" 60;
+            font-size: 2rem;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            margin: 0 0 0.4rem;
+            color: var(--ink);
+        }
+        .form-card .form-sub {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            margin: 0 0 1.8rem;
+        }
+
+        /* Form fields */
+        .field {
+            position: relative;
+            margin-bottom: 0.95rem;
+        }
+        .field input,
+        .field select {
+            width: 100%;
+            border: 1.5px solid var(--line);
+            background: #FFFEFA;
+            color: var(--ink);
+            font-family: var(--body);
+            font-size: 0.98rem;
+            border-radius: var(--r-sm);
+            padding: 1.5rem 1rem 0.5rem;
+            min-height: 60px;
+            transition: border-color .15s, box-shadow .15s, background .15s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .field select {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%236B6F66' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1.1rem center;
+            padding-right: 2.5rem;
+        }
+        .field input::placeholder { color: transparent; }
+        .field label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--ink-soft);
+            font-size: 0.97rem;
+            font-weight: 500;
+            pointer-events: none;
+            transition: all .15s ease;
+            background: transparent;
+        }
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+            background: #fff;
+        }
+        .field input:focus + label,
+        .field input:not(:placeholder-shown) + label,
+        .field select:focus + label,
+        .field select:not([value=""]):valid + label {
+            top: 0.42rem;
+            font-size: 0.7rem;
+            color: var(--terracotta-deep);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        /* Always-floated label for select once option is selected */
+        .field.has-value label {
+            top: 0.42rem;
+            font-size: 0.7rem;
+            color: var(--terracotta-deep);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.95rem;
+        }
+
+        .invalid-msg {
+            font-size: 0.8rem;
+            color: var(--terracotta-deep);
+            margin: 0.3rem 0 0 0.3rem;
+            display: none;
+        }
+        .was-validated .field input:invalid,
+        .was-validated .field select:invalid {
+            border-color: var(--terracotta);
+        }
+        .was-validated .field input:invalid + label,
+        .was-validated .field select:invalid + label {
+            color: var(--terracotta);
+        }
+        .was-validated .field input:invalid ~ .invalid-msg,
+        .was-validated .field select:invalid ~ .invalid-msg {
+            display: block;
+        }
+
+        /* Checkbox */
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin: 1.3rem 0 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: var(--ink);
+        }
+        .terms input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            margin-top: 0.05rem;
+            border: 1.5px solid var(--line);
+            border-radius: 6px;
+            background: #FFFEFA;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.15s;
+        }
+        .terms input[type="checkbox"]:checked {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        .terms input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 6px; top: 2px;
+            width: 6px; height: 11px;
+            border: solid #fff;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+        }
+        .terms input[type="checkbox"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+        }
+        .terms a {
+            color: var(--terracotta-deep);
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            cursor: pointer;
+        }
+        .terms a:hover { color: var(--ink); }
+
+        /* Submit */
+        .submit {
+            width: 100%;
+            background: var(--ink);
+            color: var(--paper);
+            border: 0;
+            border-radius: 999px;
+            padding: 1.1rem 1.5rem;
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: transform .15s, background .2s, box-shadow .2s, color .2s;
+            box-shadow: 0 8px 20px rgba(43, 32, 18, 0.20);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+        .submit:hover {
+            background: var(--terracotta-deep);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(157, 67, 33, 0.30);
+        }
+        .submit:active { transform: translateY(0); }
+        .submit .arrow {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        .submit:hover .arrow { transform: translateX(4px); }
+
+        /* ========================================
+           DETAILS SECTION (Where / When / Bring)
+           ======================================== */
+        .details {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding: 0 2rem 5rem;
+        }
+        .section-label {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .section-label h3 {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 40, "opsz" 80;
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            letter-spacing: -0.025em;
+            margin: 0;
+            color: var(--ink);
+        }
+        .section-label .num {
+            font-family: var(--display);
+            font-style: italic;
+            font-variation-settings: "SOFT" 80, "opsz" 24;
+            font-size: 0.9rem;
+            color: var(--ink-fade);
+            letter-spacing: 0.04em;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .detail {
+            background: var(--card);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--r-md);
+            padding: 1.75rem;
+            position: relative;
+            box-shadow: var(--shadow-1);
+            overflow: hidden;
+        }
+        .detail .kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--terracotta-deep);
+            margin-bottom: 0.8rem;
+        }
+        .detail .title {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 40, "opsz" 36;
+            font-size: 1.4rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem;
+            color: var(--ink);
+        }
+        .detail .body {
+            color: var(--ink-2);
+            font-size: 0.98rem;
+            line-height: 1.5;
+        }
+
+        /* Where card with stylized map */
+        .detail-where .body { margin-bottom: 1.25rem; }
+        .detail-where .address {
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+            margin-top: 0.3rem;
+        }
+        .map-illustration {
+            margin-top: 1rem;
+            border-radius: var(--r-sm);
+            overflow: hidden;
+            background: linear-gradient(180deg, #E3D4B0 0%, #D5C798 100%);
+            height: 150px;
+            position: relative;
+        }
+        .map-illustration svg { display: block; width: 100%; height: 100%; }
+
+        /* When card with day chips */
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: var(--paper);
+            border-radius: var(--r-sm);
+            border: 1px solid var(--line-soft);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .schedule-row:hover {
+            transform: translateX(3px);
+            border-color: var(--terracotta);
+            box-shadow: var(--shadow-1);
+        }
+        .schedule-row .days {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink);
+        }
+        .schedule-row .time {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 24;
+            font-size: 1.05rem;
+            color: var(--terracotta-deep);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.01em;
+        }
+
+        /* Bring card with illustrated items */
+        .bring-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .bring-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.97rem;
+            color: var(--ink-2);
+        }
+        .bring-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
+            background: var(--terracotta-soft);
+            color: var(--terracotta-deep);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bring-icon svg { width: 20px; height: 20px; }
+
+        /* Free badge that breaks the grid */
+        .free-callout {
+            position: relative;
+            margin-top: 3rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            background: var(--ink);
+            color: var(--paper);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+        }
+        .free-callout::before {
+            content: "";
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(232, 154, 60, 0.35) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .free-callout::after {
+            content: "";
+            position: absolute;
+            bottom: -120px; left: -100px;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(201, 90, 54, 0.30) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .free-callout > * { position: relative; z-index: 1; }
+        .free-callout .price-line {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 50, "opsz" 144;
+            font-size: clamp(2.5rem, 5vw, 4.25rem);
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin: 0 0 0.5rem;
+        }
+        .free-callout .price-line .ital {
+            font-style: italic;
+            font-variation-settings: "SOFT" 100, "opsz" 144;
+            color: var(--sun);
+        }
+        .free-callout .price-sub {
+            font-size: 1rem;
+            color: rgba(242, 233, 213, 0.75);
+            max-width: 40ch;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           MODAL OVERRIDES (Bootstrap)
+           ======================================== */
+        .modal-content {
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            background: var(--card);
+            box-shadow: var(--shadow-3);
+        }
+        .modal-header {
+            border-bottom: 1px solid var(--line-soft);
+            padding: 1.25rem 1.5rem;
+        }
+        .modal-title {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 28;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+        }
+        .modal-body {
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+            padding: 1.25rem 1.5rem;
+            white-space: pre-line;
+            font-family: var(--body);
+        }
+        .modal-footer { border-top: 1px solid var(--line-soft); }
+        .btn-outline-ink {
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            background: transparent;
+            border-radius: 999px;
+            padding: 0.55rem 1.3rem;
+            font-weight: 600;
+            font-family: var(--body);
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .btn-outline-ink:hover { background: var(--ink); color: var(--paper); }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .site-footer {
+            border-top: 1px solid var(--line);
+            padding: 2.5rem 0;
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-inner .heart-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-style: italic;
+            font-family: var(--display);
+        }
+        .footer-inner .heart-icon svg {
+            width: 16px; height: 16px;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes riseRotate {
+            from { opacity: 0; transform: translateY(20px) rotate(2deg); }
+            to   { opacity: 1; transform: translateY(0) rotate(0.4deg); }
+        }
+        .anim { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
+        .anim-1 { animation-delay: 0.05s; }
+        .anim-2 { animation-delay: 0.18s; }
+        .anim-3 { animation-delay: 0.30s; }
+        .anim-4 { animation-delay: 0.42s; }
+        .anim-form { animation: riseRotate 0.9s 0.25s cubic-bezier(.2,.7,.2,1) both; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .anim, .anim-form { animation: none !important; }
+            .sun-decor { animation: none !important; }
+            .form-card { transform: rotate(0); }
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 992px) {
+            .hero-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding-bottom: 3rem;
+            }
+            .form-card { transform: rotate(0); }
+            .sun-decor { right: 0; top: -2rem; width: 100px; height: 100px; }
+            .details-grid { grid-template-columns: 1fr 1fr; }
+            .detail-where { grid-column: 1 / -1; }
+            .detail-where .body { display: flex; flex-direction: column; gap: 0.3rem; }
+        }
+        @media (max-width: 640px) {
+            .site-header-inner { padding: 0 1.25rem; }
+            .hero-wrap { padding: 1rem 1.25rem 3rem; }
+            .details { padding: 0 1.25rem 4rem; }
+            .footer-inner { padding: 0 1.25rem; }
+            .details-grid { grid-template-columns: 1fr; }
+            .form-card { padding: 1.75rem 1.5rem; }
+            .form-sticker {
+                top: -22px;
+                right: 12px;
+                font-size: 0.85rem;
+                padding: 0.45rem 0.9rem;
+            }
+            .field-row { grid-template-columns: 1fr; }
+            .hero-strip { gap: 1rem 2rem; }
+            .topbar { font-size: 0.7rem; padding: 0.5rem 1rem; }
+            .topbar .dot { margin: 0 0.4rem; }
+        }
+    </style>
+
+    <!-- Mixpanel (preserved) -->
     <script type="text/javascript">
         (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
             for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
             MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
 
-        // Enabling the debug mode flag is useful during implementation,
-        // but it's recommended you remove it for production
         mixpanel.init('34b0b2e5a4bf295cff378e99aa7f115f', {debug: false});
         mixpanel.track('Free class');
     </script>
 </head>
 <body>
 
-
-<!-- Nav Container -->
-<div class="container py-2">
-
-    <!--Navbar-->
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container mx-auto">
-                <a class="navbar-brand active" aria-current="page" href="https://www.alohafitness.net"><i
-                        class="bi bi-heart me-1"></i> Aloha Fitness</a>
-            </div>
-        </nav>
-    </header>
+<!-- Top marquee bar -->
+<div class="topbar">
+    <span>Outdoor &amp; outdoors-adjacent</span>
+    <span class="dot"></span>
+    <span>Rocklin, CA</span>
+    <span class="dot"></span>
+    <span>Moms welcome — and the only ones invited</span>
 </div>
 
-<!--<div class="alert alert-info" role="alert">-->
-<!--    <div class="container">-->
-<!--        🚨<strong>Save 40%</strong> on your membership! Sign up by <strong>April 15</strong> using the code <strong>ALOHA</strong>. Act now! ⏰💰-->
-<!--    </div>-->
-<!--</div>-->
+<!-- Header -->
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" href="https://www.alohafitness.net">
+            <span class="brand-mark" aria-hidden="true">
+                <!-- Inline heart mark -->
+                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="18" cy="18" r="18" fill="#C95A36"/>
+                    <path d="M18 26 C 9 19.5, 9 13, 13.5 12 C 16 11.5, 17.5 13, 18 14.5 C 18.5 13, 20 11.5, 22.5 12 C 27 13, 27 19.5, 18 26 Z" fill="#FFFCF5"/>
+                </svg>
+            </span>
+            Aloha Fitness
+        </a>
+        <a href="https://www.alohafitness.net" class="nav-back">← Back to site</a>
+    </div>
+</header>
 
-<main class="container viewHeight">
+<!-- Hero + Form -->
+<section class="hero-wrap">
+    <!-- Left: editorial hero -->
+    <div class="hero-text">
+        <!-- Slowly rotating sun, decorative -->
+        <svg class="sun-decor" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#E89A3C" stroke-width="2.5" stroke-linecap="round">
+                <line x1="100" y1="10"  x2="100" y2="40"/>
+                <line x1="100" y1="160" x2="100" y2="190"/>
+                <line x1="10"  y1="100" x2="40"  y2="100"/>
+                <line x1="160" y1="100" x2="190" y2="100"/>
+                <line x1="36"  y1="36"  x2="58"  y2="58"/>
+                <line x1="142" y1="142" x2="164" y2="164"/>
+                <line x1="36"  y1="164" x2="58"  y2="142"/>
+                <line x1="142" y1="58"  x2="164" y2="36"/>
+            </g>
+            <circle cx="100" cy="100" r="42" fill="#E89A3C" opacity="0.18"/>
+            <circle cx="100" cy="100" r="32" fill="#E89A3C"/>
+        </svg>
 
-    <h1>🌟 Try a FREE class! 🌟</h1>
-    <p>Join us for a FREE outdoor or online strength training class designed for moms of all fitness levels. Breathe in the fresh air, connect with other moms and feel your best. More than just exercise, it's self-care for moms!</p>
+        <div class="eyebrow anim anim-1">Free intro class · Outdoor</div>
 
-    <!-- Cards -->
-    <div class="go-cards">
-        <!-- Card -->
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 fw-normal">🏋️‍♀️ What's in store for you? 🏋️‍♂️</h4>
+        <h1 class="hero-title anim anim-2">
+            Strength training,<br>
+            built for <span class="ital">moms.</span>
+        </h1>
+
+        <p class="hero-lead anim anim-3">
+            A real workout for real life — outdoors, before the day starts,
+            with the kind of people who get it. Bring a mat. We'll handle the rest.
+        </p>
+
+        <div class="hero-strip anim anim-4">
+            <div class="hero-strip-item">
+                <span class="label">Where</span>
+                <span class="value">Willard Park</span>
             </div>
-            <div class="card-body">
-                <table class="table table-borderless table-sm">
-                    <thead>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row" class="text-start">📍 Where</th>
-                        <td><span class="fw-semibold">Willard Park</span> <br>820 Lazy Trl Dr, Rocklin, CA 95765</td>
-                    </tr>
-<!--                    <tr>-->
-<!--                        <th scope="row" class="text-start">📅 When</th>-->
-<!--                        <td>Monday, Wednesday: Strength Training-->
-<!--                            <br>-->
-<!--                            8:30 AM-->
-<!--                            <br>-->
-<!--                            Saturday: Strength Training-->
-<!--                            <br>-->
-<!--                            7:30 AM-->
-<!--                        </td>-->
-<!--                    </tr>-->
-                    <tr>
-                        <th scope="row" class="text-start">🎒 What to bring</th>
-                        <td>
-                            <ul class="list-unstyled mb-0">
-                                <li>Yoga mat</li>
-                                <li>Dumbbells (3 or 5 lb)</li>
-                                <li>Water bottle</li>
-                                <li>Comfortable clothes you can move in</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-start">💰 Cost</th>
-                        <td class="text-body-emphasis">FREE!</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <p><strong>Registration required 👍</strong></p>
+            <div class="hero-strip-item">
+                <span class="label">Best for</span>
+                <span class="value">Every level</span>
             </div>
-        </div>
-        <!-- Card -->
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 fw-normal">Register for your free class</h4>
+            <div class="hero-strip-item">
+                <span class="label">Duration</span>
+                <span class="value">~50 min</span>
             </div>
-            <div class="card-body">
-                <form name="registration" class="registration needs-validation" method="POST" netlify-honeypot="bot-field" data-netlify="true" novalidate>
-
-                        <p class="visually-hidden">
-                            <label>
-                                Don’t fill this out if you’re human: <input name="bot-field"/>
-                            </label>
-                        </p>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" name="firstName" class="form-control" required spellcheck="true"
-                                   id="firstName" placeholder="First Name" autocomplete="given-name">
-                            <label for="firstName">First Name</label>
-                            <div class="invalid-feedback">
-                                Please enter your first name.
-                            </div>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" name="lastName" class="form-control" required spellcheck="true"
-                                   id="lastName" placeholder="Last Name" autocomplete="family-name">
-                            <label for="lastName">Last Name</label>
-                            <div class="invalid-feedback">
-                                Please enter your last name.
-                            </div>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="tel" name="phoneNumber" class="form-control" required
-                                   id="phoneNumber" placeholder="Phone Number" autocomplete="tel">
-                            <label for="phoneNumber">Phone Number</label>
-                            <div class="invalid-feedback">
-                                Please enter a valid phone number.
-                            </div>
-                        </div>
-
-                        <div class="form-floating mb-4">
-                            <input type="email" name="email" class="form-control" required spellcheck="true"
-                                   id="email" placeholder="name@example.com" autocomplete="email">
-                            <label for="email">Email address</label>
-                            <div class="invalid-feedback">
-                                Please enter your email.
-                            </div>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <select name="trainingSession" id="trainingSession" class="form-control" required>
-                                <option value="mothers_day_friday_830am">Friday, May 9: Mother’s Day Special Class - 8:30 AM</option>
-                                <option value="" disabled selected>Select a Training Session</option>
-                                <option value="monday_wednesday_strength_830am">Monday, Wednesday: Strength Training - 8:30 AM</option>
-                                <option value="friday_yogalates_830am">Friday: Yoga-Pilates Fusion - 8:30 AM</option>
-                                <option value="saturday_strength_730am">Saturday: Strength Training - 7:30 AM</option>
-                                <option value="virtual_monday_wednesday_saturday">Monday, Wednesday, Saturday: Virtual Class</option>
-                            </select>
-                            <label for="trainingSession">Training Session</label>
-                            <div class="invalid-feedback">
-                                Please select a training session.
-                            </div>
-                        </div>
-
-<!--                        <label for="dateSelect" class="form-label">Class date</label>-->
-<!--                        <select class="form-select mb-4" id="dateSelect" aria-label="Date select" required>-->
-<!--                            <option selected disabled value="">Select</option>-->
-<!--                            <option value="2/20/2024">Thursday, February 20 at 9 AM</option>-->
-<!--                            <option value="3/8/2024">Friday, March 8 at 9 AM</option>-->
-<!--                            <option value="3/12/2024">Tuesday, March 12 at 9 AM</option>-->
-<!--                        </select>-->
-
-<!--                        <div class="form-floating mb-4">-->
-<!--                            <select class="form-select" id="floatingSelect" required aria-label="Floating label select">-->
-<!--                                <option selected disabled value="">Select</option>-->
-<!--                                <option value="2/20/2024">Thursday, February 20 at 9 AM</option>-->
-<!--                                <option value="3/8/2024">Friday, March 8 at 9 AM</option>-->
-<!--                                <option value="3/12/2024">Tuesday, March 12 at 9 AM</option>-->
-<!--                            </select>-->
-<!--                            <label for="floatingSelect">Class date</label>-->
-<!--                        </div>-->
-
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" required value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Agree to <a class="link" data-bs-toggle="modal" data-bs-target="#t&c">terms and conditions</a>
-                            </label>
-                        </div>
-
-                    <button type="submit" class="btn w-100 btn-info">Register Now</button>
-
-                </form>
+            <div class="hero-strip-item">
+                <span class="label">Cost</span>
+                <span class="value">$0</span>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="t&c" tabindex="-1" aria-labelledby="t&c" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">WAIVER AND RELEASE OF LIABILITY</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    IN CONSIDERATION OF the risk of injury that exists while participating in STRENGTH AND YOGA CLASS (hereinafter the "Activity"); and
-                    IN CONSIDERATION OF my desire to participate in said Activity and being given the right to participate in same;
-                    I HEREBY, for myself, my heirs, executors, administrators, assigns, or personal representatives (hereinafter collectively, "Releasor," "I" or "me", which terms shall also include Releasor's parents or guardian if Releasor is under 18 years of age), knowingly and voluntarily enter into this WAIVER AND RELEASE OF LIABILITY and hereby waive any and all rights, claims or causes of action of any kind arising out of my participation in the Activity; and
-                    I HEREBY release and forever discharge Aloha Fitness, located at 304 S Jones Blvd, Las Vegas, Nevada 89449, their affiliates, managers, members, agents, attorneys, staff, volunteers, heirs, representatives, predecessors, successors and assigns (collectively "Releasees"), from any physical or psychological injury that I may suffer as a direct result of my participation in the aforementioned Activity.
-                    I AM VOLUNTARILY PARTICIPATING IN THE AFOREMENTIONED ACTIVITY AND I AM PARTICIPATING IN THE ACTIVITY ENTIRELY AT MY OWN RISK. I AM AWARE OF THE RISKS ASSOCIATED WITH PARTICIPATING IN THIS ACTIVITY, WHICH MAY INCLUDE, BUT ARE NOT LIMITED TO: PHYSICAL OR PSYCHOLOGICAL INJURY, PAIN, SUFFERING, ILLNESS, DISFIGUREMENT, TEMPORARY OR PERMANENT DISABILITY (INCLUDING PARALYSIS), ECONOMIC OR EMOTIONAL LOSS, AND DEATH. I UNDERSTAND THAT THESE INJURIES OR OUTCOMES MAY ARISE FROM MY OWN OR OTHERS' NEGLIGENCE, CONDITIONS RELATED TO TRAVEL TO AND FROM THE ACTIVITY, OR FROM CONDITIONS AT THE ACTIVITY LOCATION(S). NONETHELESS, I ASSUME ALL RELATED RISKS, BOTH KNOWN AND UNKNOWN TO ME, OF MY PARTICIPATION IN THIS ACTIVITY.
-                    I FURTHER AGREE to indemnify, defend and hold harmless the Releasees against any and all claims, suits or actions of any kind whatsoever for liability, damages, compensation or otherwise brought by me or anyone on my behalf, including attorney's fees and any related costs.
-                    I FURTHER ACKNOWLEDGE that Releasees are not responsible for errors, omissions, acts or failures to act of any party or entity conducting a specific event or activity on behalf of Releasees. In the event that I should require medical care or treatment, I authorize Aloha Fitness to provide all emergency medical care deemed necessary, including but not limited to, first aid, CPR, the use of AEDs, emergency medical transport, and sharing of medical information with medical personnel. I further agree to assume all costs involved and agree to be financially responsible for any costs incurred as a result of such treatment. I am aware and understand that I should carry my own health insurance.
-                    I FURTHER ACKNOWLEDGE that this Activity may involve a test of a person's physical and mental limits and may carry with it the potential for death, serious injury, and property loss. I agree not to participate in the Activity unless I am medically able and properly trained, and I agree to abide by the decision of the Aloha Fitness official or agent, regarding my approval to participate in the Activity.
-                    I HEREBY ACKNOWLEDGE THAT I HAVE CAREFULLY READ THIS "WAIVER AND RELEASE" AND FULLY UNDERSTAND THAT IT IS A RELEASE OF LIABILITY. I EXPRESSLY AGREE TO RELEASE AND DISCHARGE Aloha Fitness AND ALL OF ITS AFFILIATES, MANAGERS, MEMBERS, AGENTS, ATTORNEYS, STAFF, VOLUNTEERS, HEIRS, REPRESENTATIVES, PREDECESSORS, SUCCESSORS AND ASSIGNS, FROM ANY AND ALL CLAIMS OR CAUSES OF ACTION AND I AGREE TO VOLUNTARILY GIVE UP OR WAIVE ANY RIGHT THAT I OTHERWISE HAVE TO BRING A LEGAL ACTION AGAINST Aloha Fitness FOR PERSONAL INJURY OR PROPERTY DAMAGE.
-                    To the extent that statute or case law does not prohibit releases for ordinary negligence, this release is also for such negligence on the part of Aloha Fitness, its agents, and employees.
-                    I agree that this Release shall be governed for all purposes by Nevada law, without regard to any conflict of law principles. This Release supersedes any and all previous oral or written promises or other agreements.
-                    In the event that any damage to equipment or facilities occurs as a result of my or my family's or my agent's willful actions, neglect or recklessness, I acknowledge and agree to be held liable for any and all costs associated with any such actions of neglect or recklessness.
-                    THIS WAIVER AND RELEASE OF LIABILITY SHALL REMAIN IN EFFECT FOR THE DURATION OF MY PARTICIPATION IN THE ACTIVITY, DURING THIS INITIAL AND ALL SUBSEQUENT EVENTS OF PARTICIPATION.
-                    THIS AGREEMENT was entered into at arm's-length, without duress or coercion, and is to be interpreted as an agreement
-                    between two parties of equal bargaining strength. Both Participant, and Aloha Fitness agree that this agreement is clear and unambiguous as to its terms, and that no other evidence shall be
-                    used or admitted to alter or explain the terms of this agreement, but that it will be interpreted based on the language in
-                    accordance with the purposes for which it is entered into.
-                    In the event that any provision contained within this Release of Liability shall be deemed to be severable or invalid, or if any term, condition, phrase or portion of this agreement shall be determined to be unlawful or otherwise unenforceable, the remainder of this agreement shall remain in full force and effect. If a court should find that any provision of this agreement to be invalid or unenforceable, but that by limiting said provision it would become valid and enforceable, then said provision shall be deemed to be written, construed and enforced as so limited.
+    <!-- Right: form card -->
+    <div class="form-card anim-form">
+        <span class="form-sticker">Save your <i>spot</i></span>
 
-                    I, THE UNDERSIGNED PARTICIPANT, AFFIRM THAT I AM OF THE AGE OF 18 YEARS OR OLDER, AND THAT I AM FREELY SIGNING THIS AGREEMENT. I CERTIFY THAT I HAVE READ THIS AGREEMENT, THAT I FULLY UNDERSTAND ITS CONTENT AND THAT THIS RELEASE CANNOT BE MODIFIED ORALLY. I AM AWARE THAT THIS IS A RELEASE OF LIABILITY.
+        <h2>Register</h2>
+        <p class="form-sub">Takes about 30 seconds. We'll text you the details.</p>
 
-                    PARENT / GUARDIAN WAIVER FOR MINORS
-                    In the event that the participant is under the age of consent (18 years of age), then this release must be signed by a parent or guardian.
+        <form name="registration" class="registration" method="POST" netlify-honeypot="bot-field" data-netlify="true" novalidate>
+            <p style="position:absolute; left:-9999px;">
+                <label>Don't fill this out if you're human: <input name="bot-field"/></label>
+            </p>
 
+            <div class="field-row">
+                <div class="field">
+                    <input type="text" name="firstName" id="firstName" placeholder=" " required autocomplete="given-name" spellcheck="true">
+                    <label for="firstName">First name</label>
+                    <div class="invalid-msg">Please enter your first name.</div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                <div class="field">
+                    <input type="text" name="lastName" id="lastName" placeholder=" " required autocomplete="family-name" spellcheck="true">
+                    <label for="lastName">Last name</label>
+                    <div class="invalid-msg">Please enter your last name.</div>
                 </div>
+            </div>
+
+            <div class="field">
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder=" " required autocomplete="tel">
+                <label for="phoneNumber">Phone number</label>
+                <div class="invalid-msg">Please enter a valid phone number.</div>
+            </div>
+
+            <div class="field">
+                <input type="email" name="email" id="email" placeholder=" " required autocomplete="email" spellcheck="true">
+                <label for="email">Email address</label>
+                <div class="invalid-msg">Please enter your email.</div>
+            </div>
+
+            <div class="field" id="sessionField">
+                <select name="trainingSession" id="trainingSession" required>
+                    <option value="" disabled selected></option>
+                    <option value="monday_wednesday_strength_830am">Monday &amp; Wednesday — 8:30 AM</option>
+                    <option value="saturday_strength_730am">Saturday — 7:30 AM</option>
+                </select>
+                <label for="trainingSession">Which class?</label>
+                <div class="invalid-msg">Please select a class.</div>
+            </div>
+
+            <label class="terms">
+                <input type="checkbox" required id="termsCheck">
+                <span>I agree to the <a data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a></span>
+            </label>
+
+            <button type="submit" class="submit">
+                Register now
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- Details: Where / When / Bring -->
+<section class="details">
+    <div class="section-label">
+        <h3>The <em style="font-variation-settings:'SOFT' 100,'opsz' 80;color:var(--terracotta-deep);">essentials</em></h3>
+        <span class="num">01 / 02</span>
+    </div>
+
+    <div class="details-grid">
+        <!-- WHERE -->
+        <article class="detail detail-where">
+            <div class="kicker">Where</div>
+            <h4 class="title">Willard Park, Rocklin</h4>
+            <p class="body">
+                We meet on the grass near the main pavilion.
+                Look for the small group of moms doing push-ups while pretending it's their idea.
+                <span class="address">820 Lazy Trl Dr, Rocklin, CA 95765</span>
+            </p>
+            <!-- Stylized map illustration -->
+            <div class="map-illustration">
+                <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Soft sun -->
+                    <circle cx="320" cy="35" r="20" fill="#E89A3C" opacity="0.45"/>
+                    <circle cx="320" cy="35" r="12" fill="#E89A3C"/>
+                    <!-- Rolling hills -->
+                    <path d="M0 110 Q 80 70, 160 95 T 320 95 T 480 110 L 480 150 L 0 150 Z" fill="#6C8B65" opacity="0.55"/>
+                    <path d="M0 125 Q 100 95, 200 115 T 400 115 L 400 150 L 0 150 Z" fill="#6C8B65"/>
+                    <!-- Path -->
+                    <path d="M40 145 Q 120 120, 200 130 T 380 110" fill="none" stroke="#F2E9D5" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 7"/>
+                    <!-- Trees -->
+                    <g fill="#4F6B49">
+                        <ellipse cx="80" cy="95" rx="10" ry="14"/>
+                        <ellipse cx="250" cy="98" rx="12" ry="16"/>
+                        <ellipse cx="350" cy="100" rx="9" ry="13"/>
+                    </g>
+                    <g stroke="#3C4E36" stroke-width="2">
+                        <line x1="80" y1="108" x2="80" y2="118"/>
+                        <line x1="250" y1="113" x2="250" y2="123"/>
+                        <line x1="350" y1="113" x2="350" y2="121"/>
+                    </g>
+                    <!-- Location pin -->
+                    <g transform="translate(180, 85)">
+                        <path d="M0 0 C -10 -10, -10 -25, 0 -28 C 10 -25, 10 -10, 0 0 Z" fill="#C95A36"/>
+                        <circle cx="0" cy="-18" r="4.5" fill="#FFFCF5"/>
+                    </g>
+                </svg>
+            </div>
+        </article>
+
+        <!-- WHEN -->
+        <article class="detail detail-when">
+            <div class="kicker">When</div>
+            <h4 class="title">Three mornings a week</h4>
+            <div class="schedule-list">
+                <div class="schedule-row">
+                    <span class="days">Mon &amp; Wed</span>
+                    <span class="time">8:30 AM</span>
+                </div>
+                <div class="schedule-row">
+                    <span class="days">Saturday</span>
+                    <span class="time">7:30 AM</span>
+                </div>
+                <div class="schedule-row" style="background:transparent;border-style:dashed;color:var(--ink-soft);">
+                    <span class="days" style="color:var(--ink-soft);font-weight:500;font-style:italic;">Pick whichever fits</span>
+                    <span class="time" style="font-size:0.95rem;color:var(--ink-soft);">↗</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- BRING -->
+        <article class="detail detail-bring">
+            <div class="kicker">Bring</div>
+            <h4 class="title">The short list</h4>
+            <ul class="bring-list">
+                <li class="bring-item">
+                    <span class="bring-icon" aria-hidden="true">
+                        <!-- mat -->
+                        <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="6" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M5 8h10M5 11h10M5 14h10" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
+                    </span>
+                    Yoga mat
+                </li>
+                <li class="bring-item">
+                    <span class="bring-icon" aria-hidden="true">
+                        <!-- dumbbell -->
+                        <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="7" width="2.5" height="6" rx="0.8" fill="currentColor"/><rect x="15.5" y="7" width="2.5" height="6" rx="0.8" fill="currentColor"/><rect x="4.5" y="8.5" width="11" height="3" fill="currentColor"/></svg>
+                    </span>
+                    Dumbbells (3 or 5 lb)
+                </li>
+                <li class="bring-item">
+                    <span class="bring-icon" aria-hidden="true">
+                        <!-- water bottle -->
+                        <svg viewBox="0 0 20 20" fill="none"><path d="M8 3h4v2l1 1v10a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 7 16V6l1-1V3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 10h6" stroke="currentColor" stroke-width="1.2"/></svg>
+                    </span>
+                    Water bottle
+                </li>
+                <li class="bring-item">
+                    <span class="bring-icon" aria-hidden="true">
+                        <!-- t-shirt -->
+                        <svg viewBox="0 0 20 20" fill="none"><path d="M6 4l-3 2 2 3 2-1v8h6V8l2 1 2-3-3-2-2 1c-.5.7-1.4 1-2 1s-1.5-.3-2-1l-2-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    </span>
+                    Clothes you can move in
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <!-- Free callout -->
+    <div class="free-callout">
+        <p class="price-line">
+            And it's <span class="ital">free.</span>
+        </p>
+        <p class="price-sub">
+            No catch, no pressure, no &quot;but-actually.&quot; Just show up, give it a try,
+            and see if it's your thing.
+        </p>
+    </div>
+</section>
+
+<!-- Modal: Waiver -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="termsModalLabel">Waiver and release of liability</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">IN CONSIDERATION OF the risk of injury that exists while participating in STRENGTH AND YOGA CLASS (hereinafter the "Activity"); and
+                IN CONSIDERATION OF my desire to participate in said Activity and being given the right to participate in same;
+                I HEREBY, for myself, my heirs, executors, administrators, assigns, or personal representatives (hereinafter collectively, "Releasor," "I" or "me", which terms shall also include Releasor's parents or guardian if Releasor is under 18 years of age), knowingly and voluntarily enter into this WAIVER AND RELEASE OF LIABILITY and hereby waive any and all rights, claims or causes of action of any kind arising out of my participation in the Activity; and
+                I HEREBY release and forever discharge Aloha Fitness, located at 304 S Jones Blvd, Las Vegas, Nevada 89449, their affiliates, managers, members, agents, attorneys, staff, volunteers, heirs, representatives, predecessors, successors and assigns (collectively "Releasees"), from any physical or psychological injury that I may suffer as a direct result of my participation in the aforementioned Activity.
+                I AM VOLUNTARILY PARTICIPATING IN THE AFOREMENTIONED ACTIVITY AND I AM PARTICIPATING IN THE ACTIVITY ENTIRELY AT MY OWN RISK. I AM AWARE OF THE RISKS ASSOCIATED WITH PARTICIPATING IN THIS ACTIVITY, WHICH MAY INCLUDE, BUT ARE NOT LIMITED TO: PHYSICAL OR PSYCHOLOGICAL INJURY, PAIN, SUFFERING, ILLNESS, DISFIGUREMENT, TEMPORARY OR PERMANENT DISABILITY (INCLUDING PARALYSIS), ECONOMIC OR EMOTIONAL LOSS, AND DEATH. I UNDERSTAND THAT THESE INJURIES OR OUTCOMES MAY ARISE FROM MY OWN OR OTHERS' NEGLIGENCE, CONDITIONS RELATED TO TRAVEL TO AND FROM THE ACTIVITY, OR FROM CONDITIONS AT THE ACTIVITY LOCATION(S). NONETHELESS, I ASSUME ALL RELATED RISKS, BOTH KNOWN AND UNKNOWN TO ME, OF MY PARTICIPATION IN THIS ACTIVITY.
+                I FURTHER AGREE to indemnify, defend and hold harmless the Releasees against any and all claims, suits or actions of any kind whatsoever for liability, damages, compensation or otherwise brought by me or anyone on my behalf, including attorney's fees and any related costs.
+                I FURTHER ACKNOWLEDGE that Releasees are not responsible for errors, omissions, acts or failures to act of any party or entity conducting a specific event or activity on behalf of Releasees. In the event that I should require medical care or treatment, I authorize Aloha Fitness to provide all emergency medical care deemed necessary, including but not limited to, first aid, CPR, the use of AEDs, emergency medical transport, and sharing of medical information with medical personnel. I further agree to assume all costs involved and agree to be financially responsible for any costs incurred as a result of such treatment. I am aware and understand that I should carry my own health insurance.
+                I FURTHER ACKNOWLEDGE that this Activity may involve a test of a person's physical and mental limits and may carry with it the potential for death, serious injury, and property loss. I agree not to participate in the Activity unless I am medically able and properly trained, and I agree to abide by the decision of the Aloha Fitness official or agent, regarding my approval to participate in the Activity.
+                I HEREBY ACKNOWLEDGE THAT I HAVE CAREFULLY READ THIS "WAIVER AND RELEASE" AND FULLY UNDERSTAND THAT IT IS A RELEASE OF LIABILITY. I EXPRESSLY AGREE TO RELEASE AND DISCHARGE Aloha Fitness AND ALL OF ITS AFFILIATES, MANAGERS, MEMBERS, AGENTS, ATTORNEYS, STAFF, VOLUNTEERS, HEIRS, REPRESENTATIVES, PREDECESSORS, SUCCESSORS AND ASSIGNS, FROM ANY AND ALL CLAIMS OR CAUSES OF ACTION AND I AGREE TO VOLUNTARILY GIVE UP OR WAIVE ANY RIGHT THAT I OTHERWISE HAVE TO BRING A LEGAL ACTION AGAINST Aloha Fitness FOR PERSONAL INJURY OR PROPERTY DAMAGE.
+                To the extent that statute or case law does not prohibit releases for ordinary negligence, this release is also for such negligence on the part of Aloha Fitness, its agents, and employees.
+                I agree that this Release shall be governed for all purposes by Nevada law, without regard to any conflict of law principles. This Release supersedes any and all previous oral or written promises or other agreements.
+                In the event that any damage to equipment or facilities occurs as a result of my or my family's or my agent's willful actions, neglect or recklessness, I acknowledge and agree to be held liable for any and all costs associated with any such actions of neglect or recklessness.
+                THIS WAIVER AND RELEASE OF LIABILITY SHALL REMAIN IN EFFECT FOR THE DURATION OF MY PARTICIPATION IN THE ACTIVITY, DURING THIS INITIAL AND ALL SUBSEQUENT EVENTS OF PARTICIPATION.
+                THIS AGREEMENT was entered into at arm's-length, without duress or coercion, and is to be interpreted as an agreement between two parties of equal bargaining strength. Both Participant, and Aloha Fitness agree that this agreement is clear and unambiguous as to its terms, and that no other evidence shall be used or admitted to alter or explain the terms of this agreement, but that it will be interpreted based on the language in accordance with the purposes for which it is entered into.
+                In the event that any provision contained within this Release of Liability shall be deemed to be severable or invalid, or if any term, condition, phrase or portion of this agreement shall be determined to be unlawful or otherwise unenforceable, the remainder of this agreement shall remain in full force and effect. If a court should find that any provision of this agreement to be invalid or unenforceable, but that by limiting said provision it would become valid and enforceable, then said provision shall be deemed to be written, construed and enforced as so limited.
+
+                I, THE UNDERSIGNED PARTICIPANT, AFFIRM THAT I AM OF THE AGE OF 18 YEARS OR OLDER, AND THAT I AM FREELY SIGNING THIS AGREEMENT. I CERTIFY THAT I HAVE READ THIS AGREEMENT, THAT I FULLY UNDERSTAND ITS CONTENT AND THAT THIS RELEASE CANNOT BE MODIFIED ORALLY. I AM AWARE THAT THIS IS A RELEASE OF LIABILITY.
+
+                PARENT / GUARDIAN WAIVER FOR MINORS
+                In the event that the participant is under the age of consent (18 years of age), then this release must be signed by a parent or guardian.</div>
+            <div class="modal-footer">
+                <button type="button" class="btn-outline-ink" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-
-</main>
+</div>
 
 <!-- Footer -->
-<div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 text-muted small ">
-        <p class="col-md-4 mb-0 text-muted">© <span class="date" id="date"></span> Aloha Fitness</p>
-        <i class="bi bi-balloon-heart text-muted col-md-4 d-flex align-items-center justify-content-center mb-md-0 me-md-auto"></i>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>© <span id="date"></span> Aloha Fitness</span>
+        <span class="heart-icon">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 14 C 2 9.5, 2 5, 5.5 4 C 7 3.7, 7.7 4.5, 8 5.5 C 8.3 4.5, 9 3.7, 10.5 4 C 14 5, 14 9.5, 8 14 Z" fill="#C95A36"/>
+            </svg>
+            Made with care in Rocklin, CA
+        </span>
+    </div>
+</footer>
 
-    </footer>
-</div>
-
-<script>const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))</script>
-
-<!--JavaScript for disabling form submissions if there are invalid fields-->
+<!-- Form validation + helpers -->
 <script>
     (() => {
-        'use strict'
+        'use strict';
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
+        // Validation styling on submit
+        const form = document.querySelector('form.registration');
+        if (form) {
+            form.addEventListener('submit', (event) => {
                 if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    event.preventDefault();
+                    event.stopPropagation();
                 }
+                form.classList.add('was-validated');
+            }, false);
+        }
 
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
+        // Keep select label floated when an option is chosen
+        const sel = document.getElementById('trainingSession');
+        const selField = document.getElementById('sessionField');
+        if (sel && selField) {
+            const sync = () => {
+                if (sel.value && sel.value.length > 0) selField.classList.add('has-value');
+                else selField.classList.remove('has-value');
+            };
+            sel.addEventListener('change', sync);
+            sync();
+        }
+    })();
 </script>
 
-<!-- Copyright Date -->
+<!-- Copyright year -->
 <script>
-    const d = new Date();
-    let year = d.getFullYear();
-    document.getElementById("date").innerHTML = year;
+    document.getElementById("date").textContent = new Date().getFullYear();
 </script>
-
 
 </body>
 </html>

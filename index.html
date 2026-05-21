@@ -1,490 +1,1561 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-bs-theme="auto">
+<html lang="en" dir="ltr" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="author" content="Christian Festa">
-    <title>Aloha Fitness - Outdoor Workouts and Nutrition For Women</title>
-    <meta name="description" content="Aloha Fitness is a online community created for moms, by a mom. We offer a science-based nutrition program and high-intensity interval (HIIT) online workouts.">
-    <meta name="keywords" content="science-based nutrition, nutrition program, diet, lose weight, get healthy, group fitness, virtual workout, HIIT, workout, high intensity interval training, moms workout, workout from home">
-<!--    Bootstrap-->
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <!-- Enables data-bs-theme="auto" -->
-    <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<!--    My Style sheets-->
-    <link rel="stylesheet" href="css/index.css" type="text/css"/>
-<!-- Favicon -->
+    <title>Aloha Fitness · Outdoor Strength for Moms in Rocklin, CA</title>
+    <meta name="description" content="Aloha Fitness is an outdoor strength community for moms in Rocklin, CA. Group classes, online coaching, and science-backed nutrition — built for real life.">
+    <meta name="keywords" content="science-based nutrition, nutrition program, group fitness, outdoor workouts, moms fitness, strength training, Rocklin">
+
+    <!-- Fonts: Fraunces (display, variable) + Manrope (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap (modal + form validation + tabs only) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="heart.svg" sizes="any"/>
     <link rel="apple-touch-icon" href="heart.png"/>
+
+    <style>
+        /* ========================================
+           DESIGN SYSTEM (shared with free.html)
+           ======================================== */
+        :root {
+            --paper:           #F2E9D5;
+            --paper-deep:      #ECE0C5;
+            --card:            #FFFCF5;
+            --card-shadow:     rgba(43, 32, 18, 0.10);
+
+            --ink:             #1E231D;
+            --ink-2:           #2D332C;
+            --ink-soft:        #6B6F66;
+            --ink-fade:        #A39E8B;
+
+            --terracotta:      #C95A36;
+            --terracotta-deep: #9D4321;
+            --terracotta-soft: #F4D6C5;
+            --sage:            #6C8B65;
+            --sage-deep:       #4F6B49;
+            --sage-soft:       #D5DFCE;
+            --gold:            #D9A155;
+            --sun:             #E89A3C;
+            --sky:             #C9D9D4;
+
+            --line:            #DECDA8;
+            --line-soft:       #E8DBBC;
+
+            --display: "Fraunces", "Times New Roman", Georgia, serif;
+            --body:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --r-xs: 6px;
+            --r-sm: 12px;
+            --r-md: 20px;
+            --r-lg: 32px;
+            --r-xl: 48px;
+
+            --shadow-1: 0 1px 2px rgba(43, 32, 18, 0.04), 0 8px 28px rgba(43, 32, 18, 0.07);
+            --shadow-2: 0 2px 4px rgba(43, 32, 18, 0.05), 0 24px 64px rgba(43, 32, 18, 0.12);
+            --shadow-3: 0 4px 8px rgba(43, 32, 18, 0.06), 0 40px 96px rgba(43, 32, 18, 0.18);
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            font-weight: 400;
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                    radial-gradient(circle at 20% 10%, rgba(232, 154, 60, 0.10) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 20%, rgba(108, 139, 101, 0.10) 0%, transparent 45%),
+                    radial-gradient(circle at 70% 90%, rgba(201, 90, 54, 0.08) 0%, transparent 50%);
+        }
+
+        body > * { position: relative; z-index: 1; }
+
+        a { color: inherit; }
+
+        ::selection {
+            background: var(--terracotta);
+            color: #fff;
+        }
+
+        /* ========================================
+           TOPBAR / PROMO
+           ======================================== */
+        .topbar {
+            background: var(--ink);
+            color: var(--paper);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.6rem 1rem;
+            text-align: center;
+        }
+        .topbar strong {
+            color: var(--sun);
+            font-weight: 700;
+        }
+        .topbar .code {
+            display: inline-block;
+            border: 1px dashed var(--sun);
+            border-radius: 4px;
+            padding: 0.05rem 0.45rem;
+            margin: 0 0.25rem;
+            color: var(--sun);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+        }
+        .topbar .dot {
+            display: inline-block;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--sun);
+            margin: 0 0.7rem;
+            vertical-align: middle;
+        }
+
+        /* ========================================
+           HEADER / NAV
+           ======================================== */
+        .site-header {
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        .site-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            gap: 1rem;
+        }
+        .brand {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 36;
+            font-size: 1.45rem;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .brand-mark {
+            width: 36px; height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brand-mark svg { width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
+        .brand:hover .brand-mark svg { transform: rotate(15deg); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            cursor: pointer;
+            transition: color .2s, border-color .2s;
+        }
+        .nav-links a:hover { color: var(--terracotta-deep); border-color: var(--terracotta-deep); }
+        .nav-links a.cta {
+            color: var(--terracotta-deep);
+            font-weight: 700;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 1.5px solid var(--ink);
+            border-radius: 999px;
+            width: 42px; height: 42px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+        }
+        .nav-toggle span,
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 1.8px;
+            background: var(--ink);
+            border-radius: 2px;
+            position: relative;
+        }
+        .nav-toggle span::before { position: absolute; top: -5px; left: 0; }
+        .nav-toggle span::after  { position: absolute; top:  5px; left: 0; }
+
+        /* ========================================
+           HERO
+           ======================================== */
+        .hero-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text { position: relative; padding-top: 1rem; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta-deep);
+            margin-bottom: 2rem;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: "";
+            width: 22px;
+            height: 1px;
+            background: var(--terracotta-deep);
+        }
+        .eyebrow::after { width: 8px; }
+
+        .hero-title {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 30, "opsz" 144;
+            font-size: clamp(3rem, 6.5vw, 5.75rem);
+            line-height: 0.95;
+            letter-spacing: -0.035em;
+            color: var(--ink);
+            margin: 0 0 1.75rem;
+        }
+        .hero-title .ital {
+            font-style: italic;
+            font-variation-settings: "SOFT" 100, "opsz" 144;
+            color: var(--terracotta-deep);
+            position: relative;
+            display: inline-block;
+        }
+        .hero-title .ital::after {
+            content: "";
+            position: absolute;
+            left: -2%;
+            right: -2%;
+            bottom: -0.05em;
+            height: 0.18em;
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 Q 30 2, 60 6 T 120 5 T 198 7' fill='none' stroke='%23C95A36' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+            opacity: 0.85;
+        }
+
+        .hero-lead {
+            font-size: 1.18rem;
+            line-height: 1.55;
+            color: var(--ink-soft);
+            max-width: 42ch;
+            margin: 0 0 2.25rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-bottom: 2.25rem;
+        }
+        .btn-primary-ink,
+        .btn-outline-ink {
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.98rem;
+            letter-spacing: 0.01em;
+            padding: 1rem 1.5rem;
+            border-radius: 999px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: transform .15s, background .2s, color .2s, box-shadow .2s, border-color .2s;
+            border: 1.5px solid transparent;
+        }
+        .btn-primary-ink {
+            background: var(--ink);
+            color: var(--paper);
+            box-shadow: 0 8px 20px rgba(43, 32, 18, 0.20);
+        }
+        .btn-primary-ink:hover {
+            background: var(--terracotta-deep);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(157, 67, 33, 0.30);
+        }
+        .btn-outline-ink {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+        .btn-outline-ink:hover {
+            background: var(--ink);
+            color: var(--paper);
+            transform: translateY(-2px);
+        }
+        .btn-primary-ink .arrow,
+        .btn-outline-ink .arrow { display: inline-block; transition: transform 0.2s; }
+        .btn-primary-ink:hover .arrow,
+        .btn-outline-ink:hover .arrow { transform: translateX(4px); }
+
+        .hero-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+        .hero-strip-item { display: flex; flex-direction: column; gap: 0.15rem; }
+        .hero-strip-item .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-fade);
+        }
+        .hero-strip-item .value {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 40, "opsz" 24;
+            font-size: 1.15rem;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        /* Hero illustration card */
+        .hero-art {
+            position: relative;
+            background: var(--card);
+            border-radius: var(--r-lg);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: var(--shadow-3);
+            overflow: hidden;
+            transform: rotate(0.4deg);
+        }
+        .hero-art-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Sun decor */
+        .sun-decor {
+            position: absolute;
+            top: -1.5rem;
+            right: -4%;
+            width: 130px;
+            height: 130px;
+            opacity: 0.9;
+            z-index: -1;
+            animation: rotateSun 60s linear infinite;
+        }
+        @keyframes rotateSun { to { transform: rotate(360deg); } }
+
+        /* ========================================
+           SECTION SHELL
+           ======================================== */
+        .section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-label {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .section-label h2 {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 40, "opsz" 80;
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            letter-spacing: -0.025em;
+            margin: 0;
+            color: var(--ink);
+        }
+        .section-label h2 em {
+            font-style: italic;
+            font-variation-settings: "SOFT" 100, "opsz" 80;
+            color: var(--terracotta-deep);
+        }
+        .section-label .num {
+            font-family: var(--display);
+            font-style: italic;
+            font-variation-settings: "SOFT" 80, "opsz" 24;
+            font-size: 0.9rem;
+            color: var(--ink-fade);
+            letter-spacing: 0.04em;
+        }
+        .section-intro {
+            font-size: 1.08rem;
+            color: var(--ink-soft);
+            max-width: 60ch;
+            margin: 0 0 2.5rem;
+        }
+
+        /* ========================================
+           ABOUT
+           ======================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-grid p {
+            font-size: 1.02rem;
+            color: var(--ink-2);
+            line-height: 1.7;
+            margin: 0 0 1.1rem;
+        }
+        .about-pull {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 50, "opsz" 72;
+            font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            padding-left: 1.25rem;
+            border-left: 3px solid var(--terracotta);
+        }
+        .about-pull em {
+            font-style: italic;
+            color: var(--terracotta-deep);
+            font-variation-settings: "SOFT" 100, "opsz" 72;
+        }
+
+        /* ========================================
+           PRICING CARDS
+           ======================================== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .price-card {
+            background: var(--card);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--r-md);
+            padding: 2rem 1.75rem;
+            box-shadow: var(--shadow-1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        .price-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2);
+            border-color: var(--line);
+        }
+        .price-card.featured {
+            background: linear-gradient(180deg, #FFFCF5 0%, #FBF1DB 100%);
+            border-color: var(--terracotta-soft);
+        }
+        .price-kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--terracotta-deep);
+            margin-bottom: 0.6rem;
+        }
+        .price-card h3 {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 40, "opsz" 36;
+            font-size: 1.45rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem;
+            color: var(--ink);
+        }
+        .price-line {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 50, "opsz" 80;
+            font-size: 2.6rem;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+        .price-line .unit {
+            font-family: var(--body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            letter-spacing: 0;
+        }
+        .price-line .strike {
+            font-family: var(--body);
+            font-size: 1rem;
+            color: var(--ink-fade);
+            text-decoration: line-through;
+            margin-left: 0.3rem;
+            font-weight: 400;
+        }
+        .price-line .save {
+            font-family: var(--body);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta-deep);
+        }
+        .price-deal-tag {
+            display: inline-block;
+            background: var(--terracotta);
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.3rem 0.65rem;
+            border-radius: 999px;
+            margin-bottom: 0.9rem;
+        }
+        .price-body {
+            color: var(--ink-2);
+            font-size: 0.96rem;
+            line-height: 1.55;
+            margin: 0.9rem 0 1.5rem;
+        }
+        .price-cta-row {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .btn-card,
+        .btn-card-outline {
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.94rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 999px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform .15s, background .2s, color .2s, border-color .2s, box-shadow .2s;
+            border: 1.5px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-card {
+            background: var(--ink);
+            color: var(--paper);
+        }
+        .btn-card:hover {
+            background: var(--terracotta-deep);
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(157, 67, 33, 0.25);
+        }
+        .btn-card-outline {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--line);
+        }
+        .btn-card-outline:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        /* ========================================
+           COMPARE TABLE
+           ======================================== */
+        .compare-wrap {
+            background: var(--card);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--r-md);
+            padding: 0.5rem;
+            box-shadow: var(--shadow-1);
+            overflow: hidden;
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+        }
+        .compare-table thead th {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 40, "opsz" 28;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            padding: 1.25rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+        .compare-table thead th:first-child {
+            text-align: left;
+            color: var(--ink-fade);
+            font-family: var(--body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+        .compare-table tbody th {
+            text-align: left;
+            font-weight: 500;
+            color: var(--ink-2);
+            padding: 1rem;
+            font-size: 0.97rem;
+        }
+        .compare-table tbody td {
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.05rem;
+        }
+        .compare-table tbody tr + tr th,
+        .compare-table tbody tr + tr td {
+            border-top: 1px solid var(--line-soft);
+        }
+        .check {
+            display: inline-flex;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--sage-soft);
+            color: var(--sage-deep);
+            align-items: center;
+            justify-content: center;
+        }
+        .dash {
+            display: inline-block;
+            width: 14px;
+            height: 2px;
+            border-radius: 2px;
+            background: var(--ink-fade);
+            vertical-align: middle;
+        }
+
+        /* ========================================
+           SCHEDULE / TABS
+           ======================================== */
+        .schedule-card {
+            background: var(--card);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--r-md);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-1);
+        }
+        .tab-bar {
+            display: inline-flex;
+            background: var(--paper-deep);
+            border-radius: 999px;
+            padding: 4px;
+            margin-bottom: 1.5rem;
+            gap: 4px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: 0;
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background .2s, color .2s, box-shadow .2s;
+        }
+        .tab-btn.active {
+            background: var(--ink);
+            color: var(--paper);
+            box-shadow: 0 4px 12px rgba(43, 32, 18, 0.20);
+        }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; animation: rise 0.4s ease both; }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.97rem;
+        }
+        .schedule-table thead th {
+            text-align: left;
+            font-family: var(--body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--ink-fade);
+            padding: 0.5rem 1rem 0.85rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .schedule-table tbody th {
+            text-align: left;
+            font-weight: 600;
+            color: var(--ink);
+            padding: 0.9rem 1rem;
+            width: 30%;
+        }
+        .schedule-table tbody td {
+            padding: 0.9rem 1rem;
+            color: var(--ink-2);
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 24;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+            font-variant-numeric: tabular-nums;
+        }
+        .schedule-table tbody td.empty {
+            color: var(--ink-fade);
+            font-family: var(--body);
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+        .schedule-table tbody td .kind {
+            display: block;
+            font-family: var(--body);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--terracotta-deep);
+            margin-top: 0.15rem;
+        }
+        .schedule-table tbody tr + tr th,
+        .schedule-table tbody tr + tr td {
+            border-top: 1px solid var(--line-soft);
+        }
+        .schedule-caption {
+            font-size: 0.78rem;
+            color: var(--ink-fade);
+            margin-top: 0.85rem;
+            font-style: italic;
+        }
+
+        /* ========================================
+           FREE-CLASS CALLOUT
+           ======================================== */
+        .free-callout {
+            position: relative;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--ink);
+            color: var(--paper);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+        }
+        .free-callout::before {
+            content: "";
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(232, 154, 60, 0.35) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .free-callout::after {
+            content: "";
+            position: absolute;
+            bottom: -120px; left: -100px;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(201, 90, 54, 0.30) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .free-callout > * { position: relative; z-index: 1; }
+        .free-callout .eyebrow-dark {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--sun);
+            margin-bottom: 1rem;
+        }
+        .free-callout .callout-title {
+            font-family: var(--display);
+            font-weight: 400;
+            font-variation-settings: "SOFT" 50, "opsz" 144;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin: 0 0 0.75rem;
+        }
+        .free-callout .callout-title .ital {
+            font-style: italic;
+            font-variation-settings: "SOFT" 100, "opsz" 144;
+            color: var(--sun);
+        }
+        .free-callout .callout-sub {
+            font-size: 1rem;
+            color: rgba(242, 233, 213, 0.78);
+            max-width: 44ch;
+            margin: 0 auto 1.6rem;
+        }
+        .btn-callout {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--paper);
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0.95rem 1.6rem;
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: transform .15s, background .2s, color .2s;
+        }
+        .btn-callout:hover {
+            background: var(--sun);
+            color: var(--ink);
+            transform: translateY(-2px);
+        }
+        .btn-callout .arrow { transition: transform 0.2s; }
+        .btn-callout:hover .arrow { transform: translateX(4px); }
+
+        /* ========================================
+           MODAL OVERRIDES (Bootstrap)
+           ======================================== */
+        .modal-content {
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            background: var(--card);
+            box-shadow: var(--shadow-3);
+        }
+        .modal-header {
+            border-bottom: 1px solid var(--line-soft);
+            padding: 1.25rem 1.5rem;
+        }
+        .modal-title {
+            font-family: var(--display);
+            font-weight: 500;
+            font-variation-settings: "SOFT" 50, "opsz" 28;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+        }
+        .modal-body { padding: 1.25rem 1.5rem; font-family: var(--body); }
+        .modal-footer { border-top: 1px solid var(--line-soft); }
+
+        /* Contact form fields (modal) */
+        .field {
+            position: relative;
+            margin-bottom: 0.95rem;
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1.5px solid var(--line);
+            background: #FFFEFA;
+            color: var(--ink);
+            font-family: var(--body);
+            font-size: 0.98rem;
+            border-radius: var(--r-sm);
+            padding: 1.5rem 1rem 0.5rem;
+            min-height: 60px;
+            transition: border-color .15s, box-shadow .15s, background .15s;
+            appearance: none;
+            -webkit-appearance: none;
+            resize: vertical;
+        }
+        .field textarea { min-height: 120px; padding-top: 1.6rem; }
+        .field input::placeholder,
+        .field textarea::placeholder { color: transparent; }
+        .field label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--ink-soft);
+            font-size: 0.97rem;
+            font-weight: 500;
+            pointer-events: none;
+            transition: all .15s ease;
+        }
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+            background: #fff;
+        }
+        .field input:focus + label,
+        .field input:not(:placeholder-shown) + label,
+        .field textarea:focus + label,
+        .field textarea:not(:placeholder-shown) + label {
+            top: 0.42rem;
+            font-size: 0.7rem;
+            color: var(--terracotta-deep);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .invalid-msg {
+            font-size: 0.8rem;
+            color: var(--terracotta-deep);
+            margin: 0.3rem 0 0 0.3rem;
+            display: none;
+        }
+        .was-validated .field input:invalid,
+        .was-validated .field textarea:invalid {
+            border-color: var(--terracotta);
+        }
+        .was-validated .field input:invalid ~ .invalid-msg,
+        .was-validated .field textarea:invalid ~ .invalid-msg {
+            display: block;
+        }
+
+        .btn-pill-ink {
+            background: var(--ink);
+            color: var(--paper);
+            border: 0;
+            border-radius: 999px;
+            padding: 0.7rem 1.3rem;
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.94rem;
+            cursor: pointer;
+            transition: background .2s, color .2s, transform .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-pill-ink:hover {
+            background: var(--terracotta-deep);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .btn-pill-outline {
+            background: transparent;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0.6rem 1.3rem;
+            font-family: var(--body);
+            font-weight: 600;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .btn-pill-outline:hover { background: var(--ink); color: var(--paper); }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .site-footer {
+            border-top: 1px solid var(--line);
+            padding: 2.5rem 0;
+            margin-top: 2rem;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color .2s;
+        }
+        .footer-links a:hover { color: var(--terracotta-deep); }
+        .footer-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-style: italic;
+            font-family: var(--display);
+            font-variation-settings: "SOFT" 80, "opsz" 24;
+        }
+        .footer-mark svg { width: 16px; height: 16px; }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes riseRotate {
+            from { opacity: 0; transform: translateY(20px) rotate(2deg); }
+            to   { opacity: 1; transform: translateY(0) rotate(0.4deg); }
+        }
+        .anim { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
+        .anim-1 { animation-delay: 0.05s; }
+        .anim-2 { animation-delay: 0.18s; }
+        .anim-3 { animation-delay: 0.30s; }
+        .anim-4 { animation-delay: 0.42s; }
+        .anim-5 { animation-delay: 0.55s; }
+        .anim-art { animation: riseRotate 0.9s 0.25s cubic-bezier(.2,.7,.2,1) both; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .anim, .anim-art { animation: none !important; }
+            .sun-decor { animation: none !important; }
+            .hero-art { transform: rotate(0); }
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 992px) {
+            .hero-wrap { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-art { max-width: 480px; margin: 0 auto; transform: rotate(0); }
+            .sun-decor { right: 0; top: -2rem; width: 100px; height: 100px; }
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-grid .price-card:first-child { grid-column: 1 / -1; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 720px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links.open {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 1rem;
+                right: 1rem;
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: var(--r-md);
+                padding: 1rem 1.25rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.85rem;
+                box-shadow: var(--shadow-2);
+                z-index: 10;
+            }
+        }
+        @media (max-width: 640px) {
+            .site-header-inner { padding: 0 1.25rem; }
+            .hero-wrap { padding: 1rem 1.25rem 3rem; }
+            .section { padding: 3rem 1.25rem; }
+            .footer-inner { padding: 0 1.25rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-grid .price-card:first-child { grid-column: auto; }
+            .topbar { font-size: 0.7rem; padding: 0.55rem 1rem; }
+            .topbar .dot { margin: 0 0.4rem; }
+            .compare-table thead th,
+            .compare-table tbody th,
+            .compare-table tbody td { padding: 0.7rem 0.5rem; font-size: 0.9rem; }
+            .schedule-table tbody td { font-size: 0.95rem; }
+            .hero-strip { gap: 1rem 2rem; }
+        }
+    </style>
+
     <!-- Mixpanel -->
     <script type="text/javascript">
-    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
-    for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
-    MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+        (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+            for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+            MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
 
-    // Enabling the debug mode flag is useful during implementation,
-    // but it's recommended you remove it for production
-    mixpanel.init('34b0b2e5a4bf295cff378e99aa7f115f', {debug: false});
-    mixpanel.track('Homepage');
+        mixpanel.init('34b0b2e5a4bf295cff378e99aa7f115f', {debug: false});
+        mixpanel.track('Homepage');
     </script>
 </head>
-
 <body>
-<main>
 
-    <div class="alert alert-info" role="alert">
-        <div class="container">
-            🚨 Use code FRIENDS20 for <strong>20%</strong> off your monthly membership. Act now! ⏰💰
-        </div>
-    </div>
+<!-- Top promo bar -->
+<div class="topbar">
+    <span>Use code <span class="code">FRIENDS20</span> for <strong>20% off</strong> your monthly membership</span>
+    <span class="dot"></span>
+    <span>Limited time</span>
+</div>
 
-    <!-- Alert -->
-    <!-- <div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
-      <div class="container d-flex gap-2">
-        <i class="bi bi-info-circle"></i>
-        <div>The next 12-week session starts soon. Don't miss out, <a href="#pricing" class="alert-link">sign up now!</a></div>
-      </div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> -->
-
-    <!--Navbar-->
-    <header>
-        <nav class="navbar mb-5 navbar-expand-lg">
-            <div class="container mx-auto">
-                <a class="navbar-brand" aria-current="page" href="#"><i class="bi bi-heart me-1"></i> Aloha Fitness</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="https://www.alohafitness.net/free.html">Free Class</a>
-                        <a class="nav-link" href="#pricing">Pricing</a>
-                        <a class="nav-link" href="#schedule">Schedule</a>
-                        <a class="nav-link pointer" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
-                    </div>
-                </div>
-            </div>
+<!-- Header -->
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" href="#">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="18" cy="18" r="18" fill="#C95A36"/>
+                    <path d="M18 26 C 9 19.5, 9 13, 13.5 12 C 16 11.5, 17.5 13, 18 14.5 C 18.5 13, 20 11.5, 22.5 12 C 27 13, 27 19.5, 18 26 Z" fill="#FFFCF5"/>
+                </svg>
+            </span>
+            Aloha Fitness
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+            <a href="https://www.alohafitness.net/free.html" class="cta">Free Class</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#schedule">Schedule</a>
+            <a data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <!-- Hero -->
-    <div class="container ">
-        <div class="d-flex flex-row flex-wrap justify-space-between align-items-start">
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 pe-4">
-                <h1 class="display-4 fw-bold">Be healthy, be happy.</h1>
-                <p class="lead">Welcome to Aloha Fitness ! As a fitness community and nutrition program, we’re here to support moms. Our unique approach combines in-person and online elements, ensuring that you receive the best of both worlds. Whether you prefer sweating it out in a physical space or participating virtually, we’ve got you covered. Let’s kick off on this health journey together! 🌟💪🏋️‍♀️🍎</p>
-                <a class="btn btn-info btn-lg" href="https://www.alohafitness.net/free.html" type="button">Start your FREE Class</a>
+<!-- Hero -->
+<section class="hero-wrap">
+    <div class="hero-text">
+        <svg class="sun-decor" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#E89A3C" stroke-width="2.5" stroke-linecap="round">
+                <line x1="100" y1="10"  x2="100" y2="40"/>
+                <line x1="100" y1="160" x2="100" y2="190"/>
+                <line x1="10"  y1="100" x2="40"  y2="100"/>
+                <line x1="160" y1="100" x2="190" y2="100"/>
+                <line x1="36"  y1="36"  x2="58"  y2="58"/>
+                <line x1="142" y1="142" x2="164" y2="164"/>
+                <line x1="36"  y1="164" x2="58"  y2="142"/>
+                <line x1="142" y1="58"  x2="164" y2="36"/>
+            </g>
+            <circle cx="100" cy="100" r="42" fill="#E89A3C" opacity="0.18"/>
+            <circle cx="100" cy="100" r="32" fill="#E89A3C"/>
+        </svg>
+
+        <div class="eyebrow anim anim-1">Outdoor strength · Rocklin, CA</div>
+
+        <h1 class="hero-title anim anim-2">
+            Be healthy,<br>
+            be <span class="ital">happy.</span>
+        </h1>
+
+        <p class="hero-lead anim anim-3">
+            A fitness community and nutrition program built for moms — outdoor classes,
+            online coaching, and the kind of accountability that actually sticks.
+        </p>
+
+        <div class="hero-ctas anim anim-4">
+            <a class="btn-primary-ink" href="https://www.alohafitness.net/free.html">
+                Start with a free class
+                <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn-outline-ink" href="#pricing">
+                See pricing
+            </a>
+        </div>
+
+        <div class="hero-strip anim anim-5">
+            <div class="hero-strip-item">
+                <span class="label">Where</span>
+                <span class="value">Willard Park</span>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                <img class="img-fluid" src="/img/indexHero.svg">
+            <div class="hero-strip-item">
+                <span class="label">Best for</span>
+                <span class="value">Every level</span>
+            </div>
+            <div class="hero-strip-item">
+                <span class="label">Format</span>
+                <span class="value">In-person + online</span>
+            </div>
+            <div class="hero-strip-item">
+                <span class="label">First class</span>
+                <span class="value">Free</span>
             </div>
         </div>
     </div>
 
-    <!-- About -->
-    <div class="container py-5">
-        <div class="mb-4">
-            <p>At Aloha Fitness we believe that health is wealth! We are dedicated to helping moms achieve their fitness
-                and nutrition goals through science-backed recommendations and personalized support. Our company is
-                founded on the belief that a healthy body and mind are the foundations for a fulfilling life. We
-                understand that every individual is unique, which is why we offer customized nutrition guidance combine
-                with online fitness to meet the specific needs and goals of each mom.</p>
-            <p>Whether you're looking to lose weight, build muscle, or simply improve your overall health and
-                well-being, we are here to help you achieve your goals and create a sustainable, healthy lifestyle.</p>
-        </div>
-
-        <!-- Pricing -->
-        <h2 id="pricing">What do we offer?</h2>
-        <p>We offer the best of both worlds by combining in-person park exercises with yoga and strength training. Our online coaching, provided by Aloha Fitness, offers the convenience of personalized training and nutritional guidance, all without requiring a physical trainer or gym membership. Meanwhile, our online workout program offers a diverse range of live exercises and routines. Let’s kick off your fitness journey and explore the world of online fitness together! 🌿🏋️‍♀️🌟</p>
-
-        <!-- Cards -->
-        <div class="go-cards">
-            <!-- Card -->
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 fw-normal">Online Coaching️</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">12<small class="text-body-secondary fs-4 fw-light"> weeks coaching</small></h1>
-                    <p>Join our online coaching with personalized training and nutritional guidance.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                           data-bs-target="#contactModal">Contact for information</a>
-                        <a type="button" class="btn btn-info" target="_self" href="https://square.link/u/Gg8ToJIS" rel="noopener">Get started</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 fw-normal">In Person Workouts</h4>
-                </div>
-                <div class="card-body">
-                    <span class="badge text-bg-danger">Limited time deal</span>
-                    <h1 class="card-title pricing-card-title mb-0"><span class="text-danger fw-light me-2">-20%</span>$79<small class="text-body-secondary fs-4 fw-light">/month</small>
-                    </h1>
-                    <p class="text-body-secondary fs-6 fw-light mb-2">Regular Price: <s>$99</s></p>
-                    <p>Join our outdoor yoga and strength training classes designed for moms of all fitness levels.</p>
-                    <a type="button" class="w-100 btn btn-info" target="_self" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII" rel="noopener">Get started</a>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 fw-normal">Drop-In Class</h4>
-                </div>
-                <div class="card-body">
-                    <span class="badge text-bg-danger">Limited time deal</span>
-                    <h1 class="card-title pricing-card-title"><span class="text-danger fw-light me-2">-50%</span>$10</h1>
-                    <p class="text-body-secondary fs-6 fw-light mb-2">Regular Price: <s>$20</s></p>
-                    <p>Drop-in to a single in-person class offered at Rocklin Parks.</p>
-                    <a type="button" class="w-100 btn btn-info" target="_self" href="https://buy.stripe.com/bIYcQQ892gUM8Fy4gh" rel="noopener">Sign Up</a>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <!-- Cards -->
-<!--        <div class="d-flex gap-3 flex-row justify-content-center flex-wrap">-->
-<!--            &lt;!&ndash; Card &ndash;&gt;-->
-<!--            <div class="">-->
-<!--                <div class="card mb-4 rounded-3 shadow-sm">-->
-<!--                    <div class="card-header">-->
-<!--                        <h4 class="my-0 fw-normal">Online Coaching</h4>-->
-<!--                    </div>-->
-<!--                    <div class="card-body">-->
-<!--                        <h1 class="card-title pricing-card-title">12<small class="text-body-tertiary fs-4 fw-light">-->
-<!--                            weeks coaching</small></h1>-->
-<!--&lt;!&ndash;                        <ul class="list-unstyled cardList mt-3 mb-4">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <li>Live outdoor classes</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <li>1:1 nutrition support</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <li>Personalized meal plan</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <li>Recipes</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <li>Accountability and community support</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
-<!--                        <div class="d-flex flex-wrap gap-2">-->
-<!--                            <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"-->
-<!--                               data-bs-target="#contactModal">Contact for information</a>-->
-<!--                            <a type="button" class="btn btn-info" target="_self" href="https://square.link/u/Gg8ToJIS"-->
-<!--                               rel="noopener">Get started</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Card &ndash;&gt;-->
-<!--            <div class="">-->
-<!--                <div class="card mb-4 rounded-3 shadow-sm">-->
-<!--                    <div class="card-header">-->
-<!--                        <h4 class="my-0 fw-normal">Workouts</h4>-->
-<!--                    </div>-->
-<!--                    <div class="card-body">-->
-<!--                        <h1 class="card-title pricing-card-title">$99<small class="text-body-tertiary fs-4 fw-light">/month</small>-->
-<!--                        </h1>-->
-<!--                        <ul class="list-unstyled cardList mt-3 mb-4">-->
-<!--                            <li>In-person outdoor classes</li>-->
-<!--                        </ul>-->
-<!--                        <a type="button" class="w-100 btn btn-info" target="_self" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII"-->
-<!--                           rel="noopener">Get started</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!-- Compare Table -->
-        <table class="table caption-top text-center table-responsive mx-auto">
-            <!--      <caption>Compare Programs</caption>-->
-            <thead>
-            <tr>
-                <th></th>
-                <th>Online Coaching</th>
-                <th>Outdoor Workouts</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row" class="text-start">Live online classes</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-check2"></i></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">1:1 nutrition support</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-x-circle text-body-tertiary"></i></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Personalized meal plan</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-x-circle text-body-tertiary"></i></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Recipes</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-check2"></i></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Accountability</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-check2"></i></td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Community Support</th>
-                <td><i class="bi bi-check2"></i></td>
-                <td><i class="bi bi-check2"></i></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <!-- Schedule -->
-        <h3 class="" id="schedule">Class Schedule</h3>
-        <p class="">We offer a morning and after work class schedule. Our morning class is a great way to kickstart your morning and set a positive tone for the rest of your day. Our virtual after work classes are the perfect opportunity to unwind, de-stress, and reconnect with your body.</p>
-
-
-
-
-
-
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Online</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">In Person</button>
-            </li>
-        </ul>
-        <div class="tab-content pt-3" id="myTabContent">
-            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <!-- Schedule Table -->
-                <table class="table mx-auto table-striped">
-                    <caption class="small">Class times are pacific time (PT)</caption>
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Morning</th>
-                        <th scope="col">Afternoon</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Monday</th>
-                        <td>-</td>
-                        <td>6:00 pm</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Tuesday</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Wednesday</th>
-                        <td>-</td>
-                        <td>6:00 pm</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Thursday</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Friday</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Saturday</th>
-                        <td>8:30 am</td>
-                        <td>-</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">        <!-- Schedule Table -->
-                <table class="table mx-auto table-striped">
-                    <caption class="small">Class times are pacific time (PT)</caption>
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Morning</th>
-                        <th scope="col">Afternoon</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Monday</th>
-                        <td>9:00 AM<br>
-                            Strength training</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Tuesday</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Wednesday</th>
-                        <td>9:00 AM<br>
-                            Strength training</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Thursday</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Friday</th>
-                        <td>9:00 AM<br>
-                        Yoga</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Saturday</th>
-                        <td>Coming soon!</td>
-                        <td>-</td>
-                    </tr>
-                    </tbody>
-                </table></div>
-        </div>
-
-
-        <!-- Contact Modal -->
-        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title me-2" id="contactModalLabel">Contact us</h5><i
-                            class="bi bi-envelope-paper-heart"></i>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form name="contact" class="contact needs-validation" method="POST" netlify-honeypot="bot-field"
-                          data-netlify="true" novalidate>
-                        <div class="modal-body">
-                            <p class="visually-hidden">
-                                <label>
-                                    Don’t fill this out if you’re human: <input name="bot-field"/>
-                                </label>
-                            </p>
-                            <div class="form-floating mb-3">
-                                <input type="text" name="firstName" class="form-control" required spellcheck="true"
-                                       id="firstName" placeholder="First Name" autocomplete="given-name">
-                                <label for="firstName">First Name</label>
-                                <div class="invalid-feedback">
-                                    Please enter your first name.
-                                </div>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="text" name="lastName" class="form-control" required spellcheck="true"
-                                       id="lastName" placeholder="Last Name" autocomplete="family-name">
-                                <label for="lastName">Last Name</label>
-                                <div class="invalid-feedback">
-                                    Please enter your last name.
-                                </div>
-                            </div>
-
-                            <div class="form-floating mb-4">
-                                <input type="email" name="email" class="form-control" required spellcheck="true"
-                                       id="email" placeholder="name@example.com" autocomplete="email">
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback">
-                                    Please enter your email.
-                                </div>
-                            </div>
-
-                            <div class="form-floating">
-                                <textarea name="message" class="form-control contactTextarea"
-                                          placeholder="Leave a comment here" id="message" required></textarea>
-                                <label for="message">How can we help you?</label>
-                                <div class="invalid-feedback">
-                                    Please enter a message.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel
-                            </button>
-                            <button type="submit" class="btn btn-info"><i class="bi bi-send me-2"></i>Send</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="container">
-            <footer class="d-flex flex-wrap justify-content-around align-items-center pt-3 mt-4 text-muted border-top small">
-                <p class="mb-0">© <span class="date" id="date"></span> Aloha Fitness</p>
-                <i class="bi bi-balloon-heart"></i>
-                <!--           <ul>-->
-                <!--                <li><a href="#" class="nav-link px-2 text-muted">Home</a></li>-->
-                <!--                <li><a href="#pricing" class="nav-link px-2 text-muted">Pricing</a></li>-->
-                <!--                <li><a href="#schedule" class="nav-link px-2 text-muted">Schedule</a></li>-->
-                <!--                <li><a class="nav-link px-2 text-muted" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>-->
-                <!--            </ul>-->
-
-                <!--            <ul class="nav">-->
-                <!--                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>-->
-                <!--                <li class="nav-item"><a href="#pricing" class="nav-link px-2 text-muted">Pricing</a></li>-->
-                <!--                <li class="nav-item"><a href="#schedule" class="nav-link px-2 text-muted">Schedule</a></li>-->
-                <!--                <li class="nav-item pointer"><a class="nav-link px-2 text-muted" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>-->
-                <!--            </ul>-->
-                <ul class="list-group border border-0 list-group-horizontal">
-                    <a href="#" class="list-group-item border border-0 list-group-item-action text-muted">Home</a>
-                    <a href="#pricing" class="list-group-item border border-0 list-group-item-action text-muted">Pricing</a>
-                    <a href="#schedule" class="list-group-item border border-0 list-group-item-action text-muted">Schedule</a>
-                    <a data-bs-toggle="modal" data-bs-target="#contactModal" class="list-group-item border border-0 list-group-item-action text-muted">Contact</a>
-                    <a href="https://www.alohafitness.net/privacy-policy.html" class="list-group-item border border-0 list-group-item-action text-muted">Privacy Policy</a>
-                </ul>
-            </footer>
-        </div>
-
-        <!-- End Page Container -->
+    <div class="hero-art anim-art">
+        <img class="hero-art-img" src="/img/indexHero.jpg" alt="Aloha Fitness outdoor class at Willard Park">
     </div>
-</main>
+</section>
 
-<!--JavaScript for disabling form submissions if there are invalid fields-->
+<!-- About -->
+<section class="section" id="about">
+    <div class="section-label">
+        <h2>What we <em>believe</em></h2>
+        <span class="num">01 / 04</span>
+    </div>
+    <div class="about-grid">
+        <div>
+            <p>
+                At Aloha Fitness we believe health is wealth. We're dedicated to helping moms
+                reach their fitness and nutrition goals through science-backed recommendations
+                and personalized support — because every body, schedule, and season of motherhood
+                is different.
+            </p>
+            <p>
+                Whether you're looking to lose weight, build strength, or simply feel better in
+                your skin again, we'll meet you where you are and build a routine that actually
+                fits the rest of your life.
+            </p>
+        </div>
+        <div>
+            <p class="about-pull">
+                A real workout for real life — designed by a mom, for <em>moms</em>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+    <div class="section-label">
+        <h2>What we <em>offer</em></h2>
+        <span class="num">02 / 04</span>
+    </div>
+    <p class="section-intro">
+        In-person outdoor classes, online coaching, or a single drop-in — pick the shape
+        that fits this season. You can always start small and grow into more.
+    </p>
+
+    <div class="pricing-grid">
+        <!-- Online Coaching -->
+        <article class="price-card">
+            <span class="price-kicker">Online coaching</span>
+            <h3>12-week coaching program</h3>
+            <div class="price-line">
+                12<span class="unit">weeks</span>
+            </div>
+            <p class="price-body">
+                Personalized training and nutritional guidance — no gym, no trainer required.
+                Built around your goals, schedule, and pantry.
+            </p>
+            <div class="price-cta-row">
+                <a class="btn-card" href="https://square.link/u/Gg8ToJIS" target="_self" rel="noopener">
+                    Get started <span class="arrow">→</span>
+                </a>
+                <a class="btn-card-outline" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    Contact for info
+                </a>
+            </div>
+        </article>
+
+        <!-- In-Person -->
+        <article class="price-card featured">
+            <span class="price-deal-tag">Limited time · 20% off</span>
+            <span class="price-kicker">In-person workouts</span>
+            <h3>Outdoor monthly membership</h3>
+            <div class="price-line">
+                $79<span class="unit">/ month</span>
+                <span class="strike">$99</span>
+            </div>
+            <p class="price-body">
+                Outdoor yoga and strength training classes designed for moms of all fitness levels.
+                Bring a mat — we'll handle the rest.
+            </p>
+            <div class="price-cta-row">
+                <a class="btn-card" href="https://buy.stripe.com/dR67ww2OIfQIbRKbII" target="_self" rel="noopener">
+                    Join the membership <span class="arrow">→</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Drop-In -->
+        <article class="price-card">
+            <span class="price-deal-tag">Limited time · 50% off</span>
+            <span class="price-kicker">Drop-in</span>
+            <h3>Single outdoor class</h3>
+            <div class="price-line">
+                $10
+                <span class="strike">$20</span>
+            </div>
+            <p class="price-body">
+                Drop in to a single in-person class at Rocklin Parks. Perfect if you want to
+                try one more time before committing.
+            </p>
+            <div class="price-cta-row">
+                <a class="btn-card" href="https://buy.stripe.com/bIYcQQ892gUM8Fy4gh" target="_self" rel="noopener">
+                    Sign up <span class="arrow">→</span>
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Compare -->
+    <div style="margin-top: 3rem;">
+        <div class="compare-wrap">
+            <table class="compare-table">
+                <thead>
+                <tr>
+                    <th>What's included</th>
+                    <th>Online Coaching</th>
+                    <th>Outdoor Workouts</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Live online classes</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">1:1 nutrition support</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="dash"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Personalized meal plan</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="dash"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Recipes</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Accountability</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Community support</th>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                    <td><span class="check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Schedule -->
+<section class="section" id="schedule">
+    <div class="section-label">
+        <h2>Class <em>schedule</em></h2>
+        <span class="num">03 / 04</span>
+    </div>
+    <p class="section-intro">
+        A morning class to kickstart your day, or an evening online session to unwind.
+        Pick whichever fits — and skip the ones that don't.
+    </p>
+
+    <div class="schedule-card">
+        <div class="tab-bar" role="tablist">
+            <button class="tab-btn active" data-tab="online" role="tab" aria-selected="true">Online</button>
+            <button class="tab-btn" data-tab="inperson" role="tab" aria-selected="false">In Person</button>
+        </div>
+
+        <div class="tab-pane active" id="tab-online" role="tabpanel">
+            <table class="schedule-table">
+                <thead>
+                <tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr>
+                </thead>
+                <tbody>
+                <tr><th scope="row">Monday</th><td class="empty">—</td><td>6:00 PM</td></tr>
+                <tr><th scope="row">Tuesday</th><td class="empty">—</td><td class="empty">—</td></tr>
+                <tr><th scope="row">Wednesday</th><td class="empty">—</td><td>6:00 PM</td></tr>
+                <tr><th scope="row">Thursday</th><td class="empty">—</td><td class="empty">—</td></tr>
+                <tr><th scope="row">Friday</th><td class="empty">—</td><td class="empty">—</td></tr>
+                <tr><th scope="row">Saturday</th><td>8:30 AM</td><td class="empty">—</td></tr>
+                </tbody>
+            </table>
+            <p class="schedule-caption">All times listed in Pacific Time (PT).</p>
+        </div>
+
+        <div class="tab-pane" id="tab-inperson" role="tabpanel">
+            <table class="schedule-table">
+                <thead>
+                <tr><th>Day</th><th>Morning</th><th>Afternoon</th></tr>
+                </thead>
+                <tbody>
+                <tr><th scope="row">Monday</th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
+                <tr><th scope="row">Tuesday</th><td class="empty">—</td><td class="empty">—</td></tr>
+                <tr><th scope="row">Wednesday</th><td>9:00 AM <span class="kind">Strength</span></td><td class="empty">—</td></tr>
+                <tr><th scope="row">Thursday</th><td class="empty">—</td><td class="empty">—</td></tr>
+                <tr><th scope="row">Friday</th><td>9:00 AM <span class="kind">Yoga</span></td><td class="empty">—</td></tr>
+                <tr><th scope="row">Saturday</th><td class="empty">Coming soon</td><td class="empty">—</td></tr>
+                </tbody>
+            </table>
+            <p class="schedule-caption">All times listed in Pacific Time (PT).</p>
+        </div>
+    </div>
+</section>
+
+<!-- Free callout -->
+<section class="section" style="padding-top: 0;">
+    <div class="section-label">
+        <h2>Try it <em>free</em></h2>
+        <span class="num">04 / 04</span>
+    </div>
+    <div class="free-callout">
+        <span class="eyebrow-dark">Your first class is on us</span>
+        <p class="callout-title">
+            Come once. Decide <span class="ital">after.</span>
+        </p>
+        <p class="callout-sub">
+            No catch, no pressure, no "but-actually." Just show up at Willard Park,
+            give it a try, and see if it's your thing.
+        </p>
+        <a class="btn-callout" href="https://www.alohafitness.net/free.html">
+            Register for a free class
+            <span class="arrow" aria-hidden="true">→</span>
+        </a>
+    </div>
+</section>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="contactModalLabel">Get in touch</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="contact" class="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" novalidate>
+                <div class="modal-body">
+                    <p style="position:absolute; left:-9999px;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"/></label>
+                    </p>
+                    <div class="field">
+                        <input type="text" name="firstName" id="contactFirstName" placeholder=" " required autocomplete="given-name" spellcheck="true">
+                        <label for="contactFirstName">First name</label>
+                        <div class="invalid-msg">Please enter your first name.</div>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="lastName" id="contactLastName" placeholder=" " required autocomplete="family-name" spellcheck="true">
+                        <label for="contactLastName">Last name</label>
+                        <div class="invalid-msg">Please enter your last name.</div>
+                    </div>
+                    <div class="field">
+                        <input type="email" name="email" id="contactEmail" placeholder=" " required autocomplete="email" spellcheck="true">
+                        <label for="contactEmail">Email address</label>
+                        <div class="invalid-msg">Please enter your email.</div>
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="contactMessage" placeholder=" " required></textarea>
+                        <label for="contactMessage">How can we help you?</label>
+                        <div class="invalid-msg">Please enter a message.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-pill-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-pill-ink">
+                        Send
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>© <span id="date"></span> Aloha Fitness</span>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#schedule">Schedule</a>
+            <a data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+            <a href="https://www.alohafitness.net/privacy-policy.html">Privacy</a>
+        </div>
+        <span class="footer-mark">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 14 C 2 9.5, 2 5, 5.5 4 C 7 3.7, 7.7 4.5, 8 5.5 C 8.3 4.5, 9 3.7, 10.5 4 C 14 5, 14 9.5, 8 14 Z" fill="#C95A36"/>
+            </svg>
+            Made with care in Rocklin, CA
+        </span>
+    </div>
+</footer>
+
+<!-- Form validation + tabs + nav -->
 <script>
     (() => {
-        'use strict'
+        'use strict';
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
+        // Contact form validation
+        const form = document.querySelector('form.contact');
+        if (form) {
+            form.addEventListener('submit', (event) => {
                 if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    event.preventDefault();
+                    event.stopPropagation();
                 }
+                form.classList.add('was-validated');
+            }, false);
+        }
 
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
+        // Schedule tabs
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = {
+            online: document.getElementById('tab-online'),
+            inperson: document.getElementById('tab-inperson')
+        };
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabs.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                Object.values(panes).forEach(p => p && p.classList.remove('active'));
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                const target = panes[btn.dataset.tab];
+                if (target) target.classList.add('active');
+            });
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const open = navLinks.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    })();
 </script>
 
-<!-- Initialize Tooltip -->
-<script type="text/javascript">
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-</script>
-
-<!-- Copyright Date -->
+<!-- Copyright year -->
 <script>
-    const d = new Date();
-    let year = d.getFullYear();
-    document.getElementById("date").innerHTML = year;
+    document.getElementById("date").textContent = new Date().getFullYear();
 </script>
 
 </body>
