@@ -1,0 +1,271 @@
+/* ========================================
+   PAGE-SPECIFIC STYLES (free class registration)
+   Shared design system lives in styles/site.css
+   ======================================== */
+
+/* Free-class page tweaks for the shared hero */
+.hero-wrap { align-items: start; padding: 1rem 2rem 4rem; }
+.hero-text { padding-top: 2rem; }
+.hero-lead { max-width: 38ch; margin: 0 0 2.5rem; }
+.sun-decor { top: -1rem; right: -5%; width: 140px; height: 140px; }
+
+/* Right column: form card */
+.form-card {
+    background: var(--card);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-3);
+    padding: 2.5rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transform: rotate(0.4deg);
+}
+/* Sticker / badge floating off the form */
+.form-sticker {
+    position: absolute;
+    top: -28px;
+    right: -16px;
+    background: var(--terracotta);
+    color: #fff;
+    font-family: var(--display);
+    font-weight: 500;
+    font-variation-settings: "SOFT" 80, "opsz" 36;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    transform: rotate(6deg);
+    box-shadow: 0 8px 20px rgba(157, 67, 33, 0.35);
+    white-space: nowrap;
+}
+.form-sticker i { font-style: italic; }
+
+.form-card h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 50, "opsz" 60;
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.4rem;
+    color: var(--ink);
+}
+.form-card .form-sub {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0 0 1.8rem;
+}
+
+/* Form fields */
+/* Two-column row for first/last name in registration form */
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.95rem;
+}
+
+/* Waiver checkbox (custom-styled) */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin: 1.3rem 0 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--ink);
+}
+.terms input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin-top: 0.05rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    background: #FFFEFA;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s;
+}
+.terms input[type="checkbox"]:checked {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+}
+.terms input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px; top: 2px;
+    width: 6px; height: 11px;
+    border: solid #fff;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+.terms input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+}
+.terms a {
+    color: var(--terracotta-deep);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+.terms a:hover { color: var(--ink); }
+
+/* ========================================
+   DETAILS SECTION (Where / When / Bring)
+   ======================================== */
+.details {
+    max-width: 1280px;
+    margin: 2rem auto 0;
+    padding: 0 2rem 5rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.detail {
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-md);
+    padding: 1.75rem;
+    position: relative;
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+}
+.detail .kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--terracotta-deep);
+    margin-bottom: 0.8rem;
+}
+.detail .title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-variation-settings: "SOFT" 40, "opsz" 36;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    color: var(--ink);
+}
+.detail .body {
+    color: var(--ink-2);
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+/* Where card with stylized map */
+.detail-where .body { margin-bottom: 1.25rem; }
+.detail-where .address {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-top: 0.3rem;
+}
+.map-illustration {
+    margin-top: 1rem;
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    background: linear-gradient(180deg, #E3D4B0 0%, #D5C798 100%);
+    height: 150px;
+    position: relative;
+}
+.map-illustration svg { display: block; width: 100%; height: 100%; }
+
+/* When card with day chips */
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--paper);
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line-soft);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.schedule-row:hover {
+    transform: translateX(3px);
+    border-color: var(--terracotta);
+    box-shadow: var(--shadow-1);
+}
+.schedule-row .days {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+}
+.schedule-row .time {
+    font-family: var(--display);
+    font-weight: 500;
+    font-variation-settings: "SOFT" 50, "opsz" 24;
+    font-size: 1.05rem;
+    color: var(--terracotta-deep);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+/* Bring card with illustrated items */
+.bring-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+.bring-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.97rem;
+    color: var(--ink-2);
+}
+.bring-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 10px;
+    background: var(--terracotta-soft);
+    color: var(--terracotta-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.bring-icon svg { width: 20px; height: 20px; }
+
+/* Preserve waiver line breaks inside the waiver modal */
+#termsModal .modal-body { white-space: pre-line; }
+
+/* ========================================
+   PAGE-SPECIFIC RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+    .form-card { transform: rotate(0); }
+    .details-grid { grid-template-columns: 1fr 1fr; }
+    .detail-where { grid-column: 1 / -1; }
+    .detail-where .body { display: flex; flex-direction: column; gap: 0.3rem; }
+}
+@media (max-width: 640px) {
+    .details { padding: 0 1.25rem 4rem; }
+    .details-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 1.75rem 1.5rem; }
+    .form-sticker {
+        top: -22px;
+        right: 12px;
+        font-size: 0.85rem;
+        padding: 0.45rem 0.9rem;
+    }
+    .field-row { grid-template-columns: 1fr; }
+}

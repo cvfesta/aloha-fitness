@@ -1,0 +1,44 @@
+/* ========================================
+   PAGE-SPECIFIC STYLES (404 / not found)
+   Shared design system lives in styles/site.css
+   ======================================== */
+
+.notfound {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+    text-align: center;
+}
+.notfound-code {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 30, "opsz" 144;
+    font-size: clamp(6rem, 18vw, 11rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--terracotta-deep);
+    margin: 0;
+}
+.notfound-code .ital {
+    font-style: italic;
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+.notfound h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 40, "opsz" 80;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 1rem 0 0.75rem;
+}
+.notfound p {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin: 0 auto 2rem;
+}
+
+@media (max-width: 640px) {
+    .notfound { padding: 3.5rem 1.25rem 4.5rem; }
+}

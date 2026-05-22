@@ -1,0 +1,356 @@
+/* ========================================
+   PAGE-SPECIFIC STYLES (homepage)
+   Shared design system lives in styles/site.css
+   ======================================== */
+
+/* Homepage hero extras */
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 2.25rem;
+}
+
+/* Hero illustration card */
+.hero-art {
+    position: relative;
+    background: var(--card);
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: var(--shadow-3);
+    overflow: hidden;
+    transform: rotate(0.4deg);
+}
+.hero-art-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ========================================
+   ABOUT
+   ======================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+.about-grid p {
+    font-size: 1.02rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin: 0 0 1.1rem;
+}
+.about-pull {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 50, "opsz" 72;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--terracotta);
+}
+.about-pull em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "SOFT" 100, "opsz" 72;
+}
+
+/* ========================================
+   PRICING CARDS
+   ======================================== */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.price-card {
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-md);
+    padding: 2rem 1.75rem;
+    box-shadow: var(--shadow-1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.price-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-2);
+    border-color: var(--line);
+}
+.price-card.featured {
+    background: linear-gradient(180deg, #FFFCF5 0%, #FBF1DB 100%);
+    border-color: var(--terracotta-soft);
+}
+.price-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--terracotta-deep);
+    margin-bottom: 0.6rem;
+}
+.price-card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-variation-settings: "SOFT" 40, "opsz" 36;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    color: var(--ink);
+}
+.price-line {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 50, "opsz" 80;
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+.price-line .unit {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+}
+.price-line .strike {
+    font-family: var(--body);
+    font-size: 1rem;
+    color: var(--ink-fade);
+    text-decoration: line-through;
+    margin-left: 0.3rem;
+    font-weight: 400;
+}
+.price-line .save {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+}
+.price-deal-tag {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+}
+.price-body {
+    color: var(--ink-2);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    margin: 0.9rem 0 1.5rem;
+}
+.price-frequency {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    background: var(--sage-soft);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    margin-top: 0.75rem;
+}
+.price-frequency .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+}
+.price-cta-row {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.see-schedule {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    text-align: center;
+    margin-top: 0.2rem;
+    transition: color .15s;
+}
+.see-schedule:hover { color: var(--terracotta-deep); }
+.btn-card,
+.btn-card-outline {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 0.94rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .15s, background .2s, color .2s, border-color .2s, box-shadow .2s;
+    border: 1.5px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.btn-card {
+    background: var(--ink);
+    color: var(--paper);
+}
+.btn-card:hover {
+    background: var(--terracotta-deep);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(157, 67, 33, 0.25);
+}
+.btn-card-outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+}
+.btn-card-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+/* ========================================
+   SCHEDULE
+   ======================================== */
+.schedule-card {
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-1);
+}
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.97rem;
+}
+.schedule-table thead th {
+    text-align: left;
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-fade);
+    padding: 0.5rem 1rem 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+.schedule-table tbody th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 0.9rem 1rem;
+    width: 34%;
+}
+.schedule-tag {
+    display: inline-block;
+    font-family: var(--body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    margin-left: 0.55rem;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.schedule-tag.tag-membership {
+    background: var(--sage-soft);
+    color: var(--sage-deep);
+}
+.schedule-tag.tag-dropin {
+    background: var(--terracotta-soft);
+    color: var(--terracotta-deep);
+}
+.schedule-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 0 1.25rem;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+.schedule-legend .swatch {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+}
+.schedule-legend .swatch.s-mem { background: var(--sage-soft); border: 1px solid var(--sage-deep); }
+.schedule-legend .swatch.s-drop { background: var(--terracotta-soft); border: 1px solid var(--terracotta-deep); }
+.schedule-table tbody td {
+    padding: 0.9rem 1rem;
+    color: var(--ink-2);
+    font-family: var(--display);
+    font-weight: 500;
+    font-variation-settings: "SOFT" 50, "opsz" 24;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+}
+.schedule-table tbody td.empty {
+    color: var(--ink-fade);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+.schedule-table tbody td .kind {
+    display: block;
+    font-family: var(--body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+    margin-top: 0.15rem;
+}
+.schedule-table tbody tr + tr th,
+.schedule-table tbody tr + tr td {
+    border-top: 1px solid var(--line-soft);
+}
+.schedule-caption {
+    font-size: 0.78rem;
+    color: var(--ink-fade);
+    margin-top: 0.85rem;
+    font-style: italic;
+}
+
+/* ========================================
+   PAGE-SPECIFIC RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+    .hero-art { max-width: 480px; margin: 0 auto; transform: rotate(0); }
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-grid .price-card:first-child { grid-column: 1 / -1; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-grid .price-card:first-child { grid-column: auto; }
+    .schedule-table tbody td { font-size: 0.95rem; }
+}
