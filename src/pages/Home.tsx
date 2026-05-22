@@ -110,6 +110,8 @@ export default function Home() {
             className="hero-art-img"
             src="/img/indexHero.jpg"
             alt="Aloha Fitness outdoor class at Willard Park"
+            width={1200}
+            height={1080}
           />
         </div>
       </section>

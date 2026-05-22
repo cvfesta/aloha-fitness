@@ -26,12 +26,14 @@
       data-netlify="true". The React forms POST to these names.
     -->
     <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
       <input type="text" name="firstName" />
       <input type="text" name="lastName" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>
     </form>
     <form name="registration" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
       <input type="text" name="firstName" />
       <input type="text" name="lastName" />
       <input type="tel" name="phoneNumber" />
