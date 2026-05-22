@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import SunDecor from '../components/SunDecor'
+import PromoBar from '../components/PromoBar'
 import TermsModal from '../components/TermsModal'
+import SectionLabel from '../components/SectionLabel'
+import HeroStrip from '../components/HeroStrip'
 import { Field, SelectField } from '../components/Field'
 import { useNetlifyForm } from '../hooks/useNetlifyForm'
+import { usePageTitle } from '../hooks/usePageTitle'
+import { site } from '../config'
 import '../styles/pages/free.css'
 
 export default function FreeClass() {
@@ -12,20 +17,11 @@ export default function FreeClass() {
   const [session, setSession] = useState('')
   const [termsOpen, setTermsOpen] = useState(false)
 
-  useEffect(() => {
-    document.title = 'Register for a free class · Aloha Fitness'
-  }, [])
+  usePageTitle('Register for a free class · Aloha Fitness')
 
   return (
     <>
-      {/* Top marquee bar */}
-      <div className="topbar">
-        <span>Outdoor &amp; outdoors-adjacent</span>
-        <span className="dot" />
-        <span>Rocklin, CA</span>
-        <span className="dot" />
-        <span>Moms welcome — and the only ones invited</span>
-      </div>
+      <PromoBar />
 
       {/* Header */}
       <SiteHeader />
@@ -49,24 +45,15 @@ export default function FreeClass() {
             who get it. Bring a mat. We'll handle the rest.
           </p>
 
-          <div className="hero-strip anim anim-4">
-            <div className="hero-strip-item">
-              <span className="label">Where</span>
-              <span className="value">Willard Park</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">Best for</span>
-              <span className="value">Every level</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">Duration</span>
-              <span className="value">~50 min</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">Cost</span>
-              <span className="value">$0</span>
-            </div>
-          </div>
+          <HeroStrip
+            className="anim anim-4"
+            items={[
+              { label: 'Where', value: site.location.park },
+              { label: 'Best for', value: 'Every level' },
+              { label: 'Duration', value: '~50 min' },
+              { label: 'Cost', value: '$0' },
+            ]}
+          />
         </div>
 
         {/* Right: form card */}
@@ -142,10 +129,12 @@ export default function FreeClass() {
                   onChange={setSession}
                 >
                   <option value="" disabled />
-                  <option value="monday_wednesday_strength_830am">
-                    Monday &amp; Wednesday — 8:30 AM
+                  <option value={site.schedule.weekday.formValue}>
+                    {site.schedule.weekday.label} — {site.schedule.weekday.time}
                   </option>
-                  <option value="saturday_strength_730am">Saturday — 7:30 AM</option>
+                  <option value={site.schedule.saturday.formValue}>
+                    {site.schedule.saturday.label} — {site.schedule.saturday.time}
+                  </option>
                 </SelectField>
 
                 <label className="terms">
@@ -158,7 +147,7 @@ export default function FreeClass() {
 
                 {status === 'error' && (
                   <p style={{ color: 'var(--terracotta-deep)', fontSize: '0.85rem', margin: '0 0 1rem' }}>
-                    Something went wrong. Please try again, or text us at 818-261-5325.
+                    Something went wrong. Please try again, or text us at {site.contact.phone}.
                   </p>
                 )}
 
@@ -176,26 +165,20 @@ export default function FreeClass() {
 
       {/* Details: Where / When / Bring */}
       <section className="details">
-        <div className="section-label">
-          <h3>
-            The{' '}
-            <em style={{ fontVariationSettings: "'SOFT' 100, 'opsz' 80", color: 'var(--terracotta-deep)' }}>
-              essentials
-            </em>
-          </h3>
-          <span className="num">01 / 02</span>
-        </div>
+        <SectionLabel as="h3" num="01 / 02">
+          The <em>essentials</em>
+        </SectionLabel>
 
         <div className="details-grid">
           {/* WHERE */}
           <article className="detail detail-where">
             <div className="kicker">Where</div>
-            <h4 className="title">Willard Park, Rocklin</h4>
+            <h4 className="title">{site.location.park}, Rocklin</h4>
             <p className="body">
               We meet on the grass near the main pavilion. Look for the small group of moms doing
               push-ups.
               <br />
-              <span className="address">820 Lazy Trl Dr, Rocklin, CA 95765</span>
+              <span className="address">{site.location.address}</span>
             </p>
             <div className="map-illustration">
               <svg
@@ -249,12 +232,12 @@ export default function FreeClass() {
             <h4 className="title">Three mornings a week</h4>
             <div className="schedule-list">
               <div className="schedule-row">
-                <span className="days">Mon &amp; Wed</span>
-                <span className="time">8:30 AM</span>
+                <span className="days">{site.schedule.weekday.shortLabel}</span>
+                <span className="time">{site.schedule.weekday.time}</span>
               </div>
               <div className="schedule-row">
-                <span className="days">Saturday</span>
-                <span className="time">7:30 AM</span>
+                <span className="days">{site.schedule.saturday.shortLabel}</span>
+                <span className="time">{site.schedule.saturday.time}</span>
               </div>
               <div
                 className="schedule-row"

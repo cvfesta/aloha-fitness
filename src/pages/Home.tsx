@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import SunDecor from '../components/SunDecor'
+import PromoBar from '../components/PromoBar'
 import ContactModal from '../components/ContactModal'
+import Faq from '../components/Faq'
+import SectionLabel from '../components/SectionLabel'
+import HeroStrip from '../components/HeroStrip'
+import { usePageTitle } from '../hooks/usePageTitle'
+import { site } from '../config'
 import '../styles/pages/home.css'
 
 export default function Home() {
   const [navOpen, setNavOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
 
-  useEffect(() => {
-    document.title = 'Aloha Fitness · Outdoor Strength for Moms in Rocklin, CA'
-  }, [])
+  usePageTitle('Aloha Fitness · Outdoor Strength for Moms in Rocklin, CA')
 
   function openContact() {
     setNavOpen(false)
@@ -21,15 +25,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Top promo bar */}
-      <div className="topbar">
-        <span>
-          Use code <span className="code">FRIENDS20</span> for <strong>20% off</strong> your
-          monthly membership
-        </span>
-        <span className="dot" />
-        <span>Limited time</span>
-      </div>
+      <PromoBar />
 
       {/* Header */}
       <SiteHeader>
@@ -44,6 +40,9 @@ export default function Home() {
         <nav className={navOpen ? 'nav-links open' : 'nav-links'}>
           <Link to="/free" className="cta" onClick={() => setNavOpen(false)}>
             Free Class
+          </Link>
+          <Link to="/about" onClick={() => setNavOpen(false)}>
+            Coach
           </Link>
           <a href="#pricing" onClick={() => setNavOpen(false)}>
             Pricing
@@ -85,24 +84,15 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="hero-strip anim anim-5">
-            <div className="hero-strip-item">
-              <span className="label">Where</span>
-              <span className="value">Willard Park</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">Best for</span>
-              <span className="value">Every level</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">Format</span>
-              <span className="value">In-person + online</span>
-            </div>
-            <div className="hero-strip-item">
-              <span className="label">First class</span>
-              <span className="value">Free</span>
-            </div>
-          </div>
+          <HeroStrip
+            className="anim anim-5"
+            items={[
+              { label: 'Where', value: site.location.park },
+              { label: 'Best for', value: 'Every level' },
+              { label: 'Format', value: 'In-person + online' },
+              { label: 'First class', value: 'Free' },
+            ]}
+          />
         </div>
 
         <div className="hero-art anim-art">
@@ -118,12 +108,9 @@ export default function Home() {
 
       {/* About */}
       <section className="section" id="about">
-        <div className="section-label">
-          <h2>
-            What we <em>believe</em>
-          </h2>
-          <span className="num">01 / 04</span>
-        </div>
+        <SectionLabel num="01 / 06">
+          What we <em>believe</em>
+        </SectionLabel>
         <div className="about-grid">
           <div>
             <p>
@@ -146,14 +133,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Meet the coach */}
+      <section className="section" id="coach">
+        <SectionLabel num="02 / 06">
+          Meet <em>Tania</em>
+        </SectionLabel>
+        <div className="coach-grid">
+          <figure className="coach-photo">
+            <img src="/img/coach.png" alt="Tania, coach at Aloha Fitness" />
+            <figcaption className="coach-badge">Your coach</figcaption>
+          </figure>
+          <div className="coach-bio">
+            <p className="coach-lead">
+              Aloha Fitness started with Tania — a mom who believes feeling strong
+              shouldn't mean choosing between your goals and your family.
+            </p>
+            <p>
+              She coaches the way she wishes someone had coached her: no judgment, no
+              fad diets, no all-or-nothing — just outdoor strength training and
+              science-backed nutrition that meet you where you are, with a group of
+              moms cheering you on.
+            </p>
+            <blockquote className="coach-pull">
+              "You don't have to be fit to start. You just have to show up."
+            </blockquote>
+            <ul className="coach-highlights">
+              <li>Certified Personal Trainer</li>
+              <li>Group Fitness Instructor</li>
+              <li>Women's Fitness Specialist</li>
+            </ul>
+            <Link className="coach-link" to="/about">
+              Read Tania's full story
+              <span className="arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section className="section" id="pricing">
-        <div className="section-label">
-          <h2>
-            What we <em>offer</em>
-          </h2>
-          <span className="num">02 / 04</span>
-        </div>
+        <SectionLabel num="03 / 06">
+          What we <em>offer</em>
+        </SectionLabel>
         <p className="section-intro">
           In-person outdoor classes, online coaching, or a single drop-in — pick the shape that
           fits this season. You can always start small and grow into more.
@@ -174,7 +197,7 @@ export default function Home() {
             <div className="price-cta-row">
               <a
                 className="btn-card"
-                href="https://square.link/u/Gg8ToJIS"
+                href={site.pricing.coaching.paymentLink}
                 target="_self"
                 rel="noopener"
               >
@@ -192,8 +215,9 @@ export default function Home() {
             <span className="price-kicker">In-person workouts</span>
             <h3>Full monthly membership</h3>
             <div className="price-line">
-              $59<span className="unit">/ month</span>
-              <span className="strike">$99</span>
+              ${site.pricing.fullMembership.price}
+              <span className="unit">/ month</span>
+              <span className="strike">${site.pricing.fullMembership.was}</span>
             </div>
             <span className="price-frequency">
               <span className="dot" />3 sessions / week
@@ -205,7 +229,7 @@ export default function Home() {
             <div className="price-cta-row">
               <a
                 className="btn-card"
-                href="https://buy.stripe.com/dR67ww2OIfQIbRKbII"
+                href={site.pricing.fullMembership.paymentLink}
                 target="_self"
                 rel="noopener"
               >
@@ -223,8 +247,9 @@ export default function Home() {
             <span className="price-kicker">Saturdays only</span>
             <h3>Saturday-only membership</h3>
             <div className="price-line">
-              $49<span className="unit">/ month</span>
-              <span className="strike">$59</span>
+              ${site.pricing.saturdayOnly.price}
+              <span className="unit">/ month</span>
+              <span className="strike">${site.pricing.saturdayOnly.was}</span>
             </div>
             <span className="price-frequency">
               <span className="dot" />1 session / week
@@ -236,7 +261,7 @@ export default function Home() {
             <div className="price-cta-row">
               <a
                 className="btn-card"
-                href="https://buy.stripe.com/bIYcQQ892gUM8Fy4gh"
+                href={site.pricing.saturdayOnly.paymentLink}
                 target="_self"
                 rel="noopener"
               >
@@ -252,12 +277,9 @@ export default function Home() {
 
       {/* Schedule */}
       <section className="section" id="schedule">
-        <div className="section-label">
-          <h2>
-            Class <em>schedule</em>
-          </h2>
-          <span className="num">03 / 04</span>
-        </div>
+        <SectionLabel num="04 / 06">
+          Class <em>schedule</em>
+        </SectionLabel>
         <p className="section-intro">
           A morning class to kickstart your day. Pick whichever fits — and skip the ones that
           don't.
@@ -288,7 +310,8 @@ export default function Home() {
                   Monday <span className="schedule-tag tag-membership">Full</span>
                 </th>
                 <td>
-                  9:00 AM <span className="kind">Strength</span>
+                  {site.schedule.weekday.time}{' '}
+                  <span className="kind">{site.schedule.weekday.type}</span>
                 </td>
                 <td className="empty">—</td>
               </tr>
@@ -302,7 +325,8 @@ export default function Home() {
                   Wednesday <span className="schedule-tag tag-membership">Full</span>
                 </th>
                 <td>
-                  9:00 AM <span className="kind">Strength</span>
+                  {site.schedule.weekday.time}{' '}
+                  <span className="kind">{site.schedule.weekday.type}</span>
                 </td>
                 <td className="empty">—</td>
               </tr>
@@ -322,7 +346,8 @@ export default function Home() {
                   <span className="schedule-tag tag-dropin">Saturday-only</span>
                 </th>
                 <td>
-                  7:30 AM <span className="kind">Strength</span>
+                  {site.schedule.saturday.time}{' '}
+                  <span className="kind">{site.schedule.saturday.type}</span>
                 </td>
                 <td className="empty">—</td>
               </tr>
@@ -335,14 +360,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="section" id="faq">
+        <SectionLabel num="05 / 06">
+          Common <em>questions</em>
+        </SectionLabel>
+        <p className="section-intro">
+          A few things moms ask before their first class — here's the short version.
+        </p>
+        <Faq />
+      </section>
+
       {/* Free callout */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="section-label">
-          <h2>
-            Try it <em>free</em>
-          </h2>
-          <span className="num">04 / 04</span>
-        </div>
+        <SectionLabel num="06 / 06">
+          Try it <em>free</em>
+        </SectionLabel>
         <div className="free-callout">
           <span className="eyebrow-dark">Your first class is on us</span>
           <p className="callout-title">
@@ -366,6 +399,7 @@ export default function Home() {
         links={
           <div className="footer-links">
             <Link to="/">Home</Link>
+            <Link to="/about">Coach</Link>
             <a href="#pricing">Pricing</a>
             <a href="#schedule">Schedule</a>
             <a onClick={openContact}>Contact</a>

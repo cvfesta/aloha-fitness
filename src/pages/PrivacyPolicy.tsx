@@ -1,12 +1,10 @@
-import { useEffect } from 'react'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import { usePageTitle } from '../hooks/usePageTitle'
 import '../styles/pages/privacy.css'
 
 export default function PrivacyPolicy() {
-  useEffect(() => {
-    document.title = 'Privacy Policy for Amazon Seller'
-  }, [])
+  usePageTitle('Privacy Policy for Amazon Seller')
 
   return (
     <>

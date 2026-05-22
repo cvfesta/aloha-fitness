@@ -1,0 +1,91 @@
+/* ========================================
+   PAGE-SPECIFIC STYLES (About / Meet the coach)
+   Shared coach styles live in styles/site.css
+   ======================================== */
+
+.coach-hero {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.coach-name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 30, "opsz" 144;
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0 0 1.25rem;
+}
+.coach-intro-lead {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin: 0;
+}
+
+.coach-prose {
+    max-width: 64ch;
+}
+.coach-prose p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-2);
+    margin: 0 0 1.2rem;
+}
+
+.cred-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    max-width: 900px;
+}
+.cred-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-sm);
+    padding: 1rem 1.25rem;
+    font-size: 0.98rem;
+    color: var(--ink-2);
+}
+.cred-list li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+    .coach-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-bottom: 3rem;
+    }
+    .coach-hero .coach-photo {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    .cred-list {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 640px) {
+    .coach-hero {
+        padding: 1rem 1.25rem 2.5rem;
+    }
+}

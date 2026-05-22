@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import { usePageTitle } from '../hooks/usePageTitle'
 import '../styles/pages/not-found.css'
 
 export default function NotFound() {
-  useEffect(() => {
-    document.title = 'Page Not Found · Aloha Fitness'
-  }, [])
+  usePageTitle('Page Not Found · Aloha Fitness')
 
   return (
     <>

@@ -133,6 +133,9 @@ a { color: inherit; }
 .site-header {
     padding: 1.5rem 0;
     position: relative;
+    /* Keep the header — and the absolutely-positioned mobile nav dropdown that
+       lives inside it — above the page sections below. */
+    z-index: 50;
 }
 .site-header-inner {
     display: flex;
@@ -696,6 +699,59 @@ a { color: inherit; }
 .btn-callout:hover .arrow { transform: translateX(4px); }
 
 /* ============================================================
+   COACH  (shared by the homepage section and the About page)
+   ============================================================ */
+.coach-photo {
+    position: relative;
+    margin: 0;
+    background: linear-gradient(165deg, var(--sky) 0%, var(--sage-soft) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-3);
+    overflow: hidden;
+    transform: rotate(-0.6deg);
+}
+/* The coach image is a transparent cutout — contain it so the whole figure
+   shows, standing on the tinted backdrop rather than cropped to a rectangle. */
+.coach-photo img {
+    display: block;
+    width: 100%;
+    max-height: 27rem;
+    object-fit: contain;
+    object-position: center bottom;
+}
+.coach-badge {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+}
+.coach-pull {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 50, "opsz" 72;
+    font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--terracotta);
+    margin: 1.5rem 0;
+}
+.coach-pull em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "SOFT" 100, "opsz" 72;
+}
+
+/* ============================================================
    MODAL OVERRIDES (Bootstrap)
    ============================================================ */
 .modal-content {
@@ -744,6 +800,21 @@ a { color: inherit; }
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+}
+.footer-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.footer-social {
+    display: inline-flex;
+    color: var(--ink-soft);
+    transition: color .2s;
+}
+.footer-social:hover { color: var(--terracotta-deep); }
+.footer-social svg {
+    width: 18px;
+    height: 18px;
 }
 .footer-links {
     display: flex;
