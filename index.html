@@ -32,6 +32,21 @@
     <link rel="icon" type="image/svg+xml" href="/heart.svg" />
     <link rel="apple-touch-icon" href="/heart.png" />
 
+    <!--
+      Apply the saved theme BEFORE React renders, to prevent a flash of the
+      wrong palette on first paint. Mirrors the useTheme hook's storage key.
+    -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aloha-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Structured data — product (homepage is the yoga mat) -->
     <script type="application/ld+json">
       {

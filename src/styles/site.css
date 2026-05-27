@@ -20,19 +20,15 @@
     --ink-soft:        #6E747C;
     --ink-fade:        #A8AEB5;
 
-    /* Accents — single ocean accent + reserved sun pop. Variable names
-       (--terracotta, --sky) preserved so existing rules keep working;
-       semantically --terracotta is the primary brand accent. */
-    --terracotta:      #00A6CB;   /* clear ocean (primary accent) */
-    --terracotta-deep: #007E9B;   /* deep ocean (hover, links) */
-    --terracotta-soft: #D6EEF5;   /* soft ocean tint */
+    /* Accents — ocean primary, sage for natural notes, sky as background tint. */
+    --ocean:           #00A6CB;   /* clear ocean (primary accent) */
+    --ocean-deep:      #007E9B;   /* deep ocean (hover, links) */
+    --ocean-soft:      #D6EEF5;   /* soft ocean tint */
     --sage:            #5A8C7C;   /* coastal teal-sage (subtle natural) */
     --sage-deep:       #3F6B5F;
     --sage-soft:       #E5F0EC;
     --sky:             #DAE9EE;   /* pale ice (very soft background tint) */
-    --ocean:           #00A6CB;
-    --ocean-deep:      #007E9B;
-    --ocean-soft:      #D6EEF5;
+    --sun:             #FFB938;   /* warm accent for sun decoration */
     /* Tertiary — hibiscus pink, callback to the Plumeria mat */
     --pop:             #FF5C81;
     --pop-deep:        #E04567;
@@ -57,6 +53,87 @@
     --shadow-1: 0 1px 2px rgba(20, 28, 32, 0.04), 0 8px 28px rgba(20, 28, 32, 0.04);
     --shadow-2: 0 2px 4px rgba(20, 28, 32, 0.04), 0 24px 64px rgba(20, 28, 32, 0.08);
     --shadow-3: 0 4px 8px rgba(20, 28, 32, 0.05), 0 40px 96px rgba(20, 28, 32, 0.12);
+
+    color-scheme: light;
+}
+
+/* ============================================================
+   DARK MODE
+   ----------------------------------------------------------
+   Two activation paths:
+     1. @media (prefers-color-scheme: dark) — follows OS, but
+        only when the user hasn't explicitly chosen a theme.
+     2. :root[data-theme="dark"] — explicit user override
+        (set via the ThemeToggle / useTheme hook).
+   Soft-tint variables (--ocean-soft, --sage-soft, --sky,
+   --pop-soft) flip from pale highlights to deep tints, so
+   gradients like "paper → ocean-soft" stay subtle in both
+   modes.
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper:           #0E1114;
+        --paper-deep:      #181C20;
+        --card:            #181C20;
+        --card-shadow:     rgba(0, 0, 0, 0.4);
+
+        --ink:             #F2F4F6;
+        --ink-2:           #D5D8DC;
+        --ink-soft:        #9CA1A8;
+        --ink-fade:        #6E747C;
+
+        --ocean:           #2EBEDF;
+        --ocean-deep:      #5FD0EC;
+        --ocean-soft:      #0E2A36;
+        --sage:            #6FA897;
+        --sage-deep:       #88BFAE;
+        --sage-soft:       #1C2A26;
+        --sky:             #1E2A30;
+        --pop:             #FF7895;
+        --pop-deep:        #FF95AC;
+        --pop-soft:        #3A1F26;
+
+        --line:            #2A2E33;
+        --line-soft:       #1F2328;
+
+        --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.25);
+        --shadow-2: 0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 64px rgba(0, 0, 0, 0.35);
+        --shadow-3: 0 4px 8px rgba(0, 0, 0, 0.35), 0 40px 96px rgba(0, 0, 0, 0.45);
+
+        color-scheme: dark;
+    }
+}
+
+:root[data-theme="dark"] {
+    --paper:           #0E1114;
+    --paper-deep:      #181C20;
+    --card:            #181C20;
+    --card-shadow:     rgba(0, 0, 0, 0.4);
+
+    --ink:             #F2F4F6;
+    --ink-2:           #D5D8DC;
+    --ink-soft:        #9CA1A8;
+    --ink-fade:        #6E747C;
+
+    --ocean:           #2EBEDF;
+    --ocean-deep:      #5FD0EC;
+    --ocean-soft:      #0E2A36;
+    --sage:            #6FA897;
+    --sage-deep:       #88BFAE;
+    --sage-soft:       #1C2A26;
+    --sky:             #1E2A30;
+    --pop:             #FF7895;
+    --pop-deep:        #FF95AC;
+    --pop-soft:        #3A1F26;
+
+    --line:            #2A2E33;
+    --line-soft:       #1F2328;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.25);
+    --shadow-2: 0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 64px rgba(0, 0, 0, 0.35);
+    --shadow-3: 0 4px 8px rgba(0, 0, 0, 0.35), 0 40px 96px rgba(0, 0, 0, 0.45);
+
+    color-scheme: dark;
 }
 
 /* ============================================================
@@ -87,7 +164,7 @@ body > * { position: relative; z-index: 1; }
 a { color: inherit; }
 
 ::selection {
-    background: var(--terracotta);
+    background: var(--ocean);
     color: #fff;
 }
 
@@ -180,7 +257,7 @@ a { color: inherit; }
     padding-bottom: 2px;
     transition: color .2s, border-color .2s;
 }
-.nav-back:hover { color: var(--terracotta-deep); border-color: var(--terracotta-deep); }
+.nav-back:hover { color: var(--ocean-deep); border-color: var(--ocean-deep); }
 
 /* Primary nav links, used on the homepage */
 .nav-links {
@@ -198,10 +275,84 @@ a { color: inherit; }
     cursor: pointer;
     transition: color .2s, border-color .2s;
 }
-.nav-links a:hover { color: var(--terracotta-deep); border-color: var(--terracotta-deep); }
+.nav-links a:hover { color: var(--ocean-deep); border-color: var(--ocean-deep); }
 .nav-links a.cta {
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-weight: 700;
+}
+
+.theme-toggle-wrap {
+    position: relative;
+    display: inline-flex;
+}
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: color .2s, border-color .2s, background .2s, transform .15s;
+}
+.theme-toggle:hover {
+    color: var(--ocean-deep);
+    border-color: var(--ocean-deep);
+    transform: translateY(-1px);
+}
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.theme-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 100;
+    min-width: 140px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-2);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.theme-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 0;
+    border-radius: var(--r-xs);
+    font-family: var(--body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+.theme-menu-item:hover {
+    background: var(--paper-deep);
+    color: var(--ink);
+}
+.theme-menu-item.is-active {
+    color: var(--ocean-deep);
+}
+.theme-menu-check {
+    display: inline-flex;
+    width: 14px;
+    color: var(--ocean-deep);
+    font-weight: 700;
+    flex-shrink: 0;
 }
 
 .nav-toggle {
@@ -255,14 +406,14 @@ a { color: inherit; }
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     margin-bottom: 2rem;
 }
 .eyebrow::before, .eyebrow::after {
     content: "";
     width: 22px;
     height: 1px;
-    background: var(--terracotta-deep);
+    background: var(--ocean-deep);
 }
 .eyebrow::after { width: 8px; }
 
@@ -279,7 +430,7 @@ a { color: inherit; }
 .hero-title .ital {
     font-style: italic;
     font-variation-settings: "SOFT" 100, "opsz" 144;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     position: relative;
     display: inline-block;
 }
@@ -371,7 +522,7 @@ a { color: inherit; }
 .section-label h3 em {
     font-style: italic;
     font-variation-settings: "SOFT" 100, "opsz" 80;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
 }
 .section-label .num {
     font-family: var(--display);
@@ -413,7 +564,7 @@ a { color: inherit; }
     box-shadow: 0 8px 20px rgba(43, 32, 18, 0.20);
 }
 .btn-primary-ink:hover {
-    background: var(--terracotta-deep);
+    background: var(--ocean-deep);
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 14px 32px rgba(0, 126, 155, 0.30);
@@ -449,7 +600,7 @@ a { color: inherit; }
     gap: 0.5rem;
 }
 .btn-pill-ink:hover {
-    background: var(--terracotta-deep);
+    background: var(--ocean-deep);
     color: #fff;
     transform: translateY(-1px);
 }
@@ -488,7 +639,7 @@ a { color: inherit; }
     gap: 0.7rem;
 }
 .submit:hover {
-    background: var(--terracotta-deep);
+    background: var(--ocean-deep);
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 14px 32px rgba(0, 126, 155, 0.30);
@@ -547,7 +698,7 @@ a { color: inherit; }
 .field select:focus,
 .field textarea:focus {
     outline: none;
-    border-color: var(--terracotta);
+    border-color: var(--ocean);
     box-shadow: 0 0 0 4px rgba(0, 166, 203, 0.18);
     background: #fff;
 }
@@ -559,7 +710,7 @@ a { color: inherit; }
 .field textarea:not(:placeholder-shown) + label {
     top: 0.42rem;
     font-size: 0.7rem;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -568,7 +719,7 @@ a { color: inherit; }
 .field.has-value label {
     top: 0.42rem;
     font-size: 0.7rem;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -576,18 +727,18 @@ a { color: inherit; }
 
 .invalid-msg {
     font-size: 0.8rem;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     margin: 0.3rem 0 0 0.3rem;
     display: none;
 }
 .was-validated .field input:invalid,
 .was-validated .field select:invalid,
 .was-validated .field textarea:invalid {
-    border-color: var(--terracotta);
+    border-color: var(--ocean);
 }
 .was-validated .field input:invalid + label,
 .was-validated .field select:invalid + label {
-    color: var(--terracotta);
+    color: var(--ocean);
 }
 .was-validated .field input:invalid ~ .invalid-msg,
 .was-validated .field select:invalid ~ .invalid-msg,
@@ -731,7 +882,7 @@ a { color: inherit; }
     position: absolute;
     left: 1rem;
     bottom: 1rem;
-    background: var(--terracotta);
+    background: var(--ocean);
     color: #fff;
     font-size: 0.72rem;
     font-weight: 700;
@@ -749,12 +900,12 @@ a { color: inherit; }
     letter-spacing: -0.02em;
     color: var(--ink);
     padding-left: 1.25rem;
-    border-left: 3px solid var(--terracotta);
+    border-left: 3px solid var(--ocean);
     margin: 1.5rem 0;
 }
 .coach-pull em {
     font-style: italic;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-variation-settings: "SOFT" 100, "opsz" 72;
 }
 
@@ -830,7 +981,7 @@ a { color: inherit; }
     color: var(--ink-soft);
     transition: color .2s;
 }
-.footer-social:hover { color: var(--terracotta-deep); }
+.footer-social:hover { color: var(--ocean-deep); }
 .footer-social svg {
     width: 18px;
     height: 18px;
@@ -846,7 +997,7 @@ a { color: inherit; }
     cursor: pointer;
     transition: color .2s;
 }
-.footer-links a:hover { color: var(--terracotta-deep); }
+.footer-links a:hover { color: var(--ocean-deep); }
 .footer-mark,
 .footer-inner .heart-icon {
     display: inline-flex;

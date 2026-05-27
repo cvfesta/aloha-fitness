@@ -146,7 +146,7 @@ export default function FreeClass() {
                 </label>
 
                 {status === 'error' && (
-                  <p style={{ color: 'var(--terracotta-deep)', fontSize: '0.85rem', margin: '0 0 1rem' }}>
+                  <p style={{ color: 'var(--ocean-deep)', fontSize: '0.85rem', margin: '0 0 1rem' }}>
                     Something went wrong. Please try again, or text us at {site.contact.phone}.
                   </p>
                 )}
@@ -180,49 +180,15 @@ export default function FreeClass() {
               <br />
               <span className="address">{site.location.address}</span>
             </p>
-            <div className="map-illustration">
-              <svg
-                viewBox="0 0 400 150"
-                preserveAspectRatio="xMidYMid slice"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="320" cy="35" r="20" fill="#FFB938" opacity="0.45" />
-                <circle cx="320" cy="35" r="12" fill="#FFB938" />
-                <path
-                  d="M0 110 Q 80 70, 160 95 T 320 95 T 480 110 L 480 150 L 0 150 Z"
-                  fill="#6C8B65"
-                  opacity="0.55"
-                />
-                <path
-                  d="M0 125 Q 100 95, 200 115 T 400 115 L 400 150 L 0 150 Z"
-                  fill="#6C8B65"
-                />
-                <path
-                  d="M40 145 Q 120 120, 200 130 T 380 110"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeDasharray="2 7"
-                />
-                <g fill="#4F6B49">
-                  <ellipse cx="80" cy="95" rx="10" ry="14" />
-                  <ellipse cx="250" cy="98" rx="12" ry="16" />
-                  <ellipse cx="350" cy="100" rx="9" ry="13" />
-                </g>
-                <g stroke="#3C4E36" strokeWidth="2">
-                  <line x1="80" y1="108" x2="80" y2="118" />
-                  <line x1="250" y1="113" x2="250" y2="123" />
-                  <line x1="350" y1="113" x2="350" y2="121" />
-                </g>
-                <g transform="translate(180, 85)">
-                  <path
-                    d="M0 0 C -10 -10, -10 -25, 0 -28 C 10 -25, 10 -10, 0 0 Z"
-                    fill="#00A6CB"
-                  />
-                  <circle cx="0" cy="-18" r="4.5" fill="#FFFCF5" />
-                </g>
-              </svg>
+            <div className="map-embed">
+              <iframe
+                title={`Map of ${site.location.park}, Rocklin`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(
+                  `${site.location.park}, Rocklin CA`,
+                )}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </article>
 

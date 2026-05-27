@@ -9,6 +9,7 @@ const About = lazy(() => import('./pages/About'))
 const Products = lazy(() => import('./pages/Products'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))
 const FreeClass = lazy(() => import('./pages/FreeClass'))
+const Film = lazy(() => import('./pages/Film'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -28,6 +29,8 @@ export default function App() {
         <Route path="/products/:slug" element={<ProductDetail />} />
         <Route path="/free" element={<FreeClass />} />
         <Route path="/free.html" element={<FreeClass />} />
+        <Route path="/film" element={<Film />} />
+        <Route path="/film.html" element={<Film />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/privacy-policy.html" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />

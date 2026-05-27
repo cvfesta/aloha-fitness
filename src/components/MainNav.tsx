@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useContactModal } from '../contexts/ContactModalContext'
+import ThemeToggle from './ThemeToggle'
 
 /**
  * Primary site navigation, rendered on the right side of SiteHeader on every
@@ -41,6 +42,7 @@ export default function MainNav() {
           Free Class
         </Link>
         <a onClick={onContactClick}>Contact</a>
+        <ThemeToggle />
       </nav>
     </>
   )

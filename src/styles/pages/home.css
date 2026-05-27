@@ -51,11 +51,11 @@
     letter-spacing: -0.02em;
     color: var(--ink);
     padding-left: 1.25rem;
-    border-left: 3px solid var(--terracotta);
+    border-left: 3px solid var(--ocean);
 }
 .about-pull em {
     font-style: italic;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-variation-settings: "SOFT" 100, "opsz" 72;
 }
 
@@ -102,12 +102,12 @@
     margin-top: 1.6rem;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color .2s;
 }
-.coach-link:hover { border-color: var(--terracotta-deep); }
+.coach-link:hover { border-color: var(--ocean-deep); }
 .coach-link .arrow { transition: transform .2s; }
 .coach-link:hover .arrow { transform: translateX(4px); }
 @media (max-width: 992px) {
@@ -141,14 +141,14 @@
 }
 .price-card.featured {
     background: linear-gradient(180deg, var(--paper) 0%, var(--ocean-soft) 100%);
-    border-color: var(--terracotta-soft);
+    border-color: var(--ocean-soft);
 }
 .price-kicker {
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     margin-bottom: 0.6rem;
 }
 .price-card h3 {
@@ -194,11 +194,11 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
 }
 .price-deal-tag {
     display: inline-block;
-    background: var(--terracotta);
+    background: var(--ocean);
     color: #fff;
     font-size: 0.68rem;
     font-weight: 700;
@@ -248,7 +248,7 @@
     margin-top: 0.2rem;
     transition: color .15s;
 }
-.see-schedule:hover { color: var(--terracotta-deep); }
+.see-schedule:hover { color: var(--ocean-deep); }
 .btn-card,
 .btn-card-outline {
     font-family: var(--body);
@@ -271,7 +271,7 @@
     color: var(--paper);
 }
 .btn-card:hover {
-    background: var(--terracotta-deep);
+    background: var(--ocean-deep);
     color: #fff;
     transform: translateY(-1px);
     box-shadow: 0 8px 18px rgba(0, 126, 155, 0.25);
@@ -338,8 +338,8 @@
     color: var(--sage-deep);
 }
 .schedule-tag.tag-dropin {
-    background: var(--terracotta-soft);
-    color: var(--terracotta-deep);
+    background: var(--ocean-soft);
+    color: var(--ocean-deep);
 }
 .schedule-legend {
     display: flex;
@@ -358,7 +358,7 @@
     vertical-align: middle;
 }
 .schedule-legend .swatch.s-mem { background: var(--sage-soft); border: 1px solid var(--sage-deep); }
-.schedule-legend .swatch.s-drop { background: var(--terracotta-soft); border: 1px solid var(--terracotta-deep); }
+.schedule-legend .swatch.s-drop { background: var(--ocean-soft); border: 1px solid var(--ocean-deep); }
 .schedule-table tbody td {
     padding: 0.9rem 1rem;
     color: var(--ink-2);
@@ -382,7 +382,7 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     margin-top: 0.15rem;
 }
 .schedule-table tbody tr + tr th,
@@ -453,12 +453,12 @@
     transition: color 0.15s;
 }
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary:hover { color: var(--terracotta-deep); }
+.faq-item summary:hover { color: var(--ocean-deep); }
 .faq-marker {
     flex-shrink: 0;
     font-size: 1.5rem;
     line-height: 1;
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     transition: transform 0.2s;
 }
 .faq-item[open] .faq-marker { transform: rotate(45deg); }

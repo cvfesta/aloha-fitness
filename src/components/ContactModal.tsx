@@ -69,7 +69,7 @@ export default function ContactModal({ show, onHide }: { show: boolean; onHide: 
               error="Please enter a message."
             />
             {status === 'error' && (
-              <p style={{ color: 'var(--terracotta-deep)', fontSize: '0.85rem', margin: '0.75rem 0 0' }}>
+              <p style={{ color: 'var(--ocean-deep)', fontSize: '0.85rem', margin: '0.75rem 0 0' }}>
                 Something went wrong. Please try again, or email us at support@alohafitness.net.
               </p>
             )}

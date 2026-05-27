@@ -86,16 +86,15 @@ export default function Landing() {
             )}
           </div>
 
-          <a
-            className="lp-film-link anim anim-5"
-            href="/film.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="lp-film-icon" aria-hidden="true">▸</span>
+          <Link className="lp-film-link anim anim-5" to="/film">
+            <span className="lp-film-icon" aria-hidden="true">
+              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 2.2 L9.5 6 L3.5 9.8 Z" fill="currentColor" />
+              </svg>
+            </span>
             Watch the film
             <span className="lp-film-meta">32s · six grounds · one practice</span>
-          </a>
+          </Link>
         </div>
 
         <div className="lp-hero-art anim-art">

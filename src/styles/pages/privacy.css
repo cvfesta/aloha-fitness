@@ -40,7 +40,7 @@
 }
 .legal li { margin-bottom: 0.4rem; }
 .legal a {
-    color: var(--terracotta-deep);
+    color: var(--ocean-deep);
     font-weight: 600;
 }
 .legal .legal-meta {
