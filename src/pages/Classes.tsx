@@ -9,6 +9,7 @@ import HeroStrip from '../components/HeroStrip'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { useContactModal } from '../contexts/ContactModalContext'
 import { site } from '../config'
+import { trackEvent, trackOutbound } from '../lib/mixpanel'
 import '../styles/pages/home.css'
 
 export default function Classes() {
@@ -168,10 +169,22 @@ export default function Classes() {
                 href={site.pricing.coaching.paymentLink}
                 target="_self"
                 rel="noopener"
+                onClick={() =>
+                  trackOutbound('Square', site.pricing.coaching.paymentLink, {
+                    plan: 'coaching',
+                    location: 'classes-pricing',
+                  })
+                }
               >
                 Get started <span className="arrow">→</span>
               </a>
-              <a className="btn-card-outline" onClick={openContact}>
+              <a
+                className="btn-card-outline"
+                onClick={() => {
+                  trackEvent('Contact modal opened', { location: 'classes-coaching' })
+                  openContact()
+                }}
+              >
                 Contact for info
               </a>
             </div>
@@ -200,6 +213,13 @@ export default function Classes() {
                 href={site.pricing.fullMembership.paymentLink}
                 target="_self"
                 rel="noopener"
+                onClick={() =>
+                  trackOutbound('Stripe', site.pricing.fullMembership.paymentLink, {
+                    plan: 'full-membership',
+                    price: site.pricing.fullMembership.price,
+                    location: 'classes-pricing',
+                  })
+                }
               >
                 Join the membership <span className="arrow">→</span>
               </a>
@@ -232,6 +252,13 @@ export default function Classes() {
                 href={site.pricing.saturdayOnly.paymentLink}
                 target="_self"
                 rel="noopener"
+                onClick={() =>
+                  trackOutbound('Stripe', site.pricing.saturdayOnly.paymentLink, {
+                    plan: 'saturday-only',
+                    price: site.pricing.saturdayOnly.price,
+                    location: 'classes-pricing',
+                  })
+                }
               >
                 Join Saturdays <span className="arrow">→</span>
               </a>

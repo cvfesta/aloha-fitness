@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { submitNetlifyForm, formValues } from '../lib/netlify'
+import { trackEvent } from './../lib/mixpanel'
 
 export type SubmitStatus = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -20,15 +21,19 @@ export function useNetlifyForm(formName: string) {
     const form = event.currentTarget
     if (!form.checkValidity()) {
       setValidated(true)
+      trackEvent('Form validation failed', { form: formName })
       return
     }
     setValidated(true)
     setStatus('sending')
+    trackEvent('Form submit attempted', { form: formName })
     try {
       await submitNetlifyForm(formName, formValues(form))
       setStatus('sent')
+      trackEvent('Form submitted', { form: formName })
     } catch {
       setStatus('error')
+      trackEvent('Form submit error', { form: formName })
     }
   }
 

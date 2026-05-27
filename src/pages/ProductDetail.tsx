@@ -5,6 +5,7 @@ import SiteFooter from '../components/SiteFooter'
 import SectionLabel from '../components/SectionLabel'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { products } from '../data/products'
+import { trackEvent, trackOutbound } from '../lib/mixpanel'
 import '../styles/pages/products.css'
 
 export default function ProductDetail() {
@@ -81,7 +82,14 @@ export default function ProductDetail() {
                       title={c.outOfStock ? `${c.name} — sold out` : c.name}
                       className={classes.join(' ')}
                       style={{ background: c.swatch }}
-                      onClick={() => setColorIndex(i)}
+                      onClick={() => {
+                        setColorIndex(i)
+                        trackEvent('Color swatch selected', {
+                          product: product.id,
+                          color: c.name,
+                          sold_out: !!c.outOfStock,
+                        })
+                      }}
                     />
                   )
                 })}
@@ -105,6 +113,13 @@ export default function ProductDetail() {
                 href={buyUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
+                onClick={() =>
+                  trackOutbound('Amazon', buyUrl, {
+                    location: 'product-detail',
+                    product: product.id,
+                    color: activeColor?.name,
+                  })
+                }
               >
                 Buy on Amazon
                 <span className="arrow" aria-hidden="true">→</span>

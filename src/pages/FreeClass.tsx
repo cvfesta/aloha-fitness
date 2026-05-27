@@ -10,6 +10,7 @@ import { Field, SelectField } from '../components/Field'
 import { useNetlifyForm } from '../hooks/useNetlifyForm'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { site } from '../config'
+import { trackEvent } from '../lib/mixpanel'
 import '../styles/pages/free.css'
 
 export default function FreeClass() {
@@ -141,7 +142,14 @@ export default function FreeClass() {
                   <input type="checkbox" required id="termsCheck" />
                   <span>
                     I agree to the{' '}
-                    <a onClick={() => setTermsOpen(true)}>terms and conditions</a>
+                    <a
+                      onClick={() => {
+                        trackEvent('Terms modal opened', { location: 'free-class-form' })
+                        setTermsOpen(true)
+                      }}
+                    >
+                      terms and conditions
+                    </a>
                   </span>
                 </label>
 

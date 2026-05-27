@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { site } from '../config'
 import { useContactModal } from '../contexts/ContactModalContext'
+import { trackEvent, trackOutbound } from '../lib/mixpanel'
 
 /**
  * Shared site footer. Same link cluster on every page — no per-page overrides.
@@ -19,6 +20,9 @@ export default function SiteFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Aloha Fitness on Instagram"
+            onClick={() =>
+              trackOutbound('Instagram', site.contact.instagram, { location: 'footer' })
+            }
           >
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" strokeWidth="1.8" />
@@ -32,7 +36,14 @@ export default function SiteFooter() {
           <Link to="/classes">Classes</Link>
           <Link to="/about">Coach</Link>
           <Link to="/free">Free Class</Link>
-          <a onClick={openContact}>Contact</a>
+          <a
+            onClick={() => {
+              trackEvent('Contact modal opened', { location: 'footer' })
+              openContact()
+            }}
+          >
+            Contact
+          </a>
           <Link to="/privacy-policy">Privacy</Link>
         </div>
         <span className="footer-mark">

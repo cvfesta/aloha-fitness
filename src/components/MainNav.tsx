@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useContactModal } from '../contexts/ContactModalContext'
+import { trackEvent } from '../lib/mixpanel'
 import ThemeToggle from './ThemeToggle'
 
 /**
@@ -18,6 +19,7 @@ export default function MainNav() {
 
   function onContactClick() {
     close()
+    trackEvent('Contact modal opened', { location: 'header-nav' })
     openContact()
   }
 

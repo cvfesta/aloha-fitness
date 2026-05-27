@@ -4,6 +4,7 @@ import SiteFooter from '../components/SiteFooter'
 import SunDecor from '../components/SunDecor'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { products } from '../data/products'
+import { trackEvent, trackOutbound } from '../lib/mixpanel'
 import '../styles/pages/landing.css'
 
 const FEATURED_SLUG = 'aloha-bliss-yoga-mat'
@@ -69,7 +70,11 @@ export default function Landing() {
           )}
 
           <div className="lp-hero-ctas anim anim-5">
-            <Link className="btn-primary-ink" to={detailHref}>
+            <Link
+              className="btn-primary-ink"
+              to={detailHref}
+              onClick={() => trackEvent('CTA click', { label: 'See the details', location: 'landing-hero' })}
+            >
               See the details
               <span className="arrow" aria-hidden="true">→</span>
             </Link>
@@ -79,6 +84,12 @@ export default function Landing() {
                 href={inStockColors[0].amazonUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
+                onClick={() =>
+                  trackOutbound('Amazon', inStockColors[0].amazonUrl, {
+                    location: 'landing-hero',
+                    color: inStockColors[0].name,
+                  })
+                }
               >
                 Buy on Amazon
                 <span className="arrow" aria-hidden="true">↗</span>
@@ -86,7 +97,11 @@ export default function Landing() {
             )}
           </div>
 
-          <Link className="lp-film-link anim anim-5" to="/film">
+          <Link
+            className="lp-film-link anim anim-5"
+            to="/film"
+            onClick={() => trackEvent('CTA click', { label: 'Watch the film', location: 'landing-hero' })}
+          >
             <span className="lp-film-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.5 2.2 L9.5 6 L3.5 9.8 Z" fill="currentColor" />
@@ -162,7 +177,11 @@ export default function Landing() {
             stand behind it — then buy in two taps.
           </p>
           <div className="lp-final-ctas">
-            <Link className="btn-callout" to={detailHref}>
+            <Link
+              className="btn-callout"
+              to={detailHref}
+              onClick={() => trackEvent('CTA click', { label: 'See the details', location: 'landing-final' })}
+            >
               See the details
               <span className="arrow" aria-hidden="true">→</span>
             </Link>
@@ -172,6 +191,12 @@ export default function Landing() {
                 href={inStockColors[0].amazonUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
+                onClick={() =>
+                  trackOutbound('Amazon', inStockColors[0].amazonUrl, {
+                    location: 'landing-final',
+                    color: inStockColors[0].name,
+                  })
+                }
               >
                 Buy on Amazon
                 <span className="arrow" aria-hidden="true">↗</span>

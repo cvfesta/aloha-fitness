@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTheme, type Theme } from '../hooks/useTheme'
+import { trackEvent } from '../lib/mixpanel'
 
 const OPTIONS: { value: Theme; label: string }[] = [
   { value: 'system', label: 'Auto' },
@@ -83,6 +84,7 @@ export default function ThemeToggle() {
               className={theme === opt.value ? 'theme-menu-item is-active' : 'theme-menu-item'}
               onClick={() => {
                 setTheme(opt.value)
+                trackEvent('Theme changed', { theme: opt.value })
                 setOpen(false)
               }}
             >
