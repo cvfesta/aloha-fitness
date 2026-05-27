@@ -212,8 +212,10 @@
     gap: 2rem 2.5rem;
 }
 .lp-values-grid li {
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--line);
+    padding: 1.4rem 1.5rem 1.5rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-sm);
+    background: var(--card);
 }
 .lp-value-icon {
     display: inline-flex;
