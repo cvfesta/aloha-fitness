@@ -24,7 +24,7 @@
     position: absolute;
     top: -28px;
     right: -16px;
-    background: var(--terracotta);
+    background: var(--pop);
     color: #fff;
     font-family: var(--display);
     font-weight: 500;
@@ -34,7 +34,7 @@
     padding: 0.6rem 1.1rem;
     border-radius: 999px;
     transform: rotate(6deg);
-    box-shadow: 0 8px 20px rgba(157, 67, 33, 0.35);
+    box-shadow: 0 8px 20px rgba(224, 69, 103, 0.35);
     white-space: nowrap;
 }
 .form-sticker i { font-style: italic; }
@@ -102,7 +102,7 @@
 }
 .terms input[type="checkbox"]:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+    box-shadow: 0 0 0 4px rgba(0, 166, 203, 0.18);
 }
 .terms a {
     color: var(--terracotta-deep);
@@ -244,9 +244,6 @@
     justify-content: center;
 }
 .bring-icon svg { width: 20px; height: 20px; }
-
-/* Preserve waiver line breaks inside the waiver modal */
-#termsModal .modal-body { white-space: pre-line; }
 
 /* ========================================
    PAGE-SPECIFIC RESPONSIVE

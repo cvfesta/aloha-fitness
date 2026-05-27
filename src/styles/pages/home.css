@@ -140,7 +140,7 @@
     border-color: var(--line);
 }
 .price-card.featured {
-    background: linear-gradient(180deg, #FFFCF5 0%, #FBF1DB 100%);
+    background: linear-gradient(180deg, var(--paper) 0%, var(--ocean-soft) 100%);
     border-color: var(--terracotta-soft);
 }
 .price-kicker {
@@ -274,7 +274,7 @@
     background: var(--terracotta-deep);
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(157, 67, 33, 0.25);
+    box-shadow: 0 8px 18px rgba(0, 126, 155, 0.25);
 }
 .btn-card-outline {
     background: transparent;
@@ -394,6 +394,36 @@
     color: var(--ink-fade);
     margin-top: 0.85rem;
     font-style: italic;
+}
+
+/* ========================================
+   SHOP TEASER
+   ======================================== */
+.shop-teaser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-md);
+    padding: 2rem 2.25rem;
+    box-shadow: var(--shadow-1);
+}
+.shop-teaser-copy {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 56ch;
+}
+@media (max-width: 720px) {
+    .shop-teaser {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 1.5rem;
+        gap: 1.25rem;
+    }
 }
 
 /* ========================================

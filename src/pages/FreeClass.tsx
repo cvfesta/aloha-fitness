@@ -186,8 +186,8 @@ export default function FreeClass() {
                 preserveAspectRatio="xMidYMid slice"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="320" cy="35" r="20" fill="#E89A3C" opacity="0.45" />
-                <circle cx="320" cy="35" r="12" fill="#E89A3C" />
+                <circle cx="320" cy="35" r="20" fill="#FFB938" opacity="0.45" />
+                <circle cx="320" cy="35" r="12" fill="#FFB938" />
                 <path
                   d="M0 110 Q 80 70, 160 95 T 320 95 T 480 110 L 480 150 L 0 150 Z"
                   fill="#6C8B65"
@@ -200,7 +200,7 @@ export default function FreeClass() {
                 <path
                   d="M40 145 Q 120 120, 200 130 T 380 110"
                   fill="none"
-                  stroke="#F2E9D5"
+                  stroke="#FFFFFF"
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeDasharray="2 7"
@@ -218,7 +218,7 @@ export default function FreeClass() {
                 <g transform="translate(180, 85)">
                   <path
                     d="M0 0 C -10 -10, -10 -25, 0 -28 C 10 -25, 10 -10, 0 0 Z"
-                    fill="#C95A36"
+                    fill="#00A6CB"
                   />
                   <circle cx="0" cy="-18" r="4.5" fill="#FFFCF5" />
                 </g>

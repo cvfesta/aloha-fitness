@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet" />
+<title>aloha · the bliss collection · Aloha Fitness</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #1E231D; }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .stage-wrap {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #1E231D;
+  }
+  .stage {
+    position: relative;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+
+  .bg-layer { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+
+  .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.18) 100%);
+    z-index: 50;
+  }
+  .grain {
+    position: absolute; inset: 0; pointer-events: none;
+    opacity: 0.07; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    z-index: 51;
+  }
+
+  /* INTRO */
+  .intro-mark-pos {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  .intro-mark-anim {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "SOFT" 50, "opsz" 144;
+    font-weight: 400;
+    font-size: clamp(48px, 9vw, 130px);
+    color: #2a2018;
+    letter-spacing: 0.42em;
+    margin-right: -0.42em;
+    opacity: 0;
+    text-transform: lowercase;
+    line-height: 1;
+    will-change: opacity, transform, letter-spacing;
+  }
+  .intro-sub-pos {
+    position: absolute; top: calc(50% + clamp(45px, 7vw, 95px)); left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .intro-sub-anim {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: clamp(10px, 1.1vw, 13px);
+    color: #2a2018;
+    letter-spacing: 0.55em;
+    margin-right: -0.55em;
+    opacity: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    will-change: opacity, transform;
+  }
+
+  /* SCENE MAT */
+  .mat-pos {
+    position: absolute; top: 50%; left: 62%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    height: 80%;
+    aspect-ratio: 540 / 1447;
+  }
+  .mat-img {
+    height: 100%; width: 100%;
+    object-fit: cover;
+    opacity: 0;
+    filter: drop-shadow(0 25px 60px rgba(0,0,0,0.35));
+    border-radius: 12px;
+    will-change: opacity, transform;
+  }
+
+  .name-pos {
+    position: absolute; top: 50%;
+    left: clamp(40px, 7%, 100px);
+    transform: translateY(-50%);
+    z-index: 8;
+    max-width: 40%;
+  }
+  .name-anim {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "SOFT" 50, "opsz" 144;
+    font-weight: 400;
+    font-size: clamp(38px, 6vw, 92px);
+    letter-spacing: 0.18em;
+    margin-right: -0.18em;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.3vw, 20px);
+    line-height: 1;
+    will-change: opacity, transform, letter-spacing;
+  }
+  .name-anim .dot {
+    width: clamp(11px, 1.1vw, 16px);
+    height: clamp(11px, 1.1vw, 16px);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.18);
+    flex-shrink: 0;
+  }
+  .tag {
+    position: absolute;
+    top: calc(50% + clamp(40px, 5.5vw, 78px));
+    left: clamp(40px, 7%, 100px);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: clamp(11px, 1.15vw, 15px);
+    letter-spacing: 0.42em;
+    opacity: 0;
+    z-index: 8;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 26px);
+    max-width: 40%;
+    will-change: opacity, transform;
+  }
+  .tag .tag-line {
+    display: inline-block;
+    width: clamp(18px, 2.2vw, 34px);
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+  .tag .tag-text { margin-right: -0.42em; }
+
+  .brand-corner {
+    position: absolute;
+    top: clamp(20px, 3vh, 40px); left: clamp(28px, 3vw, 48px);
+    font-family: 'Fraunces', 'Times New Roman', Georgia, serif; font-style: italic; font-variation-settings: "SOFT" 80, "opsz" 80;
+    font-size: clamp(22px, 2.4vw, 36px);
+    color: #ffffff;
+    mix-blend-mode: difference;
+    opacity: 0;
+    z-index: 12;
+    line-height: 1;
+  }
+
+  .counter {
+    position: absolute;
+    bottom: clamp(20px, 3vh, 40px); right: clamp(28px, 3vw, 48px);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: clamp(11px, 1vw, 13px);
+    letter-spacing: 0.3em;
+    opacity: 0;
+    z-index: 12;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+  .counter .num { font-family: 'Fraunces', serif; font-variation-settings: "SOFT" 50, "opsz" 36; font-weight: 400; font-size: 1.6em; letter-spacing: 0.05em; }
+  .counter .sep { opacity: 0.4; padding: 0 2px; }
+  .counter .total { opacity: 0.55; }
+
+  /* OUTRO */
+  .outro-grid {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(8px, 1.4vw, 22px);
+    z-index: 6;
+    padding: 0 clamp(20px, 4vw, 60px);
+  }
+  .outro-mat {
+    position: relative;
+    height: 56%;
+    aspect-ratio: 540 / 1447;
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+  .outro-mat img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  }
+  .outro-label {
+    position: absolute;
+    bottom: -clamp(26px, 3vw, 38px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 50, "opsz" 36;
+    font-size: clamp(11px, 1.15vw, 15px);
+    color: #f3ebdc;
+    letter-spacing: 0.22em;
+    margin-right: -0.22em;
+    text-transform: lowercase;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+
+  .outro-title-pos {
+    position: absolute;
+    top: clamp(40px, 8vh, 90px); left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .outro-title-anim {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 50, "opsz" 80;
+    font-weight: 400;
+    font-size: clamp(20px, 2.4vw, 32px);
+    color: #f3ebdc;
+    letter-spacing: 0.22em;
+    margin-right: -0.22em;
+    text-transform: lowercase;
+    opacity: 0;
+    white-space: nowrap;
+    will-change: opacity, transform, letter-spacing;
+  }
+
+  .outro-brand-pos {
+    position: absolute;
+    bottom: clamp(40px, 7vh, 80px); left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+  }
+  .outro-brand-anim { opacity: 0; will-change: opacity, transform; }
+  .outro-brand-anim .mark {
+    font-family: 'Fraunces', 'Times New Roman', Georgia, serif; font-style: italic; font-variation-settings: "SOFT" 80, "opsz" 80;
+    font-size: clamp(40px, 5.5vw, 78px);
+    color: #f3ebdc;
+    line-height: 1;
+  }
+  .outro-brand-anim .sub {
+    margin-top: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: clamp(9px, 0.9vw, 12px);
+    color: #f3ebdc;
+    letter-spacing: 0.6em;
+    padding-left: 0.6em; /* compensate for trailing letter-spacing in center-aligned wrapper */
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .controls {
+    position: fixed;
+    bottom: 12px; right: 12px;
+    z-index: 200;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.2em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+  body:hover .controls { opacity: 1; }
+  body.paused * { animation-play-state: paused !important; }
+
+  .close-btn {
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 300;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .close-btn:hover {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    border-color: rgba(255,255,255,0.35);
+    transform: scale(1.05);
+  }
+
+  /* Portrait layout: stack name above mat */
+  @media (max-aspect-ratio: 1/1) {
+    .name-pos { left: 50%; top: 22%; transform: translateX(-50%); max-width: 90%; text-align: center; }
+    .name-anim { justify-content: center; font-size: clamp(32px, 11vw, 60px); }
+    .tag { left: 50%; top: 32%; transform: translateX(-50%); max-width: 90%; justify-content: center; }
+    .mat-pos { left: 50%; top: 62%; height: 64%; transform: translate(-50%, -50%); }
+  }
+
+  /* Animations */
+@keyframes bg-intro {
+  0% { opacity: 1 }
+  8.438% { opacity: 1 }
+  10.938% { opacity: 0 }
+  83.438% { opacity: 0 }
+  85.938% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-lava {
+  0% { opacity: 0 }
+  8.125% { opacity: 0 }
+  10.469% { opacity: 1 }
+  21.719% { opacity: 1 }
+  23.281% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-plumeria {
+  0% { opacity: 0 }
+  20.625% { opacity: 0 }
+  22.969% { opacity: 1 }
+  34.219% { opacity: 1 }
+  35.781% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-mango {
+  0% { opacity: 0 }
+  33.125% { opacity: 0 }
+  35.469% { opacity: 1 }
+  46.719% { opacity: 1 }
+  48.281% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-lagoon {
+  0% { opacity: 0 }
+  45.625% { opacity: 0 }
+  47.969% { opacity: 1 }
+  59.219% { opacity: 1 }
+  60.781% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-palm {
+  0% { opacity: 0 }
+  58.125% { opacity: 0 }
+  60.469% { opacity: 1 }
+  71.719% { opacity: 1 }
+  73.281% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-pacific {
+  0% { opacity: 0 }
+  70.625% { opacity: 0 }
+  72.969% { opacity: 1 }
+  84.219% { opacity: 1 }
+  85.781% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes bg-outro {
+  0% { opacity: 0 }
+  83.125% { opacity: 0 }
+  85.625% { opacity: 1 }
+  99.062% { opacity: 1 }
+  100% { opacity: 0 }
+}
+@keyframes intro-mark-in {
+  0% { opacity: 0; transform: translateY(18px); letter-spacing: 0.6em }
+  2.344% { opacity: 1; transform: translateY(0); letter-spacing: 0.42em }
+  8.125% { opacity: 1; transform: translateY(0); letter-spacing: 0.42em }
+  10.312% { opacity: 0; transform: translateY(-6px); letter-spacing: 0.5em }
+  100% { opacity: 0 }
+}
+@keyframes intro-sub-in {
+  0% { opacity: 0; transform: translateY(10px) }
+  1.406% { opacity: 0; transform: translateY(10px) }
+  3.750% { opacity: 0.6; transform: translateY(0) }
+  8.125% { opacity: 0.6; transform: translateY(0) }
+  10.312% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-lava {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  9.375% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  11.094% { opacity: 1; transform: translateY(0) scale(1) }
+  20.312% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  21.875% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-lava {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  10.781% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  12.812% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  20.312% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  21.875% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-lava {
+  0% { opacity: 0; transform: translateY(14px) }
+  12.500% { opacity: 0; transform: translateY(14px) }
+  14.219% { opacity: 0.75; transform: translateY(0) }
+  20.312% { opacity: 0.75; transform: translateY(0) }
+  21.875% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-lava {
+  0% { opacity: 0 }
+  10.312% { opacity: 0 }
+  11.875% { opacity: 0.55 }
+  20.938% { opacity: 0.55 }
+  22.500% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-plumeria {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  21.875% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  23.594% { opacity: 1; transform: translateY(0) scale(1) }
+  32.812% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  34.375% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-plumeria {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  23.281% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  25.312% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  32.812% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  34.375% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-plumeria {
+  0% { opacity: 0; transform: translateY(14px) }
+  25.000% { opacity: 0; transform: translateY(14px) }
+  26.719% { opacity: 0.75; transform: translateY(0) }
+  32.812% { opacity: 0.75; transform: translateY(0) }
+  34.375% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-plumeria {
+  0% { opacity: 0 }
+  22.812% { opacity: 0 }
+  24.375% { opacity: 0.55 }
+  33.438% { opacity: 0.55 }
+  35.000% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-mango {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  34.375% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  36.094% { opacity: 1; transform: translateY(0) scale(1) }
+  45.312% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  46.875% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-mango {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  35.781% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  37.812% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  45.312% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  46.875% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-mango {
+  0% { opacity: 0; transform: translateY(14px) }
+  37.500% { opacity: 0; transform: translateY(14px) }
+  39.219% { opacity: 0.75; transform: translateY(0) }
+  45.312% { opacity: 0.75; transform: translateY(0) }
+  46.875% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-mango {
+  0% { opacity: 0 }
+  35.312% { opacity: 0 }
+  36.875% { opacity: 0.55 }
+  45.938% { opacity: 0.55 }
+  47.500% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-lagoon {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  46.875% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  48.594% { opacity: 1; transform: translateY(0) scale(1) }
+  57.812% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  59.375% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-lagoon {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  48.281% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  50.313% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  57.812% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  59.375% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-lagoon {
+  0% { opacity: 0; transform: translateY(14px) }
+  50.000% { opacity: 0; transform: translateY(14px) }
+  51.719% { opacity: 0.75; transform: translateY(0) }
+  57.812% { opacity: 0.75; transform: translateY(0) }
+  59.375% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-lagoon {
+  0% { opacity: 0 }
+  47.812% { opacity: 0 }
+  49.375% { opacity: 0.55 }
+  58.438% { opacity: 0.55 }
+  60.000% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-palm {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  59.375% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  61.094% { opacity: 1; transform: translateY(0) scale(1) }
+  70.312% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  71.875% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-palm {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  60.781% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  62.813% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  70.312% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  71.875% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-palm {
+  0% { opacity: 0; transform: translateY(14px) }
+  62.500% { opacity: 0; transform: translateY(14px) }
+  64.219% { opacity: 0.75; transform: translateY(0) }
+  70.312% { opacity: 0.75; transform: translateY(0) }
+  71.875% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-palm {
+  0% { opacity: 0 }
+  60.312% { opacity: 0 }
+  61.875% { opacity: 0.55 }
+  70.938% { opacity: 0.55 }
+  72.500% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes mat-pacific {
+  0% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  71.875% { opacity: 0; transform: translateY(32px) scale(0.985) }
+  73.594% { opacity: 1; transform: translateY(0) scale(1) }
+  82.812% { opacity: 1; transform: translateY(-4px) scale(1.005) }
+  84.375% { opacity: 0; transform: translateY(-18px) scale(1.01) }
+  100% { opacity: 0 }
+}
+@keyframes name-pacific {
+  0% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  73.281% { opacity: 0; transform: translateY(22px); letter-spacing: 0.32em }
+  75.312% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  82.812% { opacity: 1; transform: translateY(0); letter-spacing: 0.18em }
+  84.375% { opacity: 0; transform: translateY(-14px); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes tag-pacific {
+  0% { opacity: 0; transform: translateY(14px) }
+  75.000% { opacity: 0; transform: translateY(14px) }
+  76.719% { opacity: 0.75; transform: translateY(0) }
+  82.812% { opacity: 0.75; transform: translateY(0) }
+  84.375% { opacity: 0; transform: translateY(-8px) }
+  100% { opacity: 0 }
+}
+@keyframes counter-pacific {
+  0% { opacity: 0 }
+  72.812% { opacity: 0 }
+  74.375% { opacity: 0.55 }
+  83.438% { opacity: 0.55 }
+  85.000% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes brand-corner {
+  0% { opacity: 0 }
+  10.000% { opacity: 0 }
+  11.875% { opacity: 0.65 }
+  83.750% { opacity: 0.65 }
+  85.312% { opacity: 0 }
+  100% { opacity: 0 }
+}
+@keyframes outro-mat-lava {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  86.250% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  88.438% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-mat-plumeria {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  86.812% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  89.000% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-mat-mango {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  87.375% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  89.562% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-mat-lagoon {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  87.938% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  90.125% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-mat-palm {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  88.500% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  90.688% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-mat-pacific {
+  0% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  89.062% { opacity: 0; transform: translateY(40px) scale(0.92) }
+  91.250% { opacity: 1; transform: translateY(0) scale(1) }
+  98.750% { opacity: 1; transform: translateY(0) scale(1) }
+  100% { opacity: 0; transform: translateY(-12px) scale(1) }
+}
+@keyframes outro-title {
+  0% { opacity: 0; transform: translateY(18px); letter-spacing: 0.4em }
+  90.000% { opacity: 0; transform: translateY(18px); letter-spacing: 0.4em }
+  92.500% { opacity: 0.9; transform: translateY(0); letter-spacing: 0.22em }
+  98.750% { opacity: 0.9; transform: translateY(0); letter-spacing: 0.22em }
+  100% { opacity: 0 }
+}
+@keyframes outro-brand {
+  0% { opacity: 0; transform: translateY(12px) }
+  92.188% { opacity: 0; transform: translateY(12px) }
+  94.375% { opacity: 1; transform: translateY(0) }
+  98.750% { opacity: 1; transform: translateY(0) }
+  100% { opacity: 0 }
+}
+
+.bg-intro { animation: bg-intro 32.0s linear infinite; }
+.bg-lava { animation: bg-lava 32.0s linear infinite; }
+.bg-plumeria { animation: bg-plumeria 32.0s linear infinite; }
+.bg-mango { animation: bg-mango 32.0s linear infinite; }
+.bg-lagoon { animation: bg-lagoon 32.0s linear infinite; }
+.bg-palm { animation: bg-palm 32.0s linear infinite; }
+.bg-pacific { animation: bg-pacific 32.0s linear infinite; }
+.bg-outro { animation: bg-outro 32.0s linear infinite; }
+.intro-mark-anim { animation: intro-mark-in 32.0s linear infinite; }
+.intro-sub-anim { animation: intro-sub-in 32.0s linear infinite; }
+.mat-lava { animation: mat-lava 32.0s linear infinite; }
+.name-lava { animation: name-lava 32.0s linear infinite; }
+.tag-lava { animation: tag-lava 32.0s linear infinite; }
+.counter-lava { animation: counter-lava 32.0s linear infinite; color: #f3ebdc; }
+.mat-plumeria { animation: mat-plumeria 32.0s linear infinite; }
+.name-plumeria { animation: name-plumeria 32.0s linear infinite; }
+.tag-plumeria { animation: tag-plumeria 32.0s linear infinite; }
+.counter-plumeria { animation: counter-plumeria 32.0s linear infinite; color: #3a2820; }
+.mat-mango { animation: mat-mango 32.0s linear infinite; }
+.name-mango { animation: name-mango 32.0s linear infinite; }
+.tag-mango { animation: tag-mango 32.0s linear infinite; }
+.counter-mango { animation: counter-mango 32.0s linear infinite; color: #3a1f10; }
+.mat-lagoon { animation: mat-lagoon 32.0s linear infinite; }
+.name-lagoon { animation: name-lagoon 32.0s linear infinite; }
+.tag-lagoon { animation: tag-lagoon 32.0s linear infinite; }
+.counter-lagoon { animation: counter-lagoon 32.0s linear infinite; color: #152a36; }
+.mat-palm { animation: mat-palm 32.0s linear infinite; }
+.name-palm { animation: name-palm 32.0s linear infinite; }
+.tag-palm { animation: tag-palm 32.0s linear infinite; }
+.counter-palm { animation: counter-palm 32.0s linear infinite; color: #1c2918; }
+.mat-pacific { animation: mat-pacific 32.0s linear infinite; }
+.name-pacific { animation: name-pacific 32.0s linear infinite; }
+.tag-pacific { animation: tag-pacific 32.0s linear infinite; }
+.counter-pacific { animation: counter-pacific 32.0s linear infinite; color: #0f2638; }
+.brand-corner { animation: brand-corner 32.0s linear infinite; }
+.outro-mat-lava { animation: outro-mat-lava 32.0s linear infinite; }
+.outro-mat-plumeria { animation: outro-mat-plumeria 32.0s linear infinite; }
+.outro-mat-mango { animation: outro-mat-mango 32.0s linear infinite; }
+.outro-mat-lagoon { animation: outro-mat-lagoon 32.0s linear infinite; }
+.outro-mat-palm { animation: outro-mat-palm 32.0s linear infinite; }
+.outro-mat-pacific { animation: outro-mat-pacific 32.0s linear infinite; }
+.outro-title-anim { animation: outro-title 32.0s linear infinite; }
+.outro-brand-anim { animation: outro-brand 32.0s linear infinite; }
+</style>
+</head>
+<body>
+  <div class="stage-wrap">
+    <div class="stage">
+
+      <div class="bg-layer bg-intro" style="background: #ece4d6"></div><div class="bg-layer bg-lava" style="background: #1a1714"></div><div class="bg-layer bg-plumeria" style="background: #f1e0d5"></div><div class="bg-layer bg-mango" style="background: #f9e2cb"></div><div class="bg-layer bg-lagoon" style="background: #dfe9e8"></div><div class="bg-layer bg-palm" style="background: #e6eadb"></div><div class="bg-layer bg-pacific" style="background: #dde7ec"></div><div class="bg-layer bg-outro" style="background: #1a1714"></div>
+
+      <div class="intro-mark-pos"><div class="intro-mark-anim">aloha</div></div>
+      <div class="intro-sub-pos"><div class="intro-sub-anim">the bliss collection</div></div>
+
+      <div class="mat-pos"><img class="mat-img mat-lava" src="/img/products/video/lava.jpg" alt="Lava yoga mat" /></div><div class="mat-pos"><img class="mat-img mat-plumeria" src="/img/products/video/plumeria.jpg" alt="Plumeria yoga mat" /></div><div class="mat-pos"><img class="mat-img mat-mango" src="/img/products/video/mango.jpg" alt="Mango yoga mat" /></div><div class="mat-pos"><img class="mat-img mat-lagoon" src="/img/products/video/lagoon.jpg" alt="Lagoon yoga mat" /></div><div class="mat-pos"><img class="mat-img mat-palm" src="/img/products/video/palm.jpg" alt="Palm yoga mat" /></div><div class="mat-pos"><img class="mat-img mat-pacific" src="/img/products/video/pacific.jpg" alt="Pacific yoga mat" /></div>
+
+      <div class="name-pos"><div class="name-anim name-lava" style="color: #f3ebdc"><span class="dot" style="background: #0c0a08"></span><span class="name-text">Lava</span></div></div><div class="name-pos"><div class="name-anim name-plumeria" style="color: #3a2820"><span class="dot" style="background: #e9c5be"></span><span class="name-text">Plumeria</span></div></div><div class="name-pos"><div class="name-anim name-mango" style="color: #3a1f10"><span class="dot" style="background: #e07a30"></span><span class="name-text">Mango</span></div></div><div class="name-pos"><div class="name-anim name-lagoon" style="color: #152a36"><span class="dot" style="background: #5a9bb4"></span><span class="name-text">Lagoon</span></div></div><div class="name-pos"><div class="name-anim name-palm" style="color: #1c2918"><span class="dot" style="background: #2f9b3e"></span><span class="name-text">Palm</span></div></div><div class="name-pos"><div class="name-anim name-pacific" style="color: #0f2638"><span class="dot" style="background: #5fa6c8"></span><span class="name-text">Pacific</span></div></div>
+      <div class="tag tag-lava" style="color: #f3ebdc"><span class="tag-line"></span><span class="tag-text">ground in stillness</span></div><div class="tag tag-plumeria" style="color: #3a2820"><span class="tag-line"></span><span class="tag-text">soften into presence</span></div><div class="tag tag-mango" style="color: #3a1f10"><span class="tag-line"></span><span class="tag-text">ignite your practice</span></div><div class="tag tag-lagoon" style="color: #152a36"><span class="tag-line"></span><span class="tag-text">flow like water</span></div><div class="tag tag-palm" style="color: #1c2918"><span class="tag-line"></span><span class="tag-text">root and rise</span></div><div class="tag tag-pacific" style="color: #0f2638"><span class="tag-line"></span><span class="tag-text">breathe deep</span></div>
+
+      <div class="counter counter-lava"><span class="num">01</span><span class="sep">/</span><span class="total">06</span></div><div class="counter counter-plumeria"><span class="num">02</span><span class="sep">/</span><span class="total">06</span></div><div class="counter counter-mango"><span class="num">03</span><span class="sep">/</span><span class="total">06</span></div><div class="counter counter-lagoon"><span class="num">04</span><span class="sep">/</span><span class="total">06</span></div><div class="counter counter-palm"><span class="num">05</span><span class="sep">/</span><span class="total">06</span></div><div class="counter counter-pacific"><span class="num">06</span><span class="sep">/</span><span class="total">06</span></div>
+
+      <div class="brand-corner">aloha bliss</div>
+
+      <div class="outro-grid"><div class="outro-mat outro-mat-lava"><img src="/img/products/video/lava.jpg" alt="Lava" /><div class="outro-label">Lava</div></div><div class="outro-mat outro-mat-plumeria"><img src="/img/products/video/plumeria.jpg" alt="Plumeria" /><div class="outro-label">Plumeria</div></div><div class="outro-mat outro-mat-mango"><img src="/img/products/video/mango.jpg" alt="Mango" /><div class="outro-label">Mango</div></div><div class="outro-mat outro-mat-lagoon"><img src="/img/products/video/lagoon.jpg" alt="Lagoon" /><div class="outro-label">Lagoon</div></div><div class="outro-mat outro-mat-palm"><img src="/img/products/video/palm.jpg" alt="Palm" /><div class="outro-label">Palm</div></div><div class="outro-mat outro-mat-pacific"><img src="/img/products/video/pacific.jpg" alt="Pacific" /><div class="outro-label">Pacific</div></div></div>
+      <div class="outro-title-pos"><div class="outro-title-anim">six grounds · one practice</div></div>
+      <div class="outro-brand-pos"><div class="outro-brand-anim">
+        <div class="mark">aloha bliss</div>
+        <div class="sub">find your color</div>
+      </div></div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+  </div>
+
+  <a href="/" class="close-btn" aria-label="Close" onclick="if (window.opener || history.length <= 1) { window.close(); return false; }">×</a>
+
+  <div class="controls">click to pause · 32s loop</div>
+
+  <script>
+    document.body.addEventListener('click', (e) => {
+      if (e.target.closest('.close-btn')) return;
+      document.body.classList.toggle('paused');
+    });
+  </script>
+</body>
+</html>

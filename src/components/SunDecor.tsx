@@ -8,7 +8,7 @@ export default function SunDecor() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <g stroke="#E89A3C" strokeWidth="2.5" strokeLinecap="round">
+      <g stroke="#FFB938" strokeWidth="2.5" strokeLinecap="round">
         <line x1="100" y1="10" x2="100" y2="40" />
         <line x1="100" y1="160" x2="100" y2="190" />
         <line x1="10" y1="100" x2="40" y2="100" />
@@ -18,8 +18,8 @@ export default function SunDecor() {
         <line x1="36" y1="164" x2="58" y2="142" />
         <line x1="142" y1="58" x2="164" y2="36" />
       </g>
-      <circle cx="100" cy="100" r="42" fill="#E89A3C" opacity="0.18" />
-      <circle cx="100" cy="100" r="32" fill="#E89A3C" />
+      <circle cx="100" cy="100" r="42" fill="#FFB938" opacity="0.18" />
+      <circle cx="100" cy="100" r="32" fill="#FFB938" />
     </svg>
   )
 }

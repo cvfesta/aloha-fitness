@@ -8,32 +8,39 @@
    DESIGN TOKENS
    ============================================================ */
 :root {
-    /* Warm sunrise paper palette */
-    --paper:           #F2E9D5;
-    --paper-deep:      #ECE0C5;
-    --card:            #FFFCF5;
-    --card-shadow:     rgba(43, 32, 18, 0.10);
+    /* Coastal minimal palette (Apple / Lululemon vibe) */
+    --paper:           #FFFFFF;
+    --paper-deep:      #F4F6F8;
+    --card:            #FFFFFF;
+    --card-shadow:     rgba(20, 28, 32, 0.06);
 
-    /* Ink */
-    --ink:             #1E231D;
-    --ink-2:           #2D332C;
-    --ink-soft:        #6B6F66;
-    --ink-fade:        #A39E8B;
+    /* Ink — cool neutrals */
+    --ink:             #14171A;
+    --ink-2:           #2A2E33;
+    --ink-soft:        #6E747C;
+    --ink-fade:        #A8AEB5;
 
-    /* Accents */
-    --terracotta:      #C95A36;
-    --terracotta-deep: #9D4321;
-    --terracotta-soft: #F4D6C5;
-    --sage:            #6C8B65;
-    --sage-deep:       #4F6B49;
-    --sage-soft:       #D5DFCE;
-    --gold:            #D9A155;
-    --sun:             #E89A3C;
-    --sky:             #C9D9D4;
+    /* Accents — single ocean accent + reserved sun pop. Variable names
+       (--terracotta, --sky) preserved so existing rules keep working;
+       semantically --terracotta is the primary brand accent. */
+    --terracotta:      #00A6CB;   /* clear ocean (primary accent) */
+    --terracotta-deep: #007E9B;   /* deep ocean (hover, links) */
+    --terracotta-soft: #D6EEF5;   /* soft ocean tint */
+    --sage:            #5A8C7C;   /* coastal teal-sage (subtle natural) */
+    --sage-deep:       #3F6B5F;
+    --sage-soft:       #E5F0EC;
+    --sky:             #DAE9EE;   /* pale ice (very soft background tint) */
+    --ocean:           #00A6CB;
+    --ocean-deep:      #007E9B;
+    --ocean-soft:      #D6EEF5;
+    /* Tertiary — hibiscus pink, callback to the Plumeria mat */
+    --pop:             #FF5C81;
+    --pop-deep:        #E04567;
+    --pop-soft:        #FFD9E3;
 
-    /* Lines */
-    --line:            #DECDA8;
-    --line-soft:       #E8DBBC;
+    /* Lines — hairline cool gray */
+    --line:            #E5E8EC;
+    --line-soft:       #F0F2F5;
 
     /* Type */
     --display: "Fraunces", "Times New Roman", Georgia, serif;
@@ -46,10 +53,10 @@
     --r-lg: 32px;
     --r-xl: 48px;
 
-    /* Shadow */
-    --shadow-1: 0 1px 2px rgba(43, 32, 18, 0.04), 0 8px 28px rgba(43, 32, 18, 0.07);
-    --shadow-2: 0 2px 4px rgba(43, 32, 18, 0.05), 0 24px 64px rgba(43, 32, 18, 0.12);
-    --shadow-3: 0 4px 8px rgba(43, 32, 18, 0.06), 0 40px 96px rgba(43, 32, 18, 0.18);
+    /* Shadow — soft, Apple-style (low alpha, no warm tint) */
+    --shadow-1: 0 1px 2px rgba(20, 28, 32, 0.04), 0 8px 28px rgba(20, 28, 32, 0.04);
+    --shadow-2: 0 2px 4px rgba(20, 28, 32, 0.04), 0 24px 64px rgba(20, 28, 32, 0.08);
+    --shadow-3: 0 4px 8px rgba(20, 28, 32, 0.05), 0 40px 96px rgba(20, 28, 32, 0.12);
 }
 
 /* ============================================================
@@ -70,16 +77,9 @@ html, body {
     overflow-x: hidden;
 }
 
+/* No decorative background washes — minimal means pure white. */
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image:
-            radial-gradient(circle at 20% 10%, rgba(232, 154, 60, 0.10) 0%, transparent 45%),
-            radial-gradient(circle at 85% 20%, rgba(108, 139, 101, 0.10) 0%, transparent 45%),
-            radial-gradient(circle at 70% 90%, rgba(201, 90, 54, 0.08) 0%, transparent 50%);
+    content: none;
 }
 
 body > * { position: relative; z-index: 1; }
@@ -95,8 +95,8 @@ a { color: inherit; }
    TOPBAR / PROMO
    ============================================================ */
 .topbar {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--ocean-deep);
+    color: #fff;
     font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -105,16 +105,16 @@ a { color: inherit; }
     text-align: center;
 }
 .topbar strong {
-    color: var(--sun);
+    color: var(--ocean-soft);
     font-weight: 700;
 }
 .topbar .code {
     display: inline-block;
-    border: 1px dashed var(--sun);
+    border: 1px dashed var(--ocean-soft);
     border-radius: 4px;
     padding: 0.05rem 0.45rem;
     margin: 0 0.25rem;
-    color: var(--sun);
+    color: var(--ocean-soft);
     font-weight: 700;
     letter-spacing: 0.16em;
 }
@@ -122,7 +122,7 @@ a { color: inherit; }
     display: inline-block;
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: var(--sun);
+    background: var(--ocean-soft);
     margin: 0 0.7rem;
     vertical-align: middle;
 }
@@ -290,7 +290,7 @@ a { color: inherit; }
     right: -2%;
     bottom: -0.05em;
     height: 0.18em;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 Q 30 2, 60 6 T 120 5 T 198 7' fill='none' stroke='%23C95A36' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 Q 30 2, 60 6 T 120 5 T 198 7' fill='none' stroke='%2300A6CB' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
     opacity: 0.85;
 }
 
@@ -333,7 +333,7 @@ a { color: inherit; }
     right: -4%;
     width: 130px;
     height: 130px;
-    opacity: 0.9;
+    opacity: 0.55;
     z-index: -1;
     animation: rotateSun 60s linear infinite;
 }
@@ -416,7 +416,7 @@ a { color: inherit; }
     background: var(--terracotta-deep);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(157, 67, 33, 0.30);
+    box-shadow: 0 14px 32px rgba(0, 126, 155, 0.30);
 }
 .btn-outline-ink {
     background: transparent;
@@ -491,7 +491,7 @@ a { color: inherit; }
     background: var(--terracotta-deep);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(157, 67, 33, 0.30);
+    box-shadow: 0 14px 32px rgba(0, 126, 155, 0.30);
 }
 .submit:active { transform: translateY(0); }
 .submit .arrow {
@@ -548,7 +548,7 @@ a { color: inherit; }
 .field textarea:focus {
     outline: none;
     border-color: var(--terracotta);
-    box-shadow: 0 0 0 4px rgba(201, 90, 54, 0.15);
+    box-shadow: 0 0 0 4px rgba(0, 166, 203, 0.18);
     background: #fff;
 }
 .field input:focus + label,
@@ -596,15 +596,16 @@ a { color: inherit; }
 }
 
 /* ============================================================
-   FREE-CLASS CALLOUT  (used in index.html and free.html)
+   FREE-CLASS CALLOUT  (used across Classes, About, Products, etc.)
    ============================================================ */
 .free-callout {
     position: relative;
     margin-top: 4rem;
     padding: 3rem 2rem;
     text-align: center;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--paper-deep);
+    color: var(--ink);
+    border: 1px solid var(--line);
     border-radius: var(--r-lg);
     overflow: hidden;
 }
@@ -613,7 +614,7 @@ a { color: inherit; }
     position: absolute;
     top: -100px; right: -100px;
     width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(232, 154, 60, 0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 166, 203, 0.18) 0%, transparent 70%);
     border-radius: 50%;
 }
 .free-callout::after {
@@ -621,7 +622,7 @@ a { color: inherit; }
     position: absolute;
     bottom: -120px; left: -100px;
     width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(201, 90, 54, 0.30) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 92, 129, 0.14) 0%, transparent 70%);
     border-radius: 50%;
 }
 .free-callout > * { position: relative; z-index: 1; }
@@ -631,7 +632,7 @@ a { color: inherit; }
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--sun);
+    color: var(--ocean-deep);
     margin-bottom: 1rem;
 }
 .free-callout .callout-title {
@@ -646,11 +647,15 @@ a { color: inherit; }
 .free-callout .callout-title .ital {
     font-style: italic;
     font-variation-settings: "SOFT" 100, "opsz" 144;
-    color: var(--sun);
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--pop);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
 }
 .free-callout .callout-sub {
     font-size: 1rem;
-    color: rgba(242, 233, 213, 0.78);
+    color: var(--ink-soft);
     max-width: 44ch;
     margin: 0 auto 1.6rem;
 }
@@ -667,11 +672,11 @@ a { color: inherit; }
 .free-callout .price-line .ital {
     font-style: italic;
     font-variation-settings: "SOFT" 100, "opsz" 144;
-    color: var(--sun);
+    color: var(--ocean-deep);
 }
 .free-callout .price-sub {
     font-size: 1rem;
-    color: rgba(242, 233, 213, 0.75);
+    color: var(--ink-soft);
     max-width: 40ch;
     margin: 0 auto;
 }
@@ -680,20 +685,22 @@ a { color: inherit; }
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
     border-radius: 999px;
     padding: 0.95rem 1.6rem;
     font-family: var(--body);
     font-weight: 600;
     font-size: 0.98rem;
     text-decoration: none;
-    transition: transform .15s, background .2s, color .2s;
+    transition: transform .15s, background .2s, color .2s, box-shadow .2s;
+    box-shadow: 0 8px 20px rgba(20, 28, 32, 0.18);
 }
 .btn-callout:hover {
-    background: var(--sun);
-    color: var(--ink);
+    background: var(--ocean);
+    color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 126, 155, 0.30);
 }
 .btn-callout .arrow { transition: transform 0.2s; }
 .btn-callout:hover .arrow { transform: translateX(4px); }
@@ -778,7 +785,19 @@ a { color: inherit; }
     padding: 1.25rem 1.5rem;
     font-family: var(--body);
 }
-.modal-body.modal-body-pre { white-space: pre-line; }
+.modal-body.modal-body-legal {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    padding: 1.5rem 1.75rem;
+    max-height: 70vh;
+}
+.modal-body.modal-body-legal p {
+    margin: 0 0 1.1rem;
+}
+.modal-body.modal-body-legal p:last-child {
+    margin-bottom: 0;
+}
 .modal-footer { border-top: 1px solid var(--line-soft); }
 
 /* ============================================================

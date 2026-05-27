@@ -1,58 +1,26 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import SunDecor from '../components/SunDecor'
 import PromoBar from '../components/PromoBar'
-import ContactModal from '../components/ContactModal'
 import Faq from '../components/Faq'
 import SectionLabel from '../components/SectionLabel'
 import HeroStrip from '../components/HeroStrip'
 import { usePageTitle } from '../hooks/usePageTitle'
+import { useContactModal } from '../contexts/ContactModalContext'
 import { site } from '../config'
 import '../styles/pages/home.css'
 
-export default function Home() {
-  const [navOpen, setNavOpen] = useState(false)
-  const [contactOpen, setContactOpen] = useState(false)
+export default function Classes() {
+  const { open: openContact } = useContactModal()
 
   usePageTitle('Aloha Fitness · Outdoor Strength for Moms in Rocklin, CA')
-
-  function openContact() {
-    setNavOpen(false)
-    setContactOpen(true)
-  }
 
   return (
     <>
       <PromoBar />
 
-      {/* Header */}
-      <SiteHeader>
-        <button
-          className="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen((open) => !open)}
-        >
-          <span />
-        </button>
-        <nav className={navOpen ? 'nav-links open' : 'nav-links'}>
-          <Link to="/free" className="cta" onClick={() => setNavOpen(false)}>
-            Free Class
-          </Link>
-          <Link to="/about" onClick={() => setNavOpen(false)}>
-            Coach
-          </Link>
-          <a href="#pricing" onClick={() => setNavOpen(false)}>
-            Pricing
-          </a>
-          <a href="#schedule" onClick={() => setNavOpen(false)}>
-            Schedule
-          </a>
-          <a onClick={openContact}>Contact</a>
-        </nav>
-      </SiteHeader>
+      <SiteHeader />
 
       {/* Hero */}
       <section className="hero-wrap">
@@ -108,7 +76,7 @@ export default function Home() {
 
       {/* About */}
       <section className="section" id="about">
-        <SectionLabel num="01 / 06">
+        <SectionLabel num="01 / 07">
           What we <em>believe</em>
         </SectionLabel>
         <div className="about-grid">
@@ -135,7 +103,7 @@ export default function Home() {
 
       {/* Meet the coach */}
       <section className="section" id="coach">
-        <SectionLabel num="02 / 06">
+        <SectionLabel num="02 / 07">
           Meet <em>Tania</em>
         </SectionLabel>
         <div className="coach-grid">
@@ -174,7 +142,7 @@ export default function Home() {
 
       {/* Pricing */}
       <section className="section" id="pricing">
-        <SectionLabel num="03 / 06">
+        <SectionLabel num="03 / 07">
           What we <em>offer</em>
         </SectionLabel>
         <p className="section-intro">
@@ -277,7 +245,7 @@ export default function Home() {
 
       {/* Schedule */}
       <section className="section" id="schedule">
-        <SectionLabel num="04 / 06">
+        <SectionLabel num="04 / 07">
           Class <em>schedule</em>
         </SectionLabel>
         <p className="section-intro">
@@ -360,9 +328,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Shop */}
+      <section className="section" id="shop">
+        <SectionLabel num="05 / 07">
+          Shop our <em>gear</em>
+        </SectionLabel>
+        <div className="shop-teaser">
+          <p className="shop-teaser-copy">
+            The mats, bands, and tools we actually use in class — handpicked and
+            available on Amazon. Browse the full list whenever you want to add a
+            piece to your home setup.
+          </p>
+          <Link className="btn-primary-ink" to="/products">
+            See our picks
+            <span className="arrow" aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section" id="faq">
-        <SectionLabel num="05 / 06">
+        <SectionLabel num="06 / 07">
           Common <em>questions</em>
         </SectionLabel>
         <p className="section-intro">
@@ -373,7 +359,7 @@ export default function Home() {
 
       {/* Free callout */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <SectionLabel num="06 / 06">
+        <SectionLabel num="07 / 07">
           Try it <em>free</em>
         </SectionLabel>
         <div className="free-callout">
@@ -394,21 +380,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <SiteFooter
-        links={
-          <div className="footer-links">
-            <Link to="/">Home</Link>
-            <Link to="/about">Coach</Link>
-            <a href="#pricing">Pricing</a>
-            <a href="#schedule">Schedule</a>
-            <a onClick={openContact}>Contact</a>
-            <Link to="/privacy-policy">Privacy</Link>
-          </div>
-        }
-      />
-
-      <ContactModal show={contactOpen} onHide={() => setContactOpen(false)} />
+      <SiteFooter />
     </>
   )
 }
