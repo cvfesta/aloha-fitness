@@ -215,6 +215,22 @@
     padding-top: 1.25rem;
     border-top: 1px solid var(--line);
 }
+.lp-value-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--ocean-soft);
+    color: var(--ocean-deep);
+    margin-bottom: 0.85rem;
+}
+.lp-value-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
 .lp-values-grid h3 {
     font-family: var(--display);
     font-weight: 500;
@@ -238,7 +254,7 @@
     margin: 0 auto;
     padding: 5rem 2rem;
     display: grid;
-    grid-template-columns: 1fr 0.85fr;
+    grid-template-columns: 0.85fr 1fr;
     gap: 3.5rem;
     align-items: center;
 }
@@ -317,7 +333,8 @@
         gap: 2.5rem;
         padding-bottom: 3rem;
     }
-    .lp-product-photo { max-width: 480px; margin: 0 auto; }
+    .lp-hero-art { max-width: 480px; margin: 0 auto; width: 100%; }
+    .lp-product-photo { max-width: 100%; margin: 0; }
     .lp-values-grid { grid-template-columns: repeat(2, 1fr); }
     .lp-brand {
         grid-template-columns: 1fr;

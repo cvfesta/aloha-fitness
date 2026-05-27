@@ -36,14 +36,16 @@ export default function SiteFooter() {
           <Link to="/classes">Classes</Link>
           <Link to="/about">Coach</Link>
           <Link to="/free">Free Class</Link>
-          <a
+          <button
+            type="button"
+            className="footer-link-button"
             onClick={() => {
               trackEvent('Contact modal opened', { location: 'footer' })
               openContact()
             }}
           >
             Contact
-          </a>
+          </button>
           <Link to="/privacy-policy">Privacy</Link>
         </div>
         <span className="footer-mark">

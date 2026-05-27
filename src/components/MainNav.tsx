@@ -43,7 +43,9 @@ export default function MainNav() {
         <Link to="/free" className="cta" onClick={close}>
           Free Class
         </Link>
-        <a onClick={onContactClick}>Contact</a>
+        <button type="button" className="nav-link-button" onClick={onContactClick}>
+          Contact
+        </button>
         <ThemeToggle />
       </nav>
     </>

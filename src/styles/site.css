@@ -172,7 +172,10 @@ a { color: inherit; }
    TOPBAR / PROMO
    ============================================================ */
 .topbar {
-    background: var(--ocean-deep);
+    /* Promo bar is a brand-identity banner — colors are pinned, not themed.
+       Otherwise dark mode flips the bar to a light blue with white text and
+       fails contrast. */
+    background: #007E9B;
     color: #fff;
     font-size: 0.78rem;
     font-weight: 500;
@@ -182,16 +185,16 @@ a { color: inherit; }
     text-align: center;
 }
 .topbar strong {
-    color: var(--ocean-soft);
+    color: #D6EEF5;
     font-weight: 700;
 }
 .topbar .code {
     display: inline-block;
-    border: 1px dashed var(--ocean-soft);
+    border: 1px dashed #D6EEF5;
     border-radius: 4px;
     padding: 0.05rem 0.45rem;
     margin: 0 0.25rem;
-    color: var(--ocean-soft);
+    color: #D6EEF5;
     font-weight: 700;
     letter-spacing: 0.16em;
 }
@@ -199,7 +202,7 @@ a { color: inherit; }
     display: inline-block;
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: var(--ocean-soft);
+    background: #D6EEF5;
     margin: 0 0.7rem;
     vertical-align: middle;
 }
@@ -265,7 +268,9 @@ a { color: inherit; }
     align-items: center;
     gap: 1.8rem;
 }
-.nav-links a {
+.nav-links a,
+.nav-links .nav-link-button {
+    font-family: var(--body);
     font-size: 0.92rem;
     font-weight: 500;
     color: var(--ink-soft);
@@ -275,7 +280,15 @@ a { color: inherit; }
     cursor: pointer;
     transition: color .2s, border-color .2s;
 }
-.nav-links a:hover { color: var(--ocean-deep); border-color: var(--ocean-deep); }
+.nav-link-button {
+    background: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 0 0 2px;
+}
+.nav-links a:hover,
+.nav-links .nav-link-button:hover { color: var(--ocean-deep); border-color: var(--ocean-deep); }
 .nav-links a.cta {
     color: var(--ocean-deep);
     font-weight: 700;
@@ -663,7 +676,7 @@ a { color: inherit; }
 .field textarea {
     width: 100%;
     border: 1.5px solid var(--line);
-    background: #FFFEFA;
+    background: var(--card);
     color: var(--ink);
     font-family: var(--body);
     font-size: 0.98rem;
@@ -673,6 +686,23 @@ a { color: inherit; }
     transition: border-color .15s, box-shadow .15s, background .15s;
     appearance: none;
     -webkit-appearance: none;
+}
+/* Override browser autofill yellow/cream background — Chrome and Safari paint
+   their own background via -webkit-autofill that ignores normal background
+   rules. The huge inset box-shadow trick is the standard workaround. */
+.field input:-webkit-autofill,
+.field select:-webkit-autofill,
+.field textarea:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus,
+.field select:-webkit-autofill:hover,
+.field select:-webkit-autofill:focus,
+.field textarea:-webkit-autofill:hover,
+.field textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--card) inset;
+    -webkit-text-fill-color: var(--ink);
+    caret-color: var(--ink);
+    transition: background-color 5000s ease-in-out 0s;
 }
 .field textarea { min-height: 120px; padding-top: 1.6rem; resize: vertical; }
 .field select {
@@ -991,13 +1021,22 @@ a { color: inherit; }
     gap: 1.25rem;
     flex-wrap: wrap;
 }
-.footer-links a {
+.footer-links a,
+.footer-links .footer-link-button {
+    font-family: var(--body);
+    font-size: inherit;
     color: var(--ink-soft);
     text-decoration: none;
     cursor: pointer;
     transition: color .2s;
 }
-.footer-links a:hover { color: var(--ocean-deep); }
+.footer-link-button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+.footer-links a:hover,
+.footer-links .footer-link-button:hover { color: var(--ocean-deep); }
 .footer-mark,
 .footer-inner .heart-icon {
     display: inline-flex;
@@ -1065,6 +1104,12 @@ a { color: inherit; }
         gap: 0.85rem;
         box-shadow: var(--shadow-2);
         z-index: 10;
+    }
+    /* In the mobile nav drawer, the theme toggle sits at the left edge —
+       anchor its dropdown left so it doesn't fly off-screen. */
+    .nav-links.open .theme-menu {
+        left: 0;
+        right: auto;
     }
 }
 @media (max-width: 640px) {

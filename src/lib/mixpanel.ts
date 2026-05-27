@@ -1,6 +1,7 @@
 import mixpanel from 'mixpanel-browser'
 
-const TOKEN = '34b0b2e5a4bf295cff378e99aa7f115f'
+/** Project token. Set VITE_MIXPANEL_TOKEN in your .env to enable tracking. */
+const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN as string | undefined
 
 type Props = Record<string, unknown>
 
@@ -27,20 +28,30 @@ function pageNameFor(pathname: string): string {
   return 'Page View'
 }
 
+let initialized = false
+
 export function initMixpanel(): void {
+  if (!TOKEN) {
+    // Silent in dev; no analytics noise. Set VITE_MIXPANEL_TOKEN to enable.
+    return
+  }
   mixpanel.init(TOKEN, { debug: false })
+  initialized = true
 }
 
 export function trackPageView(pathname: string, extra?: Props): void {
+  if (!initialized) return
   mixpanel.track(pageNameFor(pathname), { path: pathname, ...extra })
 }
 
 /** Generic event tracker. Use for CTAs, engagement, etc. */
 export function trackEvent(name: string, props?: Props): void {
+  if (!initialized) return
   mixpanel.track(name, props)
 }
 
 /** Outbound link click (Amazon, Stripe, Instagram, etc.). */
 export function trackOutbound(label: string, url: string, extra?: Props): void {
+  if (!initialized) return
   mixpanel.track('Outbound click', { label, url, ...extra })
 }

@@ -124,18 +124,49 @@ export default function Landing() {
       <section className="lp-values">
         <ul className="lp-values-grid">
           <li>
+            <span className="lp-value-icon" aria-hidden="true">
+              {/* droplet — grip / moisture */}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3 C 7 9, 5 12.5, 5 15.5 a 7 7 0 0 0 14 0 C 19 12.5, 17 9, 12 3 Z" />
+                <path d="M9 15.5 a 3 3 0 0 0 3 3" opacity="0.5" />
+              </svg>
+            </span>
             <h3>Sweat-tested grip</h3>
             <p>Textured natural rubber holds steady through hot yoga, pilates, and floor work.</p>
           </li>
           <li>
+            <span className="lp-value-icon" aria-hidden="true">
+              {/* stacked cushion layers — padding / thickness */}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="6"  width="18" height="5" rx="2.5" />
+                <rect x="3" y="13" width="18" height="5" rx="2.5" />
+              </svg>
+            </span>
             <h3>Cushion that lasts</h3>
             <p>0.18" of thoughtful padding — kind to knees, wrists, and longer floor sessions.</p>
           </li>
           <li>
+            <span className="lp-value-icon" aria-hidden="true">
+              {/* rolled mat — portability */}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <ellipse cx="12" cy="6" rx="4" ry="2.2" />
+                <path d="M8 6 v12" />
+                <path d="M16 6 v12" />
+                <ellipse cx="12" cy="18" rx="4" ry="2.2" />
+                <path d="M12 8 v8" opacity="0.5" />
+              </svg>
+            </span>
             <h3>Rolls light. Travels easy.</h3>
             <p>72" × 27" of room to move, with a carry strap so it actually comes with you.</p>
           </li>
           <li>
+            <span className="lp-value-icon" aria-hidden="true">
+              {/* leaf — eco / natural rubber */}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 4 C 11 4, 4 11, 4 20 C 13 20, 20 13, 20 4 Z" />
+                <path d="M4 20 L 14 10" />
+              </svg>
+            </span>
             <h3>Eco-friendly rubber</h3>
             <p>Biodegradable natural rubber — no PVC chemistry in your workout.</p>
           </li>
@@ -144,6 +175,9 @@ export default function Landing() {
 
       {/* BRAND CREDIBILITY */}
       <section className="lp-brand">
+        <figure className="lp-brand-photo">
+          <img src="/img/coach.png" alt="Tania, founder of Aloha" />
+        </figure>
         <div className="lp-brand-text">
           <div className="eyebrow">By Aloha · Rocklin, CA</div>
           <h2 className="lp-brand-title">
@@ -160,9 +194,6 @@ export default function Landing() {
             <span className="arrow" aria-hidden="true">→</span>
           </Link>
         </div>
-        <figure className="lp-brand-photo">
-          <img src="/img/coach.png" alt="Tania, founder of Aloha" />
-        </figure>
       </section>
 
       {/* FINAL CTA */}

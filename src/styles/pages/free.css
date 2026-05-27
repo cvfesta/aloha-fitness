@@ -184,6 +184,17 @@
     height: 100%;
     border: 0;
 }
+/* Google Maps embed has no dark style without an API key. CSS filter hack
+   inverts the light map to a dark variant — invert flips luminance, the
+   hue-rotate puts colors back roughly where they were. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .map-embed iframe {
+        filter: invert(0.92) hue-rotate(180deg);
+    }
+}
+:root[data-theme="dark"] .map-embed iframe {
+    filter: invert(0.92) hue-rotate(180deg);
+}
 
 /* When card with day chips */
 .schedule-list {

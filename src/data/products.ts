@@ -20,6 +20,9 @@ export type ColorVariant = {
   outOfStock?: boolean
 }
 
+/** Icon key for a product highlight. Resolved to an SVG by the renderer. */
+export type HighlightIcon = 'grip' | 'cushion' | 'eco' | 'sweat' | 'light' | 'levels'
+
 export type Product = {
   /** Stable kebab slug — also the /products/:slug URL. */
   id: string
@@ -43,7 +46,7 @@ export type Product = {
   /** Brand story / why-we-love-it paragraph(s) on the detail page. */
   story?: string[]
   /** Feature cards on the detail page. */
-  highlights?: { title: string; body: string }[]
+  highlights?: { title: string; body: string; icon?: HighlightIcon }[]
   /** Spec rows on the detail page (label → value). */
   specs?: { label: string; value: string }[]
 }
@@ -116,32 +119,38 @@ export const products: Product[] = [
       {
         title: 'Non-slip grip',
         body: 'Textured surface holds steady through yoga, pilates, hot yoga, and stretching — even when things get sweaty.',
+        icon: 'grip',
       },
       {
         title: 'Thick & cushioned',
         body: 'A generous 0.18" of padding for joint and spine support during long floor sessions.',
+        icon: 'cushion',
       },
       {
         title: 'Eco-friendly',
         body: 'Biodegradable natural rubber — safe for you, gentler on the planet than PVC mats.',
+        icon: 'eco',
       },
       {
         title: 'Sweat-resistant',
         body: 'Resists moisture and odor. Wipe clean with a warm damp cloth and it goes back in the bag.',
+        icon: 'sweat',
       },
       {
         title: 'Lightweight + strap',
         body: 'Rolls up tight and travels with the included carrying strap. Easy to grab on the way out the door.',
+        icon: 'light',
       },
       {
         title: 'For every level',
         body: 'Works whether you\'re brand-new to yoga or deep into a daily practice.',
+        icon: 'levels',
       },
     ],
     specs: [
       { label: 'Dimensions', value: '73" L × 27" W × 0.18" thick' },
       { label: 'Weight', value: '7.05 lb' },
-      { label: 'Material', value: 'PU + natural rubber' },
+      { label: 'Material', value: 'Polyurethane (PU) top + natural rubber base' },
       { label: 'Care', value: 'Hand wash; wipe with warm damp cloth' },
       { label: 'Brand', value: 'Aloha' },
     ],

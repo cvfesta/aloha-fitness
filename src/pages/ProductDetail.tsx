@@ -1,12 +1,61 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import SectionLabel from '../components/SectionLabel'
 import { usePageTitle } from '../hooks/usePageTitle'
-import { products } from '../data/products'
+import { products, type HighlightIcon } from '../data/products'
 import { trackEvent, trackOutbound } from '../lib/mixpanel'
 import '../styles/pages/products.css'
+
+const HIGHLIGHT_ICONS: Record<HighlightIcon, ReactNode> = {
+  /* hand with grip lines — non-slip */
+  grip: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 13 V5.5 a 1.5 1.5 0 0 1 3 0 V11" />
+      <path d="M12 11 V4.5 a 1.5 1.5 0 0 1 3 0 V11" />
+      <path d="M15 11 V6 a 1.5 1.5 0 0 1 3 0 V14 a 6 6 0 0 1 -6 6 a 6 6 0 0 1 -6 -6 V9 a 1.5 1.5 0 0 1 3 0 V13" />
+    </svg>
+  ),
+  /* stacked layers — thick & cushioned */
+  cushion: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="6"  width="18" height="5" rx="2.5" />
+      <rect x="3" y="13" width="18" height="5" rx="2.5" />
+    </svg>
+  ),
+  /* leaf — eco-friendly */
+  eco: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 4 C 11 4, 4 11, 4 20 C 13 20, 20 13, 20 4 Z" />
+      <path d="M4 20 L 14 10" />
+    </svg>
+  ),
+  /* droplet with slash — sweat-resistant */
+  sweat: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3 C 7 9, 5 12.5, 5 15.5 a 7 7 0 0 0 14 0 C 19 12.5, 17 9, 12 3 Z" />
+      <path d="M5 5 L 19 19" opacity="0.85" />
+    </svg>
+  ),
+  /* shoulder bag with strap — lightweight + strap */
+  light: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 9 C 8 4.5, 16 4.5, 16 9" />
+      <rect x="4" y="9" width="16" height="11" rx="2" />
+      <path d="M4 13 L 20 13" opacity="0.5" />
+    </svg>
+  ),
+  /* two people of different heights — for every level (beginner to advanced) */
+  levels: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="8"  cy="10" r="1.8" />
+      <path d="M5.5 20 V14.5 a 2.5 2.5 0 0 1 5 0 V20" />
+      <circle cx="16" cy="6"  r="2" />
+      <path d="M13.5 20 V10.5 a 2.5 2.5 0 0 1 5 0 V20" />
+    </svg>
+  ),
+}
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -125,7 +174,7 @@ export default function ProductDetail() {
                 <span className="arrow" aria-hidden="true">→</span>
               </a>
               <p className="pd-buy-note">
-                Opens Amazon in a new tab. Aloha Fitness may earn a small commission.
+                Opens Amazon in a new tab.
               </p>
             </>
           )}
@@ -153,6 +202,11 @@ export default function ProductDetail() {
           <ul className="pd-highlights">
             {product.highlights.map((h) => (
               <li key={h.title} className="pd-highlight">
+                {h.icon && HIGHLIGHT_ICONS[h.icon] && (
+                  <span className="pd-highlight-icon" aria-hidden="true">
+                    {HIGHLIGHT_ICONS[h.icon]}
+                  </span>
+                )}
                 <h3>{h.title}</h3>
                 <p>{h.body}</p>
               </li>
